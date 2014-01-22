@@ -64,4 +64,152 @@ class Reservation
     private $restaurant;
 
 
+
+    /**
+     * Get reservationId
+     *
+     * @return integer 
+     */
+    public function getReservationId()
+    {
+        return $this->reservationId;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Reservation
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set phoneNumber
+     *
+     * @param string $phoneNumber
+     * @return Reservation
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return string 
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Set time
+     *
+     * @param string $time
+     * @return Reservation
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return string 
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set peopleAmount
+     *
+     * @param integer $peopleAmount
+     * @return Reservation
+     */
+    public function setPeopleAmount($peopleAmount)
+    {
+        $this->peopleAmount = $peopleAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get peopleAmount
+     *
+     * @return integer 
+     */
+    public function getPeopleAmount()
+    {
+        return $this->peopleAmount;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return Reservation
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set restaurant
+     *
+     * @param string $restaurant
+     * @return Reservation
+     */
+    public function setRestaurant($restaurant)
+    {
+        $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Get restaurant
+     *
+     * @return string 
+     */
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
 }

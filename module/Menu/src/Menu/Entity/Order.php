@@ -96,4 +96,208 @@ class Order
         $this->dish = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Get orderId
+     *
+     * @return integer 
+     */
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    /**
+     * Set totalPrice
+     *
+     * @param integer $totalPrice
+     * @return Order
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalPrice
+     *
+     * @return integer 
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
+
+    /**
+     * Set deliveryTime
+     *
+     * @param \DateTime $deliveryTime
+     * @return Order
+     */
+    public function setDeliveryTime($deliveryTime)
+    {
+        $this->deliveryTime = $deliveryTime;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryTime
+     *
+     * @return \DateTime 
+     */
+    public function getDeliveryTime()
+    {
+        return $this->deliveryTime;
+    }
+
+    /**
+     * Set deliveryAddress
+     *
+     * @param string $deliveryAddress
+     * @return Order
+     */
+    public function setDeliveryAddress($deliveryAddress)
+    {
+        $this->deliveryAddress = $deliveryAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryAddress
+     *
+     * @return string 
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->deliveryAddress;
+    }
+
+    /**
+     * Set payStatus
+     *
+     * @param string $payStatus
+     * @return Order
+     */
+    public function setPayStatus($payStatus)
+    {
+        $this->payStatus = $payStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get payStatus
+     *
+     * @return string 
+     */
+    public function getPayStatus()
+    {
+        return $this->payStatus;
+    }
+
+    /**
+     * Set payMethod
+     *
+     * @param string $payMethod
+     * @return Order
+     */
+    public function setPayMethod($payMethod)
+    {
+        $this->payMethod = $payMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get payMethod
+     *
+     * @return string 
+     */
+    public function getPayMethod()
+    {
+        return $this->payMethod;
+    }
+
+    /**
+     * Set orderTime
+     *
+     * @param \DateTime $orderTime
+     * @return Order
+     */
+    public function setOrderTime($orderTime)
+    {
+        $this->orderTime = $orderTime;
+
+        return $this;
+    }
+
+    /**
+     * Get orderTime
+     *
+     * @return \DateTime 
+     */
+    public function getOrderTime()
+    {
+        return $this->orderTime;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Menu\Entity\User $user
+     * @return Order
+     */
+    public function setUser(\Menu\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Menu\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Add dish
+     *
+     * @param \Menu\Entity\Dish $dish
+     * @return Order
+     */
+    public function addDish(\Menu\Entity\Dish $dish)
+    {
+        $this->dish[] = $dish;
+
+        return $this;
+    }
+
+    /**
+     * Remove dish
+     *
+     * @param \Menu\Entity\Dish $dish
+     */
+    public function removeDish(\Menu\Entity\Dish $dish)
+    {
+        $this->dish->removeElement($dish);
+    }
+
+    /**
+     * Get dish
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDish()
+    {
+        return $this->dish;
+    }
 }

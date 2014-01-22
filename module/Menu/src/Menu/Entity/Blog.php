@@ -46,4 +46,83 @@ class Blog
     private $user;
 
 
+
+    /**
+     * Get blogId
+     *
+     * @return integer 
+     */
+    public function getBlogId()
+    {
+        return $this->blogId;
+    }
+
+    /**
+     * Set artical
+     *
+     * @param string $artical
+     * @return Blog
+     */
+    public function setArtical($artical)
+    {
+        $this->artical = $artical;
+
+        return $this;
+    }
+
+    /**
+     * Get artical
+     *
+     * @return string 
+     */
+    public function getArtical()
+    {
+        return $this->artical;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Blog
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Menu\Entity\User $user
+     * @return Blog
+     */
+    public function setUser(\Menu\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Menu\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

@@ -53,4 +53,106 @@ class Comment
     private $blog;
 
 
+
+    /**
+     * Get commentId
+     *
+     * @return integer 
+     */
+    public function getCommentId()
+    {
+        return $this->commentId;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set commentcol
+     *
+     * @param string $commentcol
+     * @return Comment
+     */
+    public function setCommentcol($commentcol)
+    {
+        $this->commentcol = $commentcol;
+
+        return $this;
+    }
+
+    /**
+     * Get commentcol
+     *
+     * @return string 
+     */
+    public function getCommentcol()
+    {
+        return $this->commentcol;
+    }
+
+    /**
+     * Set user
+     *
+     * @param string $user
+     * @return Comment
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set blog
+     *
+     * @param \Menu\Entity\Blog $blog
+     * @return Comment
+     */
+    public function setBlog(\Menu\Entity\Blog $blog = null)
+    {
+        $this->blog = $blog;
+
+        return $this;
+    }
+
+    /**
+     * Get blog
+     *
+     * @return \Menu\Entity\Blog 
+     */
+    public function getBlog()
+    {
+        return $this->blog;
+    }
 }

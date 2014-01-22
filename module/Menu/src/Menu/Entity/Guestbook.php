@@ -36,4 +36,60 @@ class Guestbook
     private $date;
 
 
+
+    /**
+     * Get guestbookId
+     *
+     * @return integer 
+     */
+    public function getGuestbookId()
+    {
+        return $this->guestbookId;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Guestbook
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set date
+     *
+     * @param string $date
+     * @return Guestbook
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return string 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

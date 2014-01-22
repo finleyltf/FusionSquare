@@ -105,4 +105,254 @@ class Dish
         $this->order = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    /**
+     * Get dishId
+     *
+     * @return integer 
+     */
+    public function getDishId()
+    {
+        return $this->dishId;
+    }
+
+    /**
+     * Set fName
+     *
+     * @param string $fName
+     * @return Dish
+     */
+    public function setFName($fName)
+    {
+        $this->fName = $fName;
+
+        return $this;
+    }
+
+    /**
+     * Get fName
+     *
+     * @return string 
+     */
+    public function getFName()
+    {
+        return $this->fName;
+    }
+
+    /**
+     * Set cName
+     *
+     * @param string $cName
+     * @return Dish
+     */
+    public function setCName($cName)
+    {
+        $this->cName = $cName;
+
+        return $this;
+    }
+
+    /**
+     * Get cName
+     *
+     * @return string 
+     */
+    public function getCName()
+    {
+        return $this->cName;
+    }
+
+    /**
+     * Set eName
+     *
+     * @param string $eName
+     * @return Dish
+     */
+    public function setEName($eName)
+    {
+        $this->eName = $eName;
+
+        return $this;
+    }
+
+    /**
+     * Get eName
+     *
+     * @return string 
+     */
+    public function getEName()
+    {
+        return $this->eName;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Dish
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return Dish
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set spiceDgree
+     *
+     * @param integer $spiceDgree
+     * @return Dish
+     */
+    public function setSpiceDgree($spiceDgree)
+    {
+        $this->spiceDgree = $spiceDgree;
+
+        return $this;
+    }
+
+    /**
+     * Get spiceDgree
+     *
+     * @return integer 
+     */
+    public function getSpiceDgree()
+    {
+        return $this->spiceDgree;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Dish
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Menu\Entity\Category $category
+     * @return Dish
+     */
+    public function setCategory(\Menu\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Menu\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set restaurant
+     *
+     * @param \Menu\Entity\Restaurant $restaurant
+     * @return Dish
+     */
+    public function setRestaurant(\Menu\Entity\Restaurant $restaurant = null)
+    {
+        $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Get restaurant
+     *
+     * @return \Menu\Entity\Restaurant 
+     */
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
+
+    /**
+     * Add order
+     *
+     * @param \Menu\Entity\Order $order
+     * @return Dish
+     */
+    public function addOrder(\Menu\Entity\Order $order)
+    {
+        $this->order[] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Remove order
+     *
+     * @param \Menu\Entity\Order $order
+     */
+    public function removeOrder(\Menu\Entity\Order $order)
+    {
+        $this->order->removeElement($order);
+    }
+
+    /**
+     * Get order
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
 }
