@@ -1,6 +1,6 @@
 <?php
 
-namespace Menu\Entity;
+namespace Guestbook\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
