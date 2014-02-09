@@ -43,9 +43,9 @@ class Comment
     private $user;
 
     /**
-     * @var \Menu\Entity\Blog
+     * @var \Blog\Entity\Blog
      *
-     * @ORM\ManyToOne(targetEntity="Menu\Entity\Blog")
+     * @ORM\ManyToOne(targetEntity="Blog\Entity\Blog")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="blog_id", referencedColumnName="blog_id")
      * })
@@ -136,10 +136,10 @@ class Comment
     /**
      * Set blog
      *
-     * @param \Menu\Entity\Blog $blog
+     * @param \Blog\Entity\Blog $blog
      * @return Comment
      */
-    public function setBlog(\Menu\Entity\Blog $blog = null)
+    public function setBlog(\Blog\Entity\Blog $blog = null)
     {
         $this->blog = $blog;
 
@@ -149,7 +149,7 @@ class Comment
     /**
      * Get blog
      *
-     * @return \Menu\Entity\Blog 
+     * @return \Blog\Entity\Blog
      */
     public function getBlog()
     {

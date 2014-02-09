@@ -1,6 +1,6 @@
 <?php
 
-namespace Order\Entity;
+namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -63,6 +63,15 @@ class Reservation
      */
     private $restaurant;
 
+    /**
+     * @var \User\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="User\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
+     * })
+     */
+    private $user;
 
 
     /**
@@ -212,4 +221,28 @@ class Reservation
     {
         return $this->restaurant;
     }
+
+    /**
+     * Set user
+     *
+     * @param \User\Entity\User $user
+     * @return Reservation
+     */
+    public function setUser(\User\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \User\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
 }

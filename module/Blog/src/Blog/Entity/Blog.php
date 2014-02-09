@@ -36,9 +36,9 @@ class Blog
     private $date;
 
     /**
-     * @var \Menu\Entity\User
+     * @var \User\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="Menu\Entity\User")
+     * @ORM\ManyToOne(targetEntity="User\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      * })
@@ -106,10 +106,10 @@ class Blog
     /**
      * Set user
      *
-     * @param \Menu\Entity\User $user
+     * @param \User\Entity\User $user
      * @return Blog
      */
-    public function setUser(\Menu\Entity\User $user = null)
+    public function setUser(\User\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -119,7 +119,7 @@ class Blog
     /**
      * Get user
      *
-     * @return \Menu\Entity\User 
+     * @return \User\Entity\User
      */
     public function getUser()
     {
