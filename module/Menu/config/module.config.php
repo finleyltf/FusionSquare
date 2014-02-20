@@ -7,51 +7,62 @@
 namespace Menu; //重要！影响下面的Doctrine的__NAMESPACE__
 
 return array(
-//    'controllers'  => array(
-//        'invokables' => array(
-//            'Post\Controller\Post' => 'Post\Controller\PostController',
-//        ),
-//    ),
-
-    // The following section is new and should be added to your file
-//    'router'       => array(
-//        'routes' => array(
-//            'post' => array(
-//                'type'    => 'segment',
-//                'options' => array(
-//                    'route'       => '/post[/][:action][/:id]',
-//                    'constraints' => array(
-//                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-//                        'id'     => '[0-9]+',
-//                    ),
-//                    'defaults'    => array(
-//                        'controller' => 'Post\Controller\Post',
-//                        'action'     => 'index',
-//                    ),
-//                ),
-//            ),
-//        ),
-//    ),
-
-//    'view_manager' => array(
-//        'template_path_stack' => array(
-//            'post' => __DIR__ . '/../view',
-//        ),
-//    ),
-
+    
+'controllers' => array(
+        'invokables' => array(
+            'Menu\Controller\Index' => 'Menu\Controller\IndexController'
+        ),
+    ),
+    
+    //Routes for this module
+    'router' => array(
+        
+        'routes' => array(
+            'menu' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/menu[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Menu\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+        ),
+    ),
+    
+    // View setup for this module
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'menu' => __DIR__ . '/../view',
+        ),
+    ),
+    
     // Doctrine config
-    'doctrine'     => array(
+    'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
                 'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
             ),
-            'orm_default'             => array(
+            'orm_default' => array(
                 'drivers' => array(
-                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
                 )
             )
-        )
-    )
+        ),
+        
+    ),
+    
+    
+    
+    //when run ./vendor/bin/doctrine-module orm:validate-schema got 'Given route does not implement Console route interface' error
+    'console' => array(
+        'router' => array(),
+    ),
 );

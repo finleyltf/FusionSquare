@@ -2,7 +2,11 @@
 
 namespace Menu\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM,
+    Zend\InputFilter\InputFilter,
+    Zend\InputFilter\Factory as InputFactory,
+    Zend\InputFilter\InputFilterAwareInterface,
+    Zend\InputFilter\InputFilterInterface;
 
 /**
  * Dish
@@ -93,7 +97,7 @@ class Dish
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Menu\Entity\Order", mappedBy="dish")
+     * @ORM\ManyToMany(targetEntity="\Order\Entity\Order", mappedBy="dish")
      */
     private $order;
 
@@ -105,7 +109,58 @@ class Dish
         $this->order = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+     /**
+     * Magic getter to expose protected properties.
+     *
+     * @param string $property
+     * @return mixed
+     */
+    public function __get($property) 
+    {
+        return $this->$property;
+    }
+ 
+    /**
+     * Magic setter to save protected properties.
+     *
+     * @param string $property
+     * @param mixed $value
+     */
+    public function __set($property, $value) 
+    {
+        $this->$property = $value;
+    }
 
+     /**
+     * Convert the object to an array.
+     *
+     * @return array
+     */
+    public function getArrayCopy() 
+    {
+        return get_object_vars($this);
+    }
+ 
+    /**
+     * Populate from an array.
+     *
+     * @param array $data
+     */
+    public function populate($data = array()) 
+    {
+        $this->dishId        = $data['dishId'];
+        $this->fName         = $data['fName'];
+        $this->cName         = $data['cName'];
+        $this->eName         = $data['eName'];
+        $this->description   = $data['description'];
+        $this->price         = $data['price'];
+        $this->spiceDgree    = $data['spiceDgree'];
+        $this->image         = $data['image'];
+        $this->category      = $data['category'];
+        $this->restaurant    = $data['restaurant'];
+        $this->order         = $data['order'];
+    }
+ 
     /**
      * Get dishId
      *
@@ -326,10 +381,10 @@ class Dish
     /**
      * Add order
      *
-     * @param \Menu\Entity\Order $order
+     * @param Order\Entity\Order $order
      * @return Dish
      */
-    public function addOrder(\Menu\Entity\Order $order)
+    public function addOrder(\Order\Entity\Order $order)
     {
         $this->order[] = $order;
 
@@ -339,9 +394,9 @@ class Dish
     /**
      * Remove order
      *
-     * @param \Menu\Entity\Order $order
+     * @param Order\Entity\Order $order
      */
-    public function removeOrder(\Menu\Entity\Order $order)
+    public function removeOrder(\Order\Entity\Order $order)
     {
         $this->order->removeElement($order);
     }
