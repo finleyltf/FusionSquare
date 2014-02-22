@@ -4,8 +4,7 @@ namespace Menu\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
-    Doctrine\ORM\EntityManager,
-    Menu\Entity\Dish;
+    Doctrine\ORM\EntityManager;
 
 class IndexController extends AbstractActionController {
 
@@ -33,8 +32,35 @@ class IndexController extends AbstractActionController {
             'dishes' => $this->getEntityManager()->getRepository('Menu\Entity\Dish')->findAll() 
         ));
     }
+    
+    public function addAction()
+    {
+        //fecth all the category and restaurant and put them in select option
+        $categoryList = $this->getEntityManager()->getRepository('Menu\Entity\Category')->findAll();
+
+        $categories = array();
+        foreach ($categoryList as $list) {
+            $categories[$list->getCategoryId()] = $list->getName();
+        }
+        
+        $restaurantList = $this->getEntityManager()->getRepository('Menu\Entity\Restaurant')->findAll();
+        $restaurants = array();
+        foreach ($restaurantList as $list) {
+            $restaurants[$list->getRestaurantId()] = $list->getName();
+        }
+
+        $form = new \Menu\Form\DishForm;
+        
+        $form->get('category')->setAttributes(array(
+        'options' => $categories,   
+        )); 
+        $form->get('restaurant')->setAttributes(array(
+        'options' => $restaurants,   
+        )); 
+ 
+        return array('form' => $form);
+    }
 
 }
-
 
 
