@@ -57,6 +57,10 @@ class IndexController extends AbstractActionController {
         $form->get('restaurant')->setAttributes(array(
         'options' => $restaurants,   
         )); 
+        
+        
+        $request = $this->getRequest();
+        var_dump($request->getPost());
  
         return array('form' => $form);
     }
