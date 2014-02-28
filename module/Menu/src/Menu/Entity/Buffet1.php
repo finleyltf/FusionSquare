@@ -25,9 +25,9 @@ class Buffet1
     /**
      * @var integer
      *
-     * @ORM\Column(name="week_mark", type="integer", nullable=false)
+     * @ORM\Column(name="day_mark", type="integer", nullable=false)
      */
-    private $weekMark;
+    private $dayMark;
 
     /**
      * @var integer
@@ -72,19 +72,19 @@ class Buffet1
     private $coldDish;
 
     /**
-     * @param int $weekMark
+     * @param int $dayMark
      */
-    public function setWeekMark($weekMark)
+    public function setDayMark($dayMark)
     {
-        $this->weekMark = $weekMark;
+        $this->dayMark = $dayMark;
     }
 
     /**
      * @return int
      */
-    public function getWeekMark()
+    public function getDayMark()
     {
-        return $this->weekMark;
+        return $this->dayMark;
     }
 
     /**
