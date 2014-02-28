@@ -15,11 +15,26 @@ class Buffet1
     /**
      * @var integer
      *
-     * @ORM\Column(name="day_mark", type="integer", nullable=false)
+     * @ORM\Column(name="buffet1_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $dayMark;
+    private $buffet1Id;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="week_mark", type="integer", nullable=false)
+     */
+    private $weekMark;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="display_order", type="integer", nullable=true)
+     */
+    private $display_order;
 
     /**
      * @var string
@@ -56,22 +71,61 @@ class Buffet1
      */
     private $coldDish;
 
+    /**
+     * @param int $weekMark
+     */
+    public function setWeekMark($weekMark)
+    {
+        $this->weekMark = $weekMark;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWeekMark()
+    {
+        return $this->weekMark;
+    }
+
+    /**
+     * @param int $buffet1Id
+     */
+    public function setBuffet1Id($buffet1Id)
+    {
+        $this->buffet1Id = $buffet1Id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBuffet1Id()
+    {
+        return $this->buffet1Id;
+    }
 
 
     /**
-     * Get dayMark
-     *
-     * @return integer 
+     * @param int $display_order
      */
-    public function getDayMark()
+    public function setDisplayOrder($display_order)
     {
-        return $this->dayMark;
+        $this->display_order = $display_order;
     }
+
+    /**
+     * @return int
+     */
+    public function getDisplayOrder()
+    {
+        return $this->display_order;
+    }
+
 
     /**
      * Set cName
      *
      * @param string $cName
+     *
      * @return Buffet1
      */
     public function setCName($cName)
@@ -84,7 +138,7 @@ class Buffet1
     /**
      * Get cName
      *
-     * @return string 
+     * @return string
      */
     public function getCName()
     {
@@ -95,6 +149,7 @@ class Buffet1
      * Set eName
      *
      * @param string $eName
+     *
      * @return Buffet1
      */
     public function setEName($eName)
@@ -107,7 +162,7 @@ class Buffet1
     /**
      * Get eName
      *
-     * @return string 
+     * @return string
      */
     public function getEName()
     {
@@ -118,6 +173,7 @@ class Buffet1
      * Set fName
      *
      * @param string $fName
+     *
      * @return Buffet1
      */
     public function setFName($fName)
@@ -130,7 +186,7 @@ class Buffet1
     /**
      * Get fName
      *
-     * @return string 
+     * @return string
      */
     public function getFName()
     {
@@ -141,6 +197,7 @@ class Buffet1
      * Set spiceDegree
      *
      * @param integer $spiceDegree
+     *
      * @return Buffet1
      */
     public function setSpiceDegree($spiceDegree)
@@ -153,7 +210,7 @@ class Buffet1
     /**
      * Get spiceDegree
      *
-     * @return integer 
+     * @return integer
      */
     public function getSpiceDegree()
     {
@@ -164,6 +221,7 @@ class Buffet1
      * Set coldDish
      *
      * @param boolean $coldDish
+     *
      * @return Buffet1
      */
     public function setColdDish($coldDish)
@@ -176,7 +234,7 @@ class Buffet1
     /**
      * Get coldDish
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getColdDish()
     {

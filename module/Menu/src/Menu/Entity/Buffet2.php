@@ -56,12 +56,19 @@ class Buffet2
      */
     private $coldDish;
 
+    /**
+     * @param int $dayMark
+     */
+    public function setDayMark($dayMark)
+    {
+        $this->dayMark = $dayMark;
+    }
 
 
     /**
      * Get dayMark
      *
-     * @return integer 
+     * @return integer
      */
     public function getDayMark()
     {
@@ -72,6 +79,7 @@ class Buffet2
      * Set cName
      *
      * @param string $cName
+     *
      * @return Buffet2
      */
     public function setCName($cName)
@@ -84,7 +92,7 @@ class Buffet2
     /**
      * Get cName
      *
-     * @return string 
+     * @return string
      */
     public function getCName()
     {
@@ -95,6 +103,7 @@ class Buffet2
      * Set eName
      *
      * @param string $eName
+     *
      * @return Buffet2
      */
     public function setEName($eName)
@@ -107,7 +116,7 @@ class Buffet2
     /**
      * Get eName
      *
-     * @return string 
+     * @return string
      */
     public function getEName()
     {
@@ -118,6 +127,7 @@ class Buffet2
      * Set fName
      *
      * @param string $fName
+     *
      * @return Buffet2
      */
     public function setFName($fName)
@@ -130,7 +140,7 @@ class Buffet2
     /**
      * Get fName
      *
-     * @return string 
+     * @return string
      */
     public function getFName()
     {
@@ -141,6 +151,7 @@ class Buffet2
      * Set spiceDegree
      *
      * @param integer $spiceDegree
+     *
      * @return Buffet2
      */
     public function setSpiceDegree($spiceDegree)
@@ -153,7 +164,7 @@ class Buffet2
     /**
      * Get spiceDegree
      *
-     * @return integer 
+     * @return integer
      */
     public function getSpiceDegree()
     {
@@ -164,6 +175,7 @@ class Buffet2
      * Set coldDish
      *
      * @param boolean $coldDish
+     *
      * @return Buffet2
      */
     public function setColdDish($coldDish)
@@ -176,7 +188,7 @@ class Buffet2
     /**
      * Get coldDish
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getColdDish()
     {

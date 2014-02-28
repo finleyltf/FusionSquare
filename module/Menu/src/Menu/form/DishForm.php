@@ -52,7 +52,7 @@ class DishForm extends Form
                 'label' => 'English name',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'description',
             'attributes' => array(
@@ -62,7 +62,7 @@ class DishForm extends Form
                 'label' => 'Description',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'price',
             'attributes' => array(
@@ -72,7 +72,7 @@ class DishForm extends Form
                 'label' => 'price',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'spiceDgree',
             'attributes' => array(
@@ -82,7 +82,7 @@ class DishForm extends Form
                 'label' => 'spice degree',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'image',
             'attributes' => array(
@@ -92,21 +92,21 @@ class DishForm extends Form
                 'label' => 'File Upload',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'category',
             'type' => 'Zend\Form\Element\Select',
-            'options' => array(            
-            ), 
+            'options' => array(
+            ),
         ));
-        
+
         $this->add(array(
             'name' => 'restaurant',
             'type' => 'Zend\Form\Element\Select',
-            'options' => array(            
-            ), 
+            'options' => array(
+            ),
         ));
-        
+
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
