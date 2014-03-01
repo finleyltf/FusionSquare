@@ -245,6 +245,7 @@ class Buffet1
      * Magic getter to expose protected properties.
      *
      * @param string $property
+     *
      * @return mixed
      */
     public function __get($property)
@@ -256,11 +257,28 @@ class Buffet1
      * Magic setter to save protected properties.
      *
      * @param string $property
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function __set($property, $value)
     {
         $this->$property = $value;
+    }
+
+    /**
+     * Populate from an array.
+     *
+     * @param array $data
+     */
+    public function populate($data = array())
+    {
+        $this->buffet1Id     = $data['buffet1_id'];
+        $this->dayMark       = $data['day_mark'];
+        $this->display_order = $data['display_order'];
+        $this->cName         = $data['c_name'];
+        $this->eName         = $data['e_name'];
+        $this->fName         = $data['f_name'];
+        $this->spiceDegree   = $data['spice_degree'];
+        $this->coldDish      = $data['cold_dish'];
     }
 
 }

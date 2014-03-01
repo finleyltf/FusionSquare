@@ -41,11 +41,11 @@ class Buffet1Form extends Form
                 'label'         => 'Dish of which day:',
                 'value_options' => array(
                     '0' => 'day_mark',
-                    '1' => '周一',
-                    '2' => '周二',
-                    '3' => '周三',
-                    '4' => '周四',
-                    '5' => '周五',
+                    1 => '周一',
+                    2 => '周二',
+                    3 => '周三',
+                    4 => '周四',
+                    5 => '周五',
                 ),
             ),
             'attributes' => array(
@@ -127,8 +127,8 @@ class Buffet1Form extends Form
             'options' => array(
                 'label'              => 'Check if this is a cold dish',
                 'use_hidden_element' => true,
-                'checked_value'      => true,
-                'unchecked_value'    => false
+                'checked_value'      => 1,
+                'unchecked_value'    => 0
             )
         ));
 

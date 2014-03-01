@@ -1,1 +1,32 @@
 <?php
+$title = "Add a buffet dish";
+$this->headTitle($title);
+?>
+
+<h2>Add a buffet dish</h2>
+
+<?php
+$form = $this->form;
+//$form = new \Zend\Form\Form();
+$form->prepare();
+$form->setAttribute('action', $this->url('buffet1', array('action' => 'add')));
+$form->setAttribute('method', 'post');
+
+echo $this->form()->openTag($form);
+
+echo $this->formRow($form->get('day_mark')) . "<br>";
+echo $this->formRow($form->get('display_order')) . "<br>";
+echo $this->formRow($form->get('c_name')) . "<br>";
+echo $this->formRow($form->get('e_name')) . "<br>";
+echo $this->formRow($form->get('f_name')) . "<br>";
+echo $this->formRow($form->get('spice_degree')) . "<br>";
+echo $this->formRow($form->get('cold_dish')) . "<br>";
+echo $this->formSubmit($form->get('submit')) . "<br>";
+
+
+echo $this->form()->closeTag();
+
+
+
+?>
+
