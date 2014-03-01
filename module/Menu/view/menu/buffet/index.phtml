@@ -1,0 +1,32 @@
+<?php
+$title = 'Buffet Menu';
+$this->headTitle($title);
+?>
+
+<h2><?php echo $this->escapeHtml($title); ?></h2>
+
+<table class="table">
+
+    <tr>
+        <th>dayMark</th>
+        <th>display_order</th>
+        <th>cName</th>
+        <th>eName</th>
+        <th>fName</th>
+        <th>spice</th>
+        <th>cold_dish</th>
+    </tr>
+
+    <?php foreach ($buffet as $buffet_dish) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($buffet_dish->getDayMark()); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->display_order); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->cName); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->eName); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->fName); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->spiceDegree); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->coldDish); ?></td>
+        </tr>
+    <?php endforeach; ?>
+
+</table>

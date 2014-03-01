@@ -31,15 +31,20 @@ class BuffetController extends AbstractActionController
 
     public function indexAction()
     {
-//        return new ViewModel(array(
-//            'buffet' => $this->getEntityManager()->getRepository('Menu\Entity\Buffet1')->findall()
-//        ));
 
-        echo '<pre>';
-        var_dump(new ViewModel(array(
+//        echo '<pre>';
+//        var_dump(new ViewModel(array(
+//            'buffet' => $this->getEntityManager()->getRepository('Menu\Entity\Buffet1')->findall()
+//        )));
+//        echo '</pre>';
+
+
+
+        return new ViewModel(array(
             'buffet' => $this->getEntityManager()->getRepository('Menu\Entity\Buffet1')->findall()
-        )));
-        echo '</pre>';
+        ));
+
+
 
 
 //        $buffet = new Buffet1();
@@ -60,7 +65,7 @@ class BuffetController extends AbstractActionController
 //        var_dump($buffet->getFName());
 //        echo '</pre>';
 
-        
+
     }
 
     public function addAction()
