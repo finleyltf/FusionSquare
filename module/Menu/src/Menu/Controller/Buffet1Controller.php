@@ -3,6 +3,7 @@
 namespace Menu\Controller;
 
 use Menu\Entity\Buffet1;
+use Menu\Form\Buffet1Form;
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
     Doctrine\ORM\EntityManager;
@@ -39,37 +40,30 @@ class BuffetController extends AbstractActionController
 //        echo '</pre>';
 
 
-
         return new ViewModel(array(
             'buffet' => $this->getEntityManager()->getRepository('Menu\Entity\Buffet1')->findall()
         ));
 
 
 
+        // 单周菜单链接
+            // buffet1ListAction()
 
-//        $buffet = new Buffet1();
-//        $buffet->setWeekMark('1');
-//        $buffet->setDisplayOrder('5');
-//        $buffet->setSpiceDegree('3');
-//        $buffet->setColdDish('0');
-//        $buffet->setFName('porssalihha ööö äää');
-//        $buffet->setEName('Pork in brown sause');
-//        $buffet->setCName('红烧肉');
-//
-//        $this->getEntityManager()->persist($buffet);
-//        $this->getEntityManager()->flush();
-//
-//        echo '<pre>';
-//        var_dump($buffet->getBuffet1Id());
-//        var_dump($buffet->getCName());
-//        var_dump($buffet->getFName());
-//        echo '</pre>';
+
+
+        // 双周菜单链接
+            // buffet2ListAction()
+
+
+
 
 
     }
 
     public function addAction()
     {
+
+
 
 
     }

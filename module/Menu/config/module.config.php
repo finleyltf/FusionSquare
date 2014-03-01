@@ -11,7 +11,8 @@ return array(
 'controllers' => array(
         'invokables' => array(
             'Menu\Controller\Index' => 'Menu\Controller\IndexController',
-            'Menu\Controller\Buffet' => 'Menu\Controller\BuffetController'
+            'Menu\Controller\Buffet1' => 'Menu\Controller\Buffet1Controller',
+            'Menu\Controller\Buffet2' => 'Menu\Controller\Buffet2Controller'
         ),
     ),
     
@@ -34,16 +35,31 @@ return array(
                 ),
             ),
             
-            'buffet' => array(
+            'buffet1' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffet[/:action][/:id]',
+                    'route' => '/buffet[1][/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Menu\Controller\Buffet',
+                        'controller' => 'Menu\Controller\Buffet1',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+
+            'buffet2' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/buffet2[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Menu\Controller\Buffet2',
                         'action' => 'index',
                     ),
                 ),
