@@ -7,18 +7,17 @@
 namespace Menu; //重要！影响下面的Doctrine的__NAMESPACE__
 
 return array(
-    
+
 'controllers' => array(
         'invokables' => array(
             'Menu\Controller\Index' => 'Menu\Controller\IndexController',
-            'Menu\Controller\Buffet1' => 'Menu\Controller\Buffet1Controller',
-            'Menu\Controller\Buffet2' => 'Menu\Controller\Buffet2Controller'
+            'Menu\Controller\BuffetAdmin' => 'Menu\Controller\BuffetAdminController'
         ),
     ),
-    
+
     //Routes for this module
     'router' => array(
-        
+
         'routes' => array(
             'menu' => array(
                 'type' => 'segment',
@@ -34,46 +33,34 @@ return array(
                     ),
                 ),
             ),
-            
-            'buffet1' => array(
+
+            'buffetAdmin' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffet[1][/:action][/:id]',
+                    'route' => '/buffetAdmin[/:action][/:weekMark][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'weekMark' => '[1-2]',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Menu\Controller\Buffet1',
+                        'controller' => 'Menu\Controller\BuffetAdmin',
                         'action' => 'index',
                     ),
                 ),
             ),
 
-            'buffet2' => array(
-                'type' => 'segment',
-                'options' => array(
-                    'route' => '/buffet2[/:action][/:id]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'Menu\Controller\Buffet2',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
+
         ),
     ),
-    
+
     // View setup for this module
     'view_manager' => array(
         'template_path_stack' => array(
             'menu' => __DIR__ . '/../view',
         ),
     ),
-    
+
     // Doctrine config
     'doctrine' => array(
         'driver' => array(
@@ -88,11 +75,11 @@ return array(
                 )
             )
         ),
-        
+
     ),
-    
-    
-    
+
+
+
     //when run ./vendor/bin/doctrine-module orm:validate-schema got 'Given route does not implement Console route interface' error
     'console' => array(
         'router' => array(),

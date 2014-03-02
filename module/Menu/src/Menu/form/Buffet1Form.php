@@ -41,7 +41,7 @@ class Buffet1Form extends Form
             'options'    => array(
                 'label'         => 'Dish of which day:',
                 'value_options' => array(
-                    0 => 'dayMark',
+//                    0 => 'dayMark',
                     1 => '周一',
                     2 => '周二',
                     3 => '周三',
@@ -50,7 +50,7 @@ class Buffet1Form extends Form
                 ),
             ),
             'attributes' => array(
-                'value' => '0' //set selected to '0'
+                'value' => 1 //set selected to 1
             )
         ));
 

@@ -15,11 +15,26 @@ class Buffet2
     /**
      * @var integer
      *
-     * @ORM\Column(name="day_mark", type="integer", nullable=false)
+     * @ORM\Column(name="buffet2_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+    private $buffet2Id;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="day_mark", type="integer", nullable=false)
+     */
     private $dayMark;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="display_order", type="integer", nullable=true)
+     */
+    private $displayOrder;
 
     /**
      * @var string
@@ -64,16 +79,47 @@ class Buffet2
         $this->dayMark = $dayMark;
     }
 
-
     /**
-     * Get dayMark
-     *
-     * @return integer
+     * @return int
      */
     public function getDayMark()
     {
         return $this->dayMark;
     }
+
+    /**
+     * @param int $buffet2Id
+     */
+    public function setBuffet2Id($buffet2Id)
+    {
+        $this->buffet2Id = $buffet2Id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBuffet2Id()
+    {
+        return $this->buffet2Id;
+    }
+
+
+    /**
+     * @param int $displayOrder
+     */
+    public function setDisplayOrder($displayOrder)
+    {
+        $this->$displayOrder = $displayOrder;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDisplayOrder()
+    {
+        return $this->displayOrder;
+    }
+
 
     /**
      * Set cName
@@ -194,4 +240,56 @@ class Buffet2
     {
         return $this->coldDish;
     }
+
+    /**
+     * Magic getter to expose protected properties.
+     *
+     * @param string $property
+     *
+     * @return mixed
+     */
+    public function __get($property)
+    {
+        return $this->$property;
+    }
+
+    /**
+     * Magic setter to save protected properties.
+     *
+     * @param string $property
+     * @param mixed  $value
+     */
+    public function __set($property, $value)
+    {
+        $this->$property = $value;
+    }
+
+
+    /**
+     * Convert the object to an array.
+     *
+     * @return array
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * Populate from an array.
+     *
+     * @param array $data
+     */
+    public function populate($data = array())
+    {
+        $this->buffet2Id    = $data['buffet2Id'];
+        $this->dayMark      = $data['dayMark'];
+        $this->displayOrder = $data['displayOrder'];
+        $this->cName        = $data['cName'];
+        $this->eName        = $data['eName'];
+        $this->fName        = $data['fName'];
+        $this->spiceDegree  = $data['spiceDegree'];
+        $this->coldDish     = $data['coldDish'];
+    }
+
 }
