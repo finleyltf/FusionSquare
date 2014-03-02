@@ -34,7 +34,7 @@ class Buffet1
      *
      * @ORM\Column(name="display_order", type="integer", nullable=true)
      */
-    private $display_order;
+    private $displayOrder;
 
     /**
      * @var string
@@ -105,11 +105,11 @@ class Buffet1
 
 
     /**
-     * @param int $display_order
+     * @param int $displayOrder
      */
-    public function setDisplayOrder($display_order)
+    public function setDisplayOrder($displayOrder)
     {
-        $this->display_order = $display_order;
+        $this->$displayOrder = $displayOrder;
     }
 
     /**
@@ -117,7 +117,7 @@ class Buffet1
      */
     public function getDisplayOrder()
     {
-        return $this->display_order;
+        return $this->displayOrder;
     }
 
 
@@ -264,6 +264,17 @@ class Buffet1
         $this->$property = $value;
     }
 
+
+    /**
+     * Convert the object to an array.
+     *
+     * @return array
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
     /**
      * Populate from an array.
      *
@@ -271,14 +282,14 @@ class Buffet1
      */
     public function populate($data = array())
     {
-        $this->buffet1Id     = $data['buffet1_id'];
-        $this->dayMark       = $data['day_mark'];
-        $this->display_order = $data['display_order'];
-        $this->cName         = $data['c_name'];
-        $this->eName         = $data['e_name'];
-        $this->fName         = $data['f_name'];
-        $this->spiceDegree   = $data['spice_degree'];
-        $this->coldDish      = $data['cold_dish'];
+        $this->buffet1Id    = $data['buffet1Id'];
+        $this->dayMark      = $data['dayMark'];
+        $this->displayOrder = $data['displayOrder'];
+        $this->cName        = $data['cName'];
+        $this->eName        = $data['eName'];
+        $this->fName        = $data['fName'];
+        $this->spiceDegree  = $data['spiceDegree'];
+        $this->coldDish     = $data['coldDish'];
     }
 
 }

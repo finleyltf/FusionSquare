@@ -5,6 +5,13 @@ $this->headTitle($title);
 
 <h2><?php echo $this->escapeHtml($title); ?></h2>
 
+<hr>
+<div>
+    <p>
+        <a href="<?= $this->url('buffet1', array('action' => 'add')) ?>"> <i class="icon-pencil"></i> Add a dish </a>
+    </p>
+</div>
+
 <table class="table">
 
     <tr>
@@ -15,17 +22,22 @@ $this->headTitle($title);
         <th>fName</th>
         <th>spice</th>
         <th>cold_dish</th>
+        <th>edit</th>
     </tr>
 
     <?php foreach ($buffet1 as $buffet_dish) : ?>
         <tr>
             <td><?php echo $this->escapeHtml($buffet_dish->getDayMark()); ?></td>
-            <td><?php echo $this->escapeHtml($buffet_dish->display_order); ?></td>
+            <td><?php echo $this->escapeHtml($buffet_dish->displayOrder); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->cName); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->eName); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->fName); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->spiceDegree); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->coldDish); ?></td>
+            <td>
+                <a href="<?= $this->url('buffet1', array('action' => 'edit', 'id' => $buffet_dish->buffet1Id)) ?>">
+                    edit </a>
+            </td>
         </tr>
     <?php endforeach; ?>
 

@@ -14,20 +14,21 @@ class Buffet1Form extends Form
         /**
          * Buffet Form
          *
-         * buffet1_id
-         * day_mark
-         * display_order
-         * c_name
-         * e_name
-         * f_name
-         * spice_degree
-         * cold_dish
+         * buffet1Id
+         * dayMark
+         * displayOrder
+         * cName
+         * eName
+         * fName
+         * spiceDegree
+         * coldDish
+         *
          *
          */
 
-        // buffet1_id
+        // buffet1Id
         $this->add(array(
-            'name'       => 'buffet1_id',
+            'name'       => 'buffet1Id',
             'attributes' => array(
                 'type' => 'hidden',
             ),
@@ -36,11 +37,11 @@ class Buffet1Form extends Form
         // day_mark
         $this->add(array(
             'type'       => 'Zend\Form\Element\Select',
-            'name'       => 'day_mark',
+            'name'       => 'dayMark',
             'options'    => array(
                 'label'         => 'Dish of which day:',
                 'value_options' => array(
-                    '0' => 'day_mark',
+                    0 => 'dayMark',
                     1 => '周一',
                     2 => '周二',
                     3 => '周三',
@@ -53,21 +54,21 @@ class Buffet1Form extends Form
             )
         ));
 
-        // display_order
+        // displayOrder
         $this->add(array(
-            'name'       => 'display_order',
+            'name'       => 'displayOrder',
             'attributes' => array(
                 'type' => 'text',
             ),
             'options'    => array(
-                'label' => 'display_order',
+                'label' => 'displayOrder',
             ),
         ));
 
 
         // c_name
         $this->add(array(
-            'name'       => 'c_name',
+            'name'       => 'cName',
             'attributes' => array(
                 'type' => 'text',
             ),
@@ -79,7 +80,7 @@ class Buffet1Form extends Form
 
         // e_name
         $this->add(array(
-            'name'       => 'e_name',
+            'name'       => 'eName',
             'attributes' => array(
                 'type' => 'text',
             ),
@@ -91,7 +92,7 @@ class Buffet1Form extends Form
 
         // f_name
         $this->add(array(
-            'name'       => 'f_name',
+            'name'       => 'fName',
             'attributes' => array(
                 'type' => 'text',
             ),
@@ -104,10 +105,10 @@ class Buffet1Form extends Form
         // spice_degree
         $this->add(array(
             'type'       => 'Zend\Form\Element\Select',
-            'name'       => 'spice_degree',
+            'name'       => 'spiceDegree',
             'options'    => array(
                 'label'         => 'Spice Degree',
-                'empty_option'  => 'Please choose a spice degree',
+//                'empty_option'  => 'Please choose a spice degree',
                 'value_options' => array(
                     0 => '无辣',
                     1 => '微辣',
@@ -116,14 +117,14 @@ class Buffet1Form extends Form
                 ),
             ),
             'attributes' => array(
-                'value' => 'empty_option' //set selected to '0'
+                'value' => 0 //set selected to '0'
             )
         ));
 
         // cold_dish
         $this->add(array(
             'type'    => 'Zend\Form\Element\Checkbox',
-            'name'    => 'cold_dish',
+            'name'    => 'coldDish',
             'options' => array(
                 'label'              => 'Check if this is a cold dish',
                 'use_hidden_element' => true,

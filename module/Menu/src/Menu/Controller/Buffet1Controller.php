@@ -105,7 +105,70 @@ class Buffet1Controller extends AbstractActionController
 
     public function editAction()
     {
+        // get buffet1 dish by id
+        $id = (int)$this->params()->fromRoute('id',0);
+        // id 不存在则返回listView
+        if (!$id) {
+            return $this->redirect()->toRoute('buffet1', array(
+                'action' => 'listView'
+            ));
+        }
 
+        try {
+            $buffet1 = $this->getEntityManager()->find('Menu\Entity\Buffet1', $id);
+        } catch (\Exception $ex) {
+            // 抛出异常，并返回listView
+            return $this->redirect()->toRoute('buffet1', array(
+                'action' => 'listView'
+            ));
+        }
+
+
+        echo '<pre>';
+        var_dump($buffet1);
+        echo '</pre>';
+
+
+        // bind to form, set the submit button to edit
+        $form = new Buffet1Form();
+
+
+        $form->bind($buffet1);
+
+        $form->get('submit')->setAttribute('value', 'Edit');
+
+
+        // request isPost()?
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            // yes, go edit
+
+            // get data entered by user
+            $data_entered = $request->getPost();
+
+            // set data to $form
+            $form->setData($data_entered);
+
+            // check $form isValid()
+            if ($form->isValid()) {
+                // yes, save data
+                echo '<pre>';
+                var_dump($buffet1);
+                echo '</pre>';
+                die('123');
+
+            }
+
+
+        }
+
+
+
+        // no, return the form with bound values, and id (view phtml needs id)
+        return array(
+            'form' => $form,
+            'id' => $id,
+        );
 
     }
 
