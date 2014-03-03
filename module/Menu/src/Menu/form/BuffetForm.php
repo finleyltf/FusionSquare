@@ -3,7 +3,7 @@ namespace Menu\Form;
 
 use Zend\Form\Form;
 
-class Buffet1Form extends Form
+class BuffetForm extends Form
 {
 
     public function __construct($name = null)

@@ -4,7 +4,7 @@ namespace Menu\Controller;
 
 use Menu\Entity\Buffet1;
 use Menu\Entity\Buffet2;
-use Menu\Form\Buffet1Form;
+use Menu\Form\BuffetForm;
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
     Doctrine\ORM\EntityManager;
@@ -68,14 +68,14 @@ class BuffetAdminController extends AbstractActionController
         // get weekMark from route
         $weekMark = $this->params()->fromRoute('weekMark');
 
-        // 初始化 buffet1 form，把submit button改为add
-        $form = new Buffet1Form();
+        // 初始化 buffet form，把submit button改为add
+        $form = new BuffetForm();
         $form->get('submit')->setValue('Add');
 
         // request isPost()?
         $request = $this->getRequest();
         if ($request->isPost()) {
-            //if yes 初始化buffet1的entity，并取得输入的数据，验证$form isValid()后,存入数据库
+            //if yes 初始化buffet1或者buffet2的entity，并取得输入的数据，验证$form isValid()后,存入数据库
             if ($weekMark == '1') {
                 $buffet = new Buffet1();
             } elseif ($weekMark == '2') {
@@ -156,7 +156,7 @@ class BuffetAdminController extends AbstractActionController
 
 
         // bind to form, set the submit button to edit
-        $form = new Buffet1Form();
+        $form = new BuffetForm();
 
 
         $form->bind($buffet);
