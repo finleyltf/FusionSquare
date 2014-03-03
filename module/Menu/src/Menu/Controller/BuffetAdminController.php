@@ -110,7 +110,7 @@ class BuffetAdminController extends AbstractActionController
 
                 // back to listview
                 return $this->redirect()->toRoute('buffetAdmin', array(
-                    'action' => 'listView', // listview or listView ?? : listView
+                    'action'   => 'listView', // listview or listView ?? : listView
                     'weekMark' => $weekMark,
                 ));
 
@@ -122,7 +122,7 @@ class BuffetAdminController extends AbstractActionController
 
         //if no 给一张空的form，return
         return array(
-            'form' => $form,
+            'form'     => $form,
             'weekMark' => $weekMark,
         );
 
@@ -206,28 +206,60 @@ class BuffetAdminController extends AbstractActionController
 
     public function deleteAction()
     {
-        // get buffet1 dish by id
-        $id = $this->params()->fromRoute('id', 0);
+        // get weekMark and id from route
+        $id       = $this->params()->fromRoute('id', 0);
+        $weekMark = $this->params()->fromRoute('weekMark');
+
         if (!$id) {
+//            return $this->redirect()->toRoute('buffetAdmin', array(
+//                'action'   => 'listView',
+//                'weekMark' => $weekMark,
+//            ));
+
+            // debug
+            die('no id detect!');
+
+
+        }
+
+        // get buffet dish by weekMark and id
+        try {
+            $buffet = $this->getEntityManager()->find('Menu\Entity\Buffet' . $weekMark, $id);
+        } catch (\Exception $ex) {
             return $this->redirect()->toRoute('buffetAdmin', array(
-                'action' => 'listView'
+                'action'   => 'listView',
+                'weekMark' => $weekMark,
             ));
         }
 
-        try {
-//            $buffet1 = 
-        } catch (\Exception $ex) {
+        // isPost()?
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            // yes, go delete
+            // get the yes or no value from the button, which is from the <form> in delete.phtml
+            $delete_btn = $request->getPost('delete_btn');
 
+            // delete: yes or no ?
+            if ($delete_btn == "Yes") {
+                // yes, delete
+
+                $this->getEntityManager()->Remove($buffet);
+                $this->getEntityManager()->flush();
+            }
+
+            // no, back to listView
+            return $this->redirect()->toRoute('buffetAdmin', array(
+                'action'   => 'listView',
+                'weekMark' => $weekMark,
+            ));
         }
 
-        // isPost()?
-
-
-        // yes, go delete
-
-
-        // no, back to listView
-
+        // return weekMark, id, and the specific buffet dish found by id (so that we can see which one is being deleted )
+        return array(
+            'weekMark' => $weekMark,
+            'id'       => $id,
+            'buffet'   => $buffet,
+        );
 
     }
 

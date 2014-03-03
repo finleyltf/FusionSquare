@@ -36,15 +36,27 @@ $this->headTitle($title);
             <td><?php echo $this->escapeHtml($buffet_dish->fName); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->spiceDegree); ?></td>
             <td><?php echo $this->escapeHtml($buffet_dish->coldDish); ?></td>
-            <td>
-                <?php if ($this->weekMark == '1'): ?>
+
+            <?php if ($this->weekMark == '1'): ?>
+                <td>
                     <a href="<?= $this->url('buffetAdmin', array('action' => 'edit', 'id' => $buffet_dish->buffet1Id, 'weekMark' => $this->weekMark)) ?>">
                         edit </a>
-                <?php elseif ($this->weekMark == '2') : ?>
+                </td>
+                <td>
+                    <a href="<?= $this->url('buffetAdmin', array('action' => 'delete', 'id' => $buffet_dish->buffet1Id, 'weekMark' => $this->weekMark)) ?>">
+                        delete</a>
+                </td>
+            <?php elseif ($this->weekMark == '2') : ?>
+                <td>
                     <a href="<?= $this->url('buffetAdmin', array('action' => 'edit', 'id' => $buffet_dish->buffet2Id, 'weekMark' => $this->weekMark)) ?>">
                         edit </a>
-                <?php endif; ?>
-            </td>
+                </td>
+                <td>
+                    <a href="<?= $this->url('buffetAdmin', array('action' => 'delete', 'id' => $buffet_dish->buffet2Id, 'weekMark' => $this->weekMark)) ?>">
+                        delete</a>
+                </td>
+            <?php endif; ?>
+
         </tr>
     <?php endforeach; ?>
 
