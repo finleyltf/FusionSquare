@@ -38,7 +38,7 @@ return array(
             'buffetAdmin' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffetAdmin[/:action][/:weekMark][/:id]',
+                    'route' => '/buffetAdmin[/][/:action][/:weekMark][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'weekMark' => '[1-2]',
@@ -54,7 +54,7 @@ return array(
             'buffet' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffet[/:action][/:id]',
+                    'route' => '/buffet[/][/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
