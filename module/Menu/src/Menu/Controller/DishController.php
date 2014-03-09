@@ -4,9 +4,10 @@ namespace Menu\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel,
-    Doctrine\ORM\EntityManager;
+    Doctrine\ORM\EntityManager,
+    Zend\Validator\File\Size;
 
-class BuffetController extends AbstractActionController {
+class DishController extends AbstractActionController {
 
     /**             
     * @var Doctrine\ORM\EntityManager
@@ -27,11 +28,11 @@ class BuffetController extends AbstractActionController {
     }
          
     public function indexAction() { 
-
-        die("121");
+        $categories = $this->getEntityManager()->getRepository('Menu\Entity\Category')->findAll();
+      
+        return new ViewModel(array(
+            'dishes' => $this->getEntityManager()->getRepository('Menu\Entity\Dish')->findAll(),
+            'categories' => $this->getEntityManager()->getRepository('Menu\Entity\Category')->findAll()
+        ));
     }
-
-
 }
-
-
