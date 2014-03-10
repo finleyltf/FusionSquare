@@ -3,11 +3,12 @@
 namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Menu\Entity\Restaurant;
 
 /**
  * Reservation
  *
- * @ORM\Table(name="reservation")
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="fk_reservation_restaurant1_idx", columns={"restaurant_id"}), @ORM\Index(name="fk_reservation_user1_idx", columns={"user_id"})})
  * @ORM\Entity
  */
 class Reservation
@@ -24,9 +25,23 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="first_name", type="string", length=45, nullable=true)
      */
-    private $name;
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=45, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
 
     /**
      * @var string
@@ -38,7 +53,7 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="time", type="string", length=45, nullable=true)
+     * @ORM\Column(name="time", type="datetime", nullable=true)
      */
     private $time;
 
@@ -57,9 +72,12 @@ class Reservation
     private $message;
 
     /**
-     * @var string
+     * @var \Menu\Entity\Restaurant
      *
-     * @ORM\Column(name="restaurant", type="string", length=45, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Menu\Entity\Restaurant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="restaurant_id", referencedColumnName="restaurant_id")
+     * })
      */
     private $restaurant;
 
@@ -77,7 +95,7 @@ class Reservation
     /**
      * Get reservationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getReservationId()
     {
@@ -85,32 +103,74 @@ class Reservation
     }
 
     /**
-     * Set name
+     * Set firstName
      *
-     * @param string $name
+     * @param string $firstName
+     *
      * @return Reservation
      */
-    public function setName($name)
+    public function setFirstName($firstName)
     {
-        $this->name = $name;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get firstName
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Reservation
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
      * Set phoneNumber
      *
      * @param string $phoneNumber
+     *
      * @return Reservation
      */
     public function setPhoneNumber($phoneNumber)
@@ -123,7 +183,7 @@ class Reservation
     /**
      * Get phoneNumber
      *
-     * @return string 
+     * @return string
      */
     public function getPhoneNumber()
     {
@@ -134,6 +194,7 @@ class Reservation
      * Set time
      *
      * @param string $time
+     *
      * @return Reservation
      */
     public function setTime($time)
@@ -146,7 +207,7 @@ class Reservation
     /**
      * Get time
      *
-     * @return string 
+     * @return string
      */
     public function getTime()
     {
@@ -157,6 +218,7 @@ class Reservation
      * Set peopleAmount
      *
      * @param integer $peopleAmount
+     *
      * @return Reservation
      */
     public function setPeopleAmount($peopleAmount)
@@ -169,7 +231,7 @@ class Reservation
     /**
      * Get peopleAmount
      *
-     * @return integer 
+     * @return integer
      */
     public function getPeopleAmount()
     {
@@ -180,6 +242,7 @@ class Reservation
      * Set message
      *
      * @param string $message
+     *
      * @return Reservation
      */
     public function setMessage($message)
@@ -192,7 +255,7 @@ class Reservation
     /**
      * Get message
      *
-     * @return string 
+     * @return string
      */
     public function getMessage()
     {
@@ -202,10 +265,11 @@ class Reservation
     /**
      * Set restaurant
      *
-     * @param string $restaurant
+     * @param \Menu\Entity\Restaurant $restaurant
+     *
      * @return Reservation
      */
-    public function setRestaurant($restaurant)
+    public function setRestaurant(\Menu\Entity\Restaurant $restaurant)
     {
         $this->restaurant = $restaurant;
 
@@ -215,7 +279,7 @@ class Reservation
     /**
      * Get restaurant
      *
-     * @return string 
+     * @return \Menu\Entity\Restaurant
      */
     public function getRestaurant()
     {
@@ -226,6 +290,7 @@ class Reservation
      * Set user
      *
      * @param \User\Entity\User $user
+     *
      * @return Reservation
      */
     public function setUser(\User\Entity\User $user = null)
