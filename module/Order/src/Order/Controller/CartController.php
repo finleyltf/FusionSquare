@@ -28,36 +28,43 @@ class CartController extends AbstractActionController {
     }
          
     public function addAction() { 
-     session_start();
-     $id = (int)$this->getEvent()->getRouteMatch()->getParam('id');
-     $dish = $this->getEntityManager()->getRepository('Menu\Entity\Dish')->findOneBy(array('dishId' => $id));
-     $fname = $dish->getFName();
-     if(!isset($_SESSION['cart'])){
-        $_SESSION['cart'] = array();
-     }
-
-     // check if the item is in the array, if it is, do not add
-    if(in_array($id, $_SESSION['cart'])){
-            
+    session_start();
+ 
+    $id = $_GET["id"];
+    $qty = $_GET["qty"]; 
+    $dish = $this->getEntityManager()->getRepository('Menu\Entity\Dish')->findOneBy(array('dishId' => $id));
+    $fname = $dish->getFName();
+    $price = $dish->getPrice();
+     
+    $array = array(
+        "id" => $id,
+        "qty" => $qty,
+        "fname" => $fname,
+        "price" => $price,
+    );
+   
+    if(!isset($_SESSION['cart'])){
+       $_SESSION['cart'] = array();
+    }
+     
+    if(empty($_SESSION['cart'])){ 
+        array_push($_SESSION['cart'], $array);   
+    }else{   
+        foreach($_SESSION['cart'] as $key=>$cart){       
+        if($id==$cart['id']){
+            $_SESSION['cart'][$key]['qty']=$qty;
             echo "<pre>";
             print_r($_SESSION['cart']);
             echo "</pre>";
-                        session_destroy();die();
+            die("ttttt");
+            }
+        }   
+        array_push($_SESSION['cart'], $array);   
     }
-
-    // else, add the item to the array
-    else{
-            array_push($_SESSION['cart'], $id,$fname);
-            
-            echo "<pre>";
-            print_r($_SESSION['cart']);
-            echo "</pre>"; session_destroy();die();
-
-    }
-
-        die("121212");
-        
-        
+        echo "<pre>";
+        print_r($_SESSION['cart']);
+        echo "</pre>";
+        die("121212");          
     }   
 
 }
