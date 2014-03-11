@@ -3,8 +3,8 @@ $title = 'Reservation';
 $this->headTitle($title);
 ?>
 
-<h2><?php echo $this->escapeHtml($title); ?></h2>
-<hr/>
+    <h2><?php echo $this->escapeHtml($title); ?></h2>
+    <hr/>
 
 <?php
 $form = $this->ReservationSearchForm;
@@ -15,7 +15,7 @@ $form->setAttribute('method', 'post');
 echo $this->form()->openTag($form);
 
 echo $this->formElement($form->get('date')) . "<br>";
-echo $this->formElement($form->get('time_h')) . "<br>";
+echo $this->formElement($form->get('time_h'));
 echo $this->formElement($form->get('time_m')) . "<br>";
 echo $this->formElement($form->get('submit')) . "<br>";
 

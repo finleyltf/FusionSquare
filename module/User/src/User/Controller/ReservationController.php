@@ -2,6 +2,7 @@
 
 namespace User\Controller;
 
+use User\Entity\Reservation;
 use User\Form\ReservationSearchForm;
 use Zend\Form\Element\Select;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -43,23 +44,62 @@ class ReservationController extends AbstractActionController
             $hourList[$count] = $count;
         endfor;
         $ReservationSearchForm->get('time_h')
-            ->setValue(19)
+            ->setValue(18)
             ->setValueOptions($hourList);
 
-
-
-
         // getRequest
-        // request isPost()?
-        // if yes,
-        // flag request->getPost('submit'), if 此值为...，则说明post的是SearchForm，则判断预订时间是不是ok， if 此值不为null，则说明post的是reservationDetails表，则存入数据库
-        // if null
-        // flag date ok?
-        // if yes, return dateOkFlag=1, return reservationDetailsForm
-        // if no, return dateOkFlag=0, return message to choose a new time
+        $request = $this->getRequest();
 
-        // if not null
-        // ..... save to database
+        // request isPost()?
+        if ($request->isPost()) {
+            // flag request->getPost('submit'), if 此值为...，则说明post的是SearchForm，则判断预订时间是不是ok， if 此值不为null，则说明post的是reservationDetails表，则存入数据库
+            $buttonFlag = $request->getPost('submit');
+
+            if ($buttonFlag == 'Find a Table') {
+                // flag: date and time selected ok?
+                $date          = $request->getPost('date');
+                $time_h        = $request->getPost('time_h');
+                $time_m        = $request->getPost('time_m');
+                $time_s        = '00';
+                $time          = $time_h . ':' . $time_m . ':' . $time_s;
+                $dateTime      = $date . ' ' . $time;
+                $dateTimeStamp = strtotime($dateTime);
+
+                // how to determine flag ok?
+                // 取$time，遍历这个时间点以及之前一个小时的订单，在这个时间之前的一小时内如果预订总人数超过50人，就视为已经订满。
+                $em        = $this->getEntityManager();
+                $peopleSum = 0;
+                for ($i = $dateTimeStamp; $i >= ($dateTimeStamp - 3600); $i -= 1800):
+                    $reservations = $em->getRepository('User\Entity\Reservation')->findBy(array(
+                        'time' => date_create(date('Y-m-d H:i:s', $i))));
+                    if (!empty($reservations)) {
+                        foreach ($reservations as $reservation):
+                            $peopleSum += (int)$reservation->getPeopleAmount();
+                        endforeach;
+                    }
+                endfor;
+
+                if ($peopleSum <= 50) {
+                    // if yes, return dateOkFlag=1, return reservationDetailsForm
+
+
+
+                } else{
+                    // if no, return dateOkFlag=0, return message "choose a new time"
+
+
+
+                }
+
+
+
+
+
+            } elseif ($buttonFlag == 'CONFIRM') {
+                // ..... save to database
+            }
+
+        }
 
 
         // return ReservationSearch Form

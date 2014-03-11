@@ -62,8 +62,8 @@ class ReservationSearchForm extends Form
                 'label'         => 'time in minute',
 //                'empty_option'  => 'please choose xxx',
                 'value_options' => array(
-                    0  => '00',
-                    30 => '30',
+                    '00'  => '00',
+                    '30' => '30',
                 ),
             ),
             'attributes' => array(
