@@ -36,14 +36,14 @@ class ReservationController extends AbstractActionController
     public function indexAction()
     {
         // initialise ReservationSearchForm
-        $ReservationSearchForm = new ReservationSearchForm();
+        $reservationSearchForm = new ReservationSearchForm();
 
         // setValueOptions for time_h
         $hourList = array();
         for ($count = 11; $count <= 22; $count++):
             $hourList[$count] = $count;
         endfor;
-        $ReservationSearchForm->get('time_h')
+        $reservationSearchForm->get('time_h')
             ->setValue(18)
             ->setValueOptions($hourList);
 
@@ -56,43 +56,17 @@ class ReservationController extends AbstractActionController
             $buttonFlag = $request->getPost('submit');
 
             if ($buttonFlag == 'Find a Table') {
-                // flag: date and time selected ok?
-                $date          = $request->getPost('date');
-                $time_h        = $request->getPost('time_h');
-                $time_m        = $request->getPost('time_m');
-                $time_s        = '00';
-                $time          = $time_h . ':' . $time_m . ':' . $time_s;
-                $dateTime      = $date . ' ' . $time;
-                $dateTimeStamp = strtotime($dateTime);
 
-                // how to determine flag ok?
-                // 取$time，遍历这个时间点以及之前一个小时的订单，在这个时间之前的一小时内如果预订总人数超过50人，就视为已经订满。
-                $em        = $this->getEntityManager();
-                $peopleSum = 0;
-                for ($i = $dateTimeStamp; $i >= ($dateTimeStamp - 3600); $i -= 1800):
-                    $reservations = $em->getRepository('User\Entity\Reservation')->findBy(array(
-                        'time' => date_create(date('Y-m-d H:i:s', $i))));
-                    if (!empty($reservations)) {
-                        foreach ($reservations as $reservation):
-                            $peopleSum += (int)$reservation->getPeopleAmount();
-                        endforeach;
-                    }
-                endfor;
 
-                if ($peopleSum <= 50) {
+                if ($this->tableAvailableCheck($request)) {
                     // if yes, return dateOkFlag=1, return reservationDetailsForm
 
 
-
-                } else{
+                } else {
                     // if no, return dateOkFlag=0, return message "choose a new time"
 
 
-
                 }
-
-
-
 
 
             } elseif ($buttonFlag == 'CONFIRM') {
@@ -104,7 +78,7 @@ class ReservationController extends AbstractActionController
 
         // return ReservationSearch Form
         return array(
-            'ReservationSearchForm' => $ReservationSearchForm,
+            'reservationSearchForm' => $reservationSearchForm,
         );
 
 
@@ -124,5 +98,33 @@ class ReservationController extends AbstractActionController
 
     }
 
+
+    public function tableAvailableCheck($request)
+    {
+        // flag: date and time selected ok?
+        $date          = $request->getPost('date');
+        $time_h        = $request->getPost('time_h');
+        $time_m        = $request->getPost('time_m');
+        $time_s        = '00';
+        $time          = $time_h . ':' . $time_m . ':' . $time_s;
+        $dateTime      = $date . ' ' . $time;
+        $dateTimeStamp = strtotime($dateTime);
+
+        // how to determine flag ok?
+        // 取$time，遍历这个时间点以及之前一个小时的订单，在这个时间之前的一小时内如果预订总人数超过50人，就视为已经订满。
+        $em        = $this->getEntityManager();
+        $peopleSum = 0;
+        for ($i = $dateTimeStamp; $i >= ($dateTimeStamp - 3600); $i -= 1800):
+            $reservations = $em->getRepository('User\Entity\Reservation')->findBy(array(
+                'time' => date_create(date('Y-m-d H:i:s', $i))));
+            if (!empty($reservations)) {
+                foreach ($reservations as $reservation):
+                    $peopleSum += (int)$reservation->getPeopleAmount();
+                endforeach;
+            }
+        endfor;
+
+        return $peopleSum <= 50 ? true : false;
+    }
 
 }
