@@ -3,6 +3,7 @@
 namespace User\Controller;
 
 use User\Entity\Reservation;
+use User\Form\ReservationDetailsForm;
 use User\Form\ReservationSearchForm;
 use Zend\Form\Element\Select;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -50,27 +51,93 @@ class ReservationController extends AbstractActionController
         // getRequest
         $request = $this->getRequest();
 
-        // request isPost()?
         if ($request->isPost()) {
-            // flag request->getPost('submit'), if 此值为...，则说明post的是SearchForm，则判断预订时间是不是ok， if 此值不为null，则说明post的是reservationDetails表，则存入数据库
+            // flag request->getPost('submit'), if 此值为...，则说明post的是SearchForm，则判断预订时间是不是ok， if 此值为...，则说明post的是reservationDetails表，则存入数据库
             $buttonFlag = $request->getPost('submit');
-
             if ($buttonFlag == 'Find a Table') {
+                // flag: date and time selected ok?
+                $date     = $request->getPost('date');
+                $time_h   = $request->getPost('time_h');
+                $time_m   = $request->getPost('time_m');
+                $time_s   = '00';
+                $time     = $time_h . ':' . $time_m . ':' . $time_s;
+                $dateTime = $date . ' ' . $time;
 
+                // update the reservationSearchForm
+                $reservationSearchForm->get('date')->setValue($date);
+                $reservationSearchForm->get('time_h')->setValue($time_h);
+                $reservationSearchForm->get('time_m')->setValue($time_m);
+                $reservationSearchForm->get('peopleAmount')->setValue($request->getPost('peopleAmount'));
 
-                if ($this->tableAvailableCheck($request)) {
-                    // if yes, return dateOkFlag=1, return reservationDetailsForm
+                if ($this->tableAvailableCheck($dateTime)) {
+                    // if yes, return tableAvailableFlag=true, return reservationDetailsForm
 
+                    // set time and peopleAmount to the form
+                    $reservationDetailsForm = new ReservationDetailsForm();
+                    $reservationDetailsForm->get('time')
+                        ->setValue($dateTime);
+//                        ->setValue(date_create($dateTime))
+//                        ->setAttribute('readonly', 'readonly')
+//                        ->setOptions(array('format' => 'Y-m-d H:i'));
+                    $reservationDetailsForm->get('peopleAmount')
+                        ->setValue($request->getPost('peopleAmount'));
+
+//                        ->setAttribute('readonly', 'readonly');
+
+                    return array(
+                        'tableAvailableFlag'     => true,
+                        'reservationSearchForm'  => $reservationSearchForm,
+                        'reservationDetailsForm' => $reservationDetailsForm,
+                    );
 
                 } else {
-                    // if no, return dateOkFlag=0, return message "choose a new time"
+                    // if no, return tableAvailableFlag=false, return message "choose a new time"
+                    return array(
+                        'tableAvailableFlag'    => false,
+                        'reservationSearchForm' => $reservationSearchForm,
+                        'message'               => 'No table available for selected time, please choose another time'
+                    );
+
+
+                }
+            } elseif ($buttonFlag == 'CONFIRM') {
+                $data_entered = array_merge_recursive(
+                    $request->getPost()->toArray()
+                );
+//                $data_entered['time'] = date_create($data_entered['time']);
+
+                $reservationDetailsForm = new ReservationDetailsForm();
+                $reservationDetailsForm->setData($data_entered);
+
+                if ($reservationDetailsForm->isValid()) {
+                    // form is valid, new Reservation Entity, populate data, save to database
+                    $reservation = new Reservation();
+                    $reservation->populate($reservationDetailsForm->getData());
+                    $reservation->setPeopleAmount((int)$reservation->getPeopleAmount());
+                    $reservation->setTime(date_create($reservation->getTime()));
+
+                    $this->getEntityManager()->persist($reservation);
+                    $this->getEntityManager()->flush();
+
+                    // update the reservationSearchForm before return
+                    $reservationSearchForm->get('date')->setValue($reservation->getTime()->format('Y-m-d'));
+                    $reservationSearchForm->get('time_h')->setValue($reservation->getTime()->format('H'));
+                    $reservationSearchForm->get('time_m')->setValue($reservation->getTime()->format('i'));
+                    $reservationSearchForm->get('peopleAmount')->setValue($reservation->getPeopleAmount());
+
+                    return array(
+                        'reservedFlag' => true,
+                        'reservationSearchForm' => $reservationSearchForm,
+                        'message' => 'A table for '
+                            . $reservation->getPeopleAmount()
+                            . ' people is reserved for you on '
+                            . $reservation->getTime()->format('Y-m-d H:i'),
+                    );
 
 
                 }
 
 
-            } elseif ($buttonFlag == 'CONFIRM') {
-                // ..... save to database
             }
 
         }
@@ -84,14 +151,6 @@ class ReservationController extends AbstractActionController
 
     }
 
-
-    public function availableAction()
-    {
-
-
-    }
-
-
     public function confirmAction()
     {
 
@@ -99,15 +158,8 @@ class ReservationController extends AbstractActionController
     }
 
 
-    public function tableAvailableCheck($request)
+    public function tableAvailableCheck($dateTime)
     {
-        // flag: date and time selected ok?
-        $date          = $request->getPost('date');
-        $time_h        = $request->getPost('time_h');
-        $time_m        = $request->getPost('time_m');
-        $time_s        = '00';
-        $time          = $time_h . ':' . $time_m . ':' . $time_s;
-        $dateTime      = $date . ' ' . $time;
         $dateTimeStamp = strtotime($dateTime);
 
         // how to determine flag ok?

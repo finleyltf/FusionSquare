@@ -4,6 +4,7 @@ namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Menu\Entity\Restaurant;
+use DateTime;
 
 /**
  * Reservation
@@ -14,7 +15,7 @@ use Menu\Entity\Restaurant;
 class Reservation
 {
     /**
-     * @var integer
+     * @var integer $reservationId
      *
      * @ORM\Column(name="reservation_id", type="integer", nullable=false)
      * @ORM\Id
@@ -23,56 +24,56 @@ class Reservation
     private $reservationId;
 
     /**
-     * @var string
+     * @var string $firstName
      *
      * @ORM\Column(name="first_name", type="string", length=45, nullable=true)
      */
     private $firstName;
 
     /**
-     * @var string
+     * @var string $lastName
      *
      * @ORM\Column(name="last_name", type="string", length=45, nullable=true)
      */
     private $lastName;
 
     /**
-     * @var string
+     * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
-     * @var string
+     * @var string $phoneNumber
      *
      * @ORM\Column(name="phone_number", type="string", length=45, nullable=true)
      */
     private $phoneNumber;
 
     /**
-     * @var string
+     * @var datetime $time
      *
      * @ORM\Column(name="time", type="datetime", nullable=true)
      */
     private $time;
 
     /**
-     * @var integer
+     * @var integer $peopleAmount
      *
      * @ORM\Column(name="people_amount", type="integer", nullable=true)
      */
     private $peopleAmount;
 
     /**
-     * @var string
+     * @var string $message
      *
      * @ORM\Column(name="message", type="string", length=45, nullable=true)
      */
     private $message;
 
     /**
-     * @var \Menu\Entity\Restaurant
+     * @var \Menu\Entity\Restaurant $restaurant
      *
      * @ORM\ManyToOne(targetEntity="Menu\Entity\Restaurant")
      * @ORM\JoinColumns({
@@ -82,7 +83,7 @@ class Reservation
     private $restaurant;
 
     /**
-     * @var \User\Entity\User
+     * @var \User\Entity\User $user
      *
      * @ORM\ManyToOne(targetEntity="User\Entity\User")
      * @ORM\JoinColumns({
@@ -193,7 +194,7 @@ class Reservation
     /**
      * Set time
      *
-     * @param string $time
+     * @param datetime $time
      *
      * @return Reservation
      */
@@ -207,7 +208,7 @@ class Reservation
     /**
      * Get time
      *
-     * @return string
+     * @return datetime
      */
     public function getTime()
     {
@@ -309,5 +310,59 @@ class Reservation
     {
         return $this->user;
     }
+
+
+    /**
+     * Magic getter to expose protected properties.
+     *
+     * @param string $property
+     *
+     * @return mixed
+     */
+    public function __get($property)
+    {
+        return $this->$property;
+    }
+
+    /**
+     * Magic setter to save protected properties.
+     *
+     * @param string $property
+     * @param mixed  $value
+     */
+    public function __set($property, $value)
+    {
+        $this->$property = $value;
+    }
+
+    /**
+     * Convert the object to an array.
+     *
+     * @return array
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * Populate from an array.
+     *
+     * @param array $data
+     */
+    public function populate($data = array())
+    {
+        $this->reservationId = $data['reservationId'];
+        $this->firstName     = $data['firstName'];
+        $this->lastName      = $data['lastName'];
+        $this->email         = $data['email'];
+        $this->phoneNumber   = $data['phoneNumber'];
+        $this->time          = $data['time'];
+        $this->peopleAmount  = $data['peopleAmount'];
+        $this->message       = $data['message'];
+        $this->restaurant    = $data['restaurant'];
+        $this->user          = $data['user'];
+    }
+
 
 }

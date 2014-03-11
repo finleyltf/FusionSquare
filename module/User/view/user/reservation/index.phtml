@@ -2,23 +2,54 @@
 $title = 'Reservation';
 $this->headTitle($title);
 ?>
-
-    <h2><?php echo $this->escapeHtml($title); ?></h2>
+    <h2><?php echo 'Table Available Check'; ?></h2>
     <hr/>
-
 <?php
 $form = $this->reservationSearchForm;
 $form->prepare();
 $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
 $form->setAttribute('method', 'post');
-
 echo $this->form()->openTag($form);
-
 echo $this->formElement($form->get('date')) . "<br>";
 echo $this->formElement($form->get('time_h'));
 echo $this->formElement($form->get('time_m')) . "<br>";
+echo $this->formElement($form->get('peopleAmount')) . "<br>";
 echo $this->formElement($form->get('submit')) . "<br>";
-
 echo $this->form()->closeTag();
-
 ?>
+
+    <hr/>
+
+<?php if (isset($this->tableAvailableFlag) && $this->tableAvailableFlag): ?>
+    <h2><?php echo 'Reservation Details'; ?></h2>
+    <hr/>
+    <?php
+    $form = $this->reservationDetailsForm;
+    $form->prepare();
+    $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+    $form->setAttribute('method', 'post');
+    echo $this->form()->openTag($form);
+    echo $this->formElement($form->get('reservationId')) . "<br>";
+    echo $this->formElement($form->get('firstName')) . "<br>";
+    echo $this->formElement($form->get('lastName')) . "<br>";
+    echo $this->formElement($form->get('email')) . "<br>";
+    echo $this->formElement($form->get('phoneNumber')) . "<br>";
+    echo $this->formElement($form->get('time'));
+    echo $this->formElement($form->get('peopleAmount'));
+    echo $this->formElement($form->get('message')) . "<br>";
+    echo $this->formElement($form->get('submit')) . "<br>";
+    echo $this->form()->closeTag();
+    ?>
+<?php endif; ?>
+
+<?php if (isset($this->tableAvailableFlag) && !$this->tableAvailableFlag): ?>
+    <h2><?php echo 'Reservation Details'; ?></h2>
+    <hr/>
+    <p><?= $this->message ?></p>
+<?php endif; ?>
+
+<?php if (isset($this->reservedFlag) && $this->reservedFlag): ?>
+    <h2><?php echo 'Reservation Result:'; ?></h2>
+    <hr/>
+    <p><?= $this->message ?></p>
+<?php endif; ?>

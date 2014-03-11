@@ -46,11 +46,9 @@ class ReservationSearchForm extends Form
             'options'    => array(
                 'label'         => 'time in hour',
 //                'empty_option'  => 'please choose xxx',
-                'value_options' => array(
-                ),
+                'value_options' => array(),
             ),
-            'attributes' => array(
-//                'value' => 0 //set selected to '0'
+            'attributes' => array( //                'value' => 0 //set selected to '0'
             )
         ));
 
@@ -62,12 +60,30 @@ class ReservationSearchForm extends Form
                 'label'         => 'time in minute',
 //                'empty_option'  => 'please choose xxx',
                 'value_options' => array(
-                    '00'  => '00',
+                    '00' => '00',
                     '30' => '30',
                 ),
             ),
             'attributes' => array(
                 'value' => 0 //set selected to '0'
+            )
+        ));
+
+        // peopleAmount
+        $peopleAmountList = array();
+        for ($count = 1; $count <= 20; $count++):
+            $peopleAmountList[$count] = (string)$count . ' people';
+        endfor;
+        $this->add(array(
+            'type'       => 'Zend\Form\Element\Select',
+            'name'       => 'peopleAmount',
+            'options'    => array(
+                'label'         => 'peopleAmount',
+//                'empty_option'  => 'please choose xxx',
+                'value_options' => $peopleAmountList,
+            ),
+            'attributes' => array(
+                'value' => 2 //set selected to '0'
             )
         ));
 
@@ -80,7 +96,6 @@ class ReservationSearchForm extends Form
                 'id'    => 'submitbutton',
             ),
         ));
-
 
 
     }
