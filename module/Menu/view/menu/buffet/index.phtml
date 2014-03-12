@@ -9,9 +9,10 @@ $this->headTitle($title);
 <h2><?php echo $this->escapeHtml($title . ' for the week'); ?></h2>
 
 
+<!-- 方案 2 -->
 <script>
     $(function () {
-        $("#tabs").tabs();
+        $("#tabs").tabs().tabs("option", "active", <?php echo (int)$this->dayMark - 1 ?>);
     });
 </script>
 
@@ -60,3 +61,8 @@ $this->headTitle($title);
     <?php endfor; ?>
 
 </div>
+
+
+
+
+
