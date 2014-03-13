@@ -53,18 +53,16 @@ class CartController extends AbstractActionController {
         foreach($_SESSION['cart'] as $key=>$cart){       
         if($id==$cart['id']){
             $_SESSION['cart'][$key]['qty']=$qty;
-            echo "<pre>";
-            print_r($_SESSION['cart']);
-            echo "</pre>";
-            die("ttttt");
+            return new ViewModel(array(
+                'carts' => $_SESSION['cart']
+            ));
             }
         }   
         array_push($_SESSION['cart'], $array);   
     }
-        echo "<pre>";
-        print_r($_SESSION['cart']);
-        echo "</pre>";
-        die("121212");          
+        return new ViewModel(array(
+            'carts' => $_SESSION['cart']
+        ));
     }   
 
 }
