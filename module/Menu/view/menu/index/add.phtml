@@ -8,17 +8,36 @@ $this->headTitle($title);
 $form = $this->form;
 $form->setAttribute('action', $this->url('menu', array('action' => 'add')));
 $form->prepare();
-
-echo $this->form()->openTag($form) . PHP_EOL;
-echo $this->formRow($form->get('fName')) . PHP_EOL;
-echo $this->formRow($form->get('cName')) . PHP_EOL;
-echo $this->formRow($form->get('eName')) . PHP_EOL;
-echo $this->formRow($form->get('description')) . PHP_EOL;
-echo $this->formRow($form->get('spiceDgree')) . PHP_EOL;
-echo $this->formRow($form->get('price')) . PHP_EOL;
-echo $this->formRow($form->get('image')) . PHP_EOL;
-echo $this->formRow($form->get('category')) . PHP_EOL;
-echo $this->formRow($form->get('restaurant')) . PHP_EOL;
-echo $this->formInput($form->get('submit')) . PHP_EOL;
-echo $this->form()->closeTag($form) . PHP_EOL;
-
+?>
+<?php echo $this->form()->openTag($form) . PHP_EOL; ?>
+<form role="form">
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('fName')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('cName')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('eName')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('description')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('spiceDgree')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('price')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('image')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('category')) . PHP_EOL; ?>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formRow($form->get('restaurant')) . PHP_EOL; ?>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<?php echo $this->form()->closeTag($form) . PHP_EOL; ?>

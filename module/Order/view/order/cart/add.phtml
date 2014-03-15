@@ -1,0 +1,27 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>QTY</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+
+<?php foreach($carts as $cart): ?>
+<tr class="active">
+    <td>
+        <?php if($cart[qty]==null){ echo 0; } else{
+            echo  $cart[qty];
+        }
+        ?>
+    </td>
+    <td><?php echo  $cart[fname]?></td>
+    <td><?php echo  $cart[price]?></td>
+    <td><?php $oneDishTotal = $cart[price]*$cart[qty]; ?></td>
+</tr>
+    <?php $total +=$oneDishTotal; ?>
+<?php endforeach; ?>
+    </tbody>
+</table>
+<div class="total">total: <?php echo $total."€" ?></div>
