@@ -7,37 +7,37 @@
 namespace User; //重要！影响下面的Doctrine的__NAMESPACE__
 
 return array(
-//    'controllers'  => array(
-//        'invokables' => array(
-//            'Post\Controller\Post' => 'Post\Controller\PostController',
-//        ),
-//    ),
+    'controllers'  => array(
+        'invokables' => array(
+            'User\Controller\Reservation' => 'User\Controller\ReservationController',
+        ),
+    ),
 
     // The following section is new and should be added to your file
-//    'router'       => array(
-//        'routes' => array(
-//            'post' => array(
-//                'type'    => 'segment',
-//                'options' => array(
-//                    'route'       => '/post[/][:action][/:id]',
-//                    'constraints' => array(
-//                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-//                        'id'     => '[0-9]+',
-//                    ),
-//                    'defaults'    => array(
-//                        'controller' => 'Post\Controller\Post',
-//                        'action'     => 'index',
-//                    ),
-//                ),
-//            ),
-//        ),
-//    ),
+    'router'       => array(
+        'routes' => array(
+            'reservation' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'       => '/reservation[/][:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults'    => array(
+                        'controller' => 'User\Controller\Reservation',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+        ),
+    ),
 
-//    'view_manager' => array(
-//        'template_path_stack' => array(
-//            'post' => __DIR__ . '/../view',
-//        ),
-//    ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'user' => __DIR__ . '/../view',
+        ),
+    ),
 
     // Doctrine config
     'doctrine'     => array(
