@@ -32,6 +32,11 @@ class BuffetController extends AbstractActionController
         return $this->em;
     }
 
+    public function test123()
+    {
+
+
+    }
 
     public function indexAction()
     {

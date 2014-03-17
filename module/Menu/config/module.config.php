@@ -13,6 +13,7 @@ return array(
             'Menu\Controller\Index' => 'Menu\Controller\IndexController',
             'Menu\Controller\BuffetAdmin' => 'Menu\Controller\BuffetAdminController',
             'Menu\Controller\Buffet' => 'Menu\Controller\BuffetController',
+            'Menu\Controller\Dish' => 'Menu\Controller\DishController'
         ),
     ),
 
@@ -34,11 +35,10 @@ return array(
                     ),
                 ),
             ),
-
             'buffetAdmin' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffetAdmin[/:action][/:weekMark][/:id]',
+                    'route' => '/buffetAdmin[/][/:action][/:weekMark][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'weekMark' => '[1-2]',
@@ -54,13 +54,28 @@ return array(
             'buffet' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffet[/:action][/:id]',
+                    'route' => '/buffet[/][/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Menu\Controller\Buffet',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+
+            'dish' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/dish[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Menu\Controller\Dish',
                         'action' => 'index',
                     ),
                 ),
@@ -92,7 +107,6 @@ return array(
         ),
 
     ),
-
 
 
     //when run ./vendor/bin/doctrine-module orm:validate-schema got 'Given route does not implement Console route interface' error

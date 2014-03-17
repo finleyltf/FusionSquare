@@ -3,9 +3,30 @@ $title = 'Test';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1> 
+<table style="width:100%">
+<tr>
+  <th>finnish name</th>
+  <th>chinese name</th>		
+  <th>english name</th>
+  <th>description</th>
+  <th>spice dgree</th>
+  <th>image</th>
+  <th>category</th>
+  <th>restaurant</th>
+<tr>
 <?php foreach ($dishes as $dish) : ?> 
-    <tr>
-        <td><?php echo $this->escapeHtml($dish->price); ?></td>
-
-    </tr>
+<tr>
+  <td><?php echo $this->escapeHtml($dish->fName); ?></td> 
+  <td><?php echo $this->escapeHtml($dish->cName); ?></td> 
+  <td><?php echo $this->escapeHtml($dish->eName); ?></td> 
+  <td><?php echo $this->escapeHtml($dish->description); ?></td> 
+  <td><?php echo $this->escapeHtml($dish->spiceDgree); ?></td> 
+  <td><img src="/uploads/<?php echo $this->escapeHtml($dish->image); ?>" alt="Smiley face" height="42" width="42"></td>
+  <td><?php echo $this->escapeHtml($dish->category->getName()); ?></td> 
+  <td><?php echo $this->escapeHtml($dish->restaurant->getName()); ?></td>
+  <td>
+        <a href="<?php echo $this->url('menu',array('action'=>'edit', 'id' => $dish->dishId));?>">Edit</a>
+  </td>
+</tr>
 <?php endforeach; ?> 
+</table>
