@@ -6,53 +6,142 @@
         <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
+
         ?>
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/jquery-ui-1.10.4.custom.min.css') // added
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/less/jquery.maximage.css')
+                        ->prependStylesheet('http://fonts.googleapis.com/css?family=Covered+By+Your+Grace')
+                        ->prependStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=latin,latin-ext') // added
+                        ->prependStylesheet($this->basePath() . '/less/custom.css')?>
+
+
 
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-//            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/jquery-ui-1.10.4.custom.min.js') // added
-            ->prependFile($this->basePath() . '/js/jquery-1.10.2.js') // added
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
+            ->prependFile($this->basePath() . '/js/modernizr-2.6.2.min.js') // added
+            ->prependFile($this->basePath() . '/js/jquery-2.0.3.min.js')
+        ?>
 
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
+
+
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container full-bg visible-xs sm-navbar">
+            <nav>
+                <div class="row">
+                    <div class="navbar-inner">
+                        <ul class="main-menu nav">
+                            <li>
+                                <header class="small-logo">
+                                    <a href="" title=""><img src="img/logo.png" alt="Barnelli"/></a>
+                                </header>
+                            </li>
+                            <li class="reorder">
+                                <a href="#" title="" class="exclude" data-djax-exclude="true"><i class="fa fa-reorder"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+            </nav>
+        </div>
+        <div id="mobile-nav" class="visible-xs">
+            <div class="" id="flyout-container">
+                <ul id="menu-mobile" class="nav flyout-menu">
+                    <li class="menu-item-has-children menu-item">
+                        <a title="" href="">Restaurant</a>
+                        <span class="open-children"><i class="fa fa-angle-down"></i></span>
+                        <ul class="subnav">
+                            <li><a href="" title=""><span>Blog</span></a></li>
+                            <li><a href="" title=""><span>Team</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children menu-item">
+                        <a title="" href="">Menu</a>
+                        <span class="open-children"><i class="fa fa-angle-down"></i></span>
+                        <ul class="subnav">
+                            <li><a href="" title=""><span>Menu 1</span></a></li>
+                            <li><a href="" title=""><span>Menu 2</span></a></li>
+                            <li><a href="" title=""><span>Menu 3</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a title="" href="">Reservation</a>
+                    </li>
+                    <li class="menu-item">
+                        <a title="" href="">Contact</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-        <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy;  by codebeliever www.codebeliever.com. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+        </div>
+        <div class="navbar hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <nav class="col-md-12 clearfix">
+                        <ul class="main-nav white-nav dotted-separator">
+                            <li>
+                                <div>
+                                    <a href="" class="content-link restaurant-wrapper"><span>Restaurant</span> <img src="img/icon1.png" alt=""/></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="menu" class="content-link menu-wrapper menu-item-has-children"><span>Menu</span> <img src="img/icon2.png" alt=""/></a>
+                                    <ul class="subnav">
+                                        <li><a href="" title=""><span>menu 1</span></a></li>
+                                        <li><a href="" title=""><span>menu 2</span></a></li>
+                                        <li><a href="" title=""><span>menu 3</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-image">
+                                <div>
+                                    <a class="content-link" title="logo" href=""><img src="img/logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="" class="content-link reservation-wrapper"><span>Reservation</span> <img src="img/icon3.png" alt=""/></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="" class="content-link contact-wrapper"><span>Contact </span><img src="img/icon4.png" alt=""/></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-wrapper">
+            <div class="dynamic-content container" id="main-content">
+                <?php echo $this->content; ?>
+            </div>
+        </div><!-- /container -->
+
     </body>
+    <!-- Scripts -->
+    <?php echo $this->inlineScript()
+        ->appendFile($this->basePath() . '/js/jquery.djax.min.js')
+        ->appendFile($this->basePath() . '/js/jquery.nicescroll.min.js')
+        ->appendFile($this->basePath() . '/js/jquery.ba-throttle-debounce.min.js')
+        ->appendFile($this->basePath() . '/js/transit.js')
+        ->appendFile($this->basePath() . '/js/jquery.cycle.all.min.js')
+        ->appendFile($this->basePath() . '/js/jquery.maximage.min.js')
+        ->appendFile($this->basePath() . '/js/jquery.colorbox-min.js')
+        ->appendFile($this->basePath() . '/js/owl.carousel.min.js')
+        ->appendFile($this->basePath() . '/js/main.js');
+    ?>
 </html>
+
+
