@@ -1,68 +1,73 @@
-<?php
-$title = 'Buffet Menu';
-$this->headTitle($title);
-?>
+<div class="dynamic-content buffet-wrapper" id="main-content">
+    <div class="menu padding-wrapper">
+        <div class="container animate-in animate-in-fade">
+            <?php
+            $title = 'Buffet Menu';
+            $this->headTitle($title);
+            ?>
 
 
-<!-- Buffet Menu for the week -->
+            <!-- Buffet Menu for the week -->
 
-<h2><?php echo $this->escapeHtml($title . ' for the week'); ?></h2>
-
-
-<!-- 方案 2 -->
-<script>
-    $(function () {
-        $("#tabs").tabs().tabs("option", "active", <?php echo (int)$this->dayMark - 1 ?>);
-    });
-</script>
-
-<div id="tabs">
-    <ul>
-        <li><a href="#tabs-1">周一</a></li>
-        <li><a href="#tabs-2">周二</a></li>
-        <li><a href="#tabs-3">周三</a></li>
-        <li><a href="#tabs-4">周四</a></li>
-        <li><a href="#tabs-5">周五</a></li>
-    </ul>
-    <?php for ($count = 1; $count <= 5; $count++): ?>
-        <div id="tabs-<?= $count ?>">
+            <h2><?php echo $this->escapeHtml($title . ' for the week'); ?></h2>
 
 
-            <table class="table">
+            <!-- 方案 2 -->
+<!--            <script>-->
+<!--                $(function () {-->
+<!--                    $("#tabs").tabs().tabs("option", "active", --><?php //echo (int)$this->dayMark - 1 ?><!--);-->
+<!--                });-->
+<!--            </script>-->
 
-                <tr>
-                    <th>dayMark</th>
-                    <th>display_order</th>
-                    <th>cName</th>
-                    <th>eName</th>
-                    <th>fName</th>
-                    <th>spice</th>
-                    <th>cold_dish</th>
-                </tr>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">周一</a></li>
+                    <li><a href="#tabs-2">周二</a></li>
+                    <li><a href="#tabs-3">周三</a></li>
+                    <li><a href="#tabs-4">周四</a></li>
+                    <li><a href="#tabs-5">周五</a></li>
+                </ul>
+                <?php for ($count = 1; $count <= 5; $count++): ?>
+                    <div id="tabs-<?= $count ?>">
 
-                <?php foreach ($this->buffet as $buffet_dish) : ?>
-                    <?php if ($buffet_dish->dayMark == $count): ?>
-                        <tr>
-                            <td><?php echo $this->escapeHtml($buffet_dish->dayMark); ?></td>
-                            <td><?php echo $this->escapeHtml($buffet_dish->displayOrder); ?></td>
-                            <td><?php echo $this->escapeHtml($buffet_dish->cName); ?></td>
-                            <td><?php echo $this->escapeHtml($buffet_dish->eName); ?></td>
-                            <td><?php echo $this->escapeHtml($buffet_dish->fName); ?></td>
-                            <td><?php echo $this->escapeHtml($buffet_dish->spiceDegree); ?></td>
-                            <td><?php echo $this->escapeHtml($buffet_dish->coldDish); ?></td>
-                        </tr>
-                    <?php endif; ?>
-                <?php endforeach; ?>
 
-            </table>
+                        <table class="table">
 
+                            <tr>
+                                <th>dayMark</th>
+                                <th>display_order</th>
+                                <th>cName</th>
+                                <th>eName</th>
+                                <th>fName</th>
+                                <th>spice</th>
+                                <th>cold_dish</th>
+                            </tr>
+
+                            <?php foreach ($this->buffet as $buffet_dish) : ?>
+                                <?php if ($buffet_dish->dayMark == $count): ?>
+                                    <tr>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->dayMark); ?></td>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->displayOrder); ?></td>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->cName); ?></td>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->eName); ?></td>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->fName); ?></td>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->spiceDegree); ?></td>
+                                        <td><?php echo $this->escapeHtml($buffet_dish->coldDish); ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+
+                        </table>
+
+
+                    </div>
+                <?php endfor; ?>
+
+            </div>
 
         </div>
-    <?php endfor; ?>
-
+    </div>
 </div>
-
-
 
 
 
