@@ -42,7 +42,7 @@
                         <ul class="main-menu nav">
                             <li>
                                 <header class="small-logo">
-                                    <a href="" title=""><img src="img/logo.png" alt="Barnelli"/></a>
+                                    <a href="index" title=""><img src="img/logo.png" alt="Barnelli"/></a>
                                 </header>
                             </li>
                             <li class="reorder">
@@ -104,12 +104,12 @@
                             </li>
                             <li class="menu-image">
                                 <div>
-                                    <a class="content-link" title="logo" href=""><img src="img/logo.png" alt=""></a>
+                                    <a class="content-link" title="logo" href="index"><img src="img/logo.png" alt=""></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="" class="content-link reservation-wrapper"><span>Reservation</span> <img src="img/icon3.png" alt=""/></a>
+                                    <a href="reservation" class="content-link reservation-wrapper"><span>Reservation</span> <img src="img/icon3.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
@@ -124,12 +124,11 @@
         </div>
 
         <div id="content-wrapper">
-            <div class="dynamic-content container" id="main-content">
                 <?php echo $this->content; ?>
-            </div>
         </div><!-- /container -->
 
-    </body>
+
+
     <!-- Scripts -->
     <?php echo $this->inlineScript()
         ->appendFile($this->basePath() . '/js/jquery.djax.min.js')
@@ -142,6 +141,8 @@
         ->appendFile($this->basePath() . '/js/owl.carousel.min.js')
         ->appendFile($this->basePath() . '/js/main.js');
     ?>
+    </body>
+
 </html>
 
 
