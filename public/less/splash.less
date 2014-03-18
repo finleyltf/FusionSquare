@@ -1,0 +1,81 @@
+// #splash { width: 100%; height: 100%;
+	
+// }
+
+.social-share {
+	&.top { position: fixed; top: 20px; left: 0; right: 0;  }
+	ul { list-style: none; margin: 0; padding: 0; text-align: center;
+		li { display: inline-block; padding: 0; margin: 0 5px; 
+			a { height: 40px; width: 40px; background: #fff; display: block; text-align: center; line-height: 40px; font-size: 20px; border-radius: 50%; 
+				-webkit-transition: background-color 0.3s, -webkit-transform .3s; -moz-transition: background-color 0.3s, -moz-transform .3s; transition: background-color 0.3s, transform .3s; 
+				-ms-transition: background-color 0.3s, -ns-transform .3s; 
+				i { color: #000; font-size: 20px; line-height: 30px; -webkit-transition: color 0.3s; -moz-transition: color 0.3s; -ms-transition: color 0.3s; transition: color 0.3s; }
+				&:hover {
+					background: #000; -webkit-transform: scale(1.2,1.2); -moz-transform: scale(1.2,1.2); -ms-transform: scale(1.2,1.2); transform: scale(1.2,1.2);
+					i { color: #fff;}
+				}
+			}
+		}
+	}
+}
+
+.arrow-nav { position:fixed; top: 50%; text-align: center; right: -65px; margin-top: -65px;
+	a { height: 130px; width: 130px; display: block; background: #fff; text-align: left; line-height: 130px; font-size: 40px; border-radius: 50%;  
+		i { line-height: 40px; color: #000; font-size: inherit; margin-left: 20px; }
+	}
+}
+
+.splash {
+	.navbar {
+	.main-nav {
+		&.white-nav {
+			.subnav { background: #fff; border: 1px solid @borderColor; 
+				> li {
+					a { .transition(e('text-indent 0.2s, opacity 0.2s'));
+						&:hover { text-indent: 10px; opacity: 0.5; }
+					}
+					.subnav { margin-top: 0; margin-bottom: -1px; 
+						&:before, &:after { content: none; }
+					}
+				}
+				&:before { content: ''; background: transparent; border-bottom: none; border-top: 10px solid @borderColor; border-left: 10px solid transparent; border-right: 10px solid transparent; display: block; position: absolute; left: 50%; top: auto !important; bottom: -10px  !important; margin-left: -10px;  }
+				&:after { content: ''; background: transparent; border-bottom: none; border-top: 10px solid #fff; border-left: 10px solid transparent; border-right: 10px solid transparent; display: block; position: absolute; left: 50%; top: auto  !important; bottom: -9px !important; margin-left: -10px;  }
+
+			}
+
+		}
+
+		&.gray-nav {
+			.subnav { background: #f5f5f5; 
+				> li {
+					.subnav { margin-top: 0; margin-bottom: 0; 
+						&:before, &:after { content: none; }
+					}
+					&.hover-active { background: #333;
+						> a { color: #fff; }
+					}					
+				}
+				&:after { content: ''; background: transparent; border-bottom: none; border-top: 10px solid #f5f5f5; border-left: 10px solid transparent; border-right: 10px solid transparent; display: block; position: absolute; left: 50%; top: auto !important; bottom: -10px !important; margin-left: -10px;  }
+			}
+		}
+
+	}
+	
+		
+
+			.subnav { list-style: none; position: absolute; bottom: 50%; left: 0; margin-bottom: 50px;  padding: 0; display: block; width: 100%; opacity: 0;  background: #f5f5f5;  .translate(0, 20px); .lh-transition(opacity 0.3s, transform 0.3s); margin-right: 10px; 
+				> li {
+
+					.subnav { bottom: 0; top: auto; left: 100%;  .lh-translate(30px, 0);
+						// &:before { top: 4px; border-right: 10px solid rgb(162, 162, 162); left: 0;  border-left: none; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+						// &:after { top: 4px; border-right: 10px solid #f5f5f5; left: 1px;  border-left: none; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+						&:before, &:after { content: none; }
+					}
+				}
+				// &:before { content: ''; background: transparent; border-bottom: 10px solid rgb(162, 162, 162); border-left: 10px solid transparent; border-right: 10px solid transparent; display: block; position: absolute; left: 50%; top: -10px; margin-left: -10px;  }
+				// &:after { content: ''; background: transparent; border-bottom: none; border-top: 10px solid #f5f5f5; border-left: 10px solid transparent; border-right: 10px solid transparent; display: block; position: absolute; left: 50%; top: auto; bottom: -10px; margin-left: -10px;  }		
+			}
+
+	
+}
+}
