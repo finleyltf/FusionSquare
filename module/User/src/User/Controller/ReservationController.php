@@ -39,6 +39,52 @@ class ReservationController extends AbstractActionController
         // initialise ReservationSearchForm
         $reservationSearchForm = new ReservationSearchForm();
 
+        // setValueOptions for day_d
+        $currentDay            = date('d');
+        $dayList               = array();
+        $numDaysOfCurrentMonth = date('t', mktime(0, 0, 0, date('n'), 1, date('Y')));
+        for ($i = 1; $i <= $numDaysOfCurrentMonth; $i++) {
+            $dayList[$i] = $i;
+        }
+        $reservationSearchForm->get('date_d')
+            ->setValue($currentDay)
+            ->setvalueOptions($dayList)
+            ->setAttribute('id', "select-day");
+
+        // setValueOptions for day_m
+        $currentMonth = date('n');
+        $monthList    = array(
+            1  => 'January',
+            2  => 'February',
+            3  => 'March',
+            4  => 'April',
+            5  => 'May',
+            6  => 'June',
+            7  => 'July',
+            8  => 'August',
+            9  => 'September',
+            10 => 'October',
+            11 => 'November',
+            12 => 'December');
+        $reservationSearchForm->get('date_m')
+            ->setValue($currentMonth)
+            ->setValueOptions($monthList)
+            ->setAttribute('id', "select-month");
+
+
+        // setValueOptions for day_y
+        $currentYear = date('Y');
+        $yearList    = array(
+            date('Y')                    => date('Y'),
+            (string)((int)date('Y') + 1) => (string)((int)date('Y') + 1),
+            (string)((int)date('Y') + 2) => (string)((int)date('Y') + 2)
+        );
+        $reservationSearchForm->get('date_y')
+            ->setValue($currentYear)
+            ->setValueOptions($yearList)
+            ->setAttribute('id', "select-year");
+
+
         // setValueOptions for time_h
         $hourList = array();
         for ($count = 11; $count <= 22; $count++):
@@ -46,7 +92,20 @@ class ReservationController extends AbstractActionController
         endfor;
         $reservationSearchForm->get('time_h')
             ->setValue(18)
-            ->setValueOptions($hourList);
+            ->setValueOptions($hourList)
+            ->setAttribute('id', "select-hour");
+
+        // setAttribute id for time_m
+        $reservationSearchForm->get('time_m')
+            ->setAttribute('id', 'select-minutes');
+
+        // setAttribute id for time_m
+        $reservationSearchForm->get('submit')
+            ->setAttributes(array(
+                    'id'    => 'reservation-submit',
+                    'class' => 'buttonform'
+                )
+            );
 
         // getRequest
         $request = $this->getRequest();
@@ -56,15 +115,22 @@ class ReservationController extends AbstractActionController
             $buttonFlag = $request->getPost('submit');
             if ($buttonFlag == 'Find a Table') {
                 // flag: date and time selected ok?
-                $date     = $request->getPost('date');
-                $time_h   = $request->getPost('time_h');
-                $time_m   = $request->getPost('time_m');
-                $time_s   = '00';
-                $time     = $time_h . ':' . $time_m . ':' . $time_s;
+                $date_d = $request->getPost('date_d');
+                $date_m = $request->getPost('date_m');
+                $date_y = $request->getPost('date_y');
+                $date   = $date_y . '-' . $date_m . '-' . $date_d;
+
+                $time_h = $request->getPost('time_h');
+                $time_m = $request->getPost('time_m');
+                $time_s = '00';
+                $time   = $time_h . ':' . $time_m . ':' . $time_s;
+
                 $dateTime = $date . ' ' . $time;
 
                 // update the reservationSearchForm
-                $reservationSearchForm->get('date')->setValue($date);
+                $reservationSearchForm->get('date_d')->setValue($date_d);
+                $reservationSearchForm->get('date_m')->setValue($date_m);
+                $reservationSearchForm->get('date_y')->setValue($date_y);
                 $reservationSearchForm->get('time_h')->setValue($time_h);
                 $reservationSearchForm->get('time_m')->setValue($time_m);
                 $reservationSearchForm->get('peopleAmount')->setValue($request->getPost('peopleAmount'));
@@ -120,15 +186,17 @@ class ReservationController extends AbstractActionController
                     $this->getEntityManager()->flush();
 
                     // update the reservationSearchForm before return
-                    $reservationSearchForm->get('date')->setValue($reservation->getTime()->format('Y-m-d'));
+                    $reservationSearchForm->get('date_d')->setValue($reservation->getTime()->format('d'));
+                    $reservationSearchForm->get('date_m')->setValue($reservation->getTime()->format('m'));
+                    $reservationSearchForm->get('date_y')->setValue($reservation->getTime()->format('Y'));
                     $reservationSearchForm->get('time_h')->setValue($reservation->getTime()->format('H'));
                     $reservationSearchForm->get('time_m')->setValue($reservation->getTime()->format('i'));
                     $reservationSearchForm->get('peopleAmount')->setValue($reservation->getPeopleAmount());
 
                     return array(
-                        'reservedFlag' => true,
+                        'reservedFlag'          => true,
                         'reservationSearchForm' => $reservationSearchForm,
-                        'message' => 'A table for '
+                        'message'               => 'A table for '
                             . $reservation->getPeopleAmount()
                             . ' people is reserved for you on '
                             . $reservation->getTime()->format('Y-m-d H:i'),
@@ -146,13 +214,8 @@ class ReservationController extends AbstractActionController
         // return ReservationSearch Form
         return array(
             'reservationSearchForm' => $reservationSearchForm,
+            'message'               => 'Welcome!'
         );
-
-
-    }
-
-    public function confirmAction()
-    {
 
 
     }
@@ -176,7 +239,7 @@ class ReservationController extends AbstractActionController
             }
         endfor;
 
-        return $peopleSum <= 50 ? true : false;
+        return $peopleSum <= 40 ? true : false;
     }
 
 }
