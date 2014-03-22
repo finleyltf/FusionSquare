@@ -20,6 +20,82 @@ return array(
                     ),
                 ),
             ),
+
+            'index' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/index[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+
+            'restaurant' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/restaurant[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'restaurant',
+                    ),
+                ),
+            ),
+
+            'gallery' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/gallery[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'gallery',
+                    ),
+                ),
+            ),
+
+            'contact' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/contact[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'contact',
+                    ),
+                ),
+            ),
+
+            'team' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/team[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'team',
+                    ),
+                ),
+            ),
+
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
