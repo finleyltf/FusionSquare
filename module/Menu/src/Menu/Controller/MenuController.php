@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController,
     Doctrine\ORM\EntityManager,
     Zend\Validator\File\Size;
 
-class IndexController extends AbstractActionController {
+class MenuController extends AbstractActionController {
 
 
     /**
