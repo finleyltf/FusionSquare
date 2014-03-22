@@ -75,7 +75,8 @@
                             <?php
                             $form = $this->reservationDetailsForm;
                             $form->prepare();
-                            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+//                            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+                            $form->setAttribute('action', 'reservationConfirm');
                             $form->setAttribute('method', 'post');
                             echo $this->form()->openTag($form);
                             ?>
