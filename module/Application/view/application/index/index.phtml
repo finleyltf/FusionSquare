@@ -19,12 +19,23 @@
         </ul>
     </div>
     <div class="languages top">
+        <?php
+        $home = str_replace('index','',$this->serverUrl(true));
+        $enUrl = str_replace('cn','en',$home);
+        $cnUrl = str_replace('en','cn',$home);
+        if (strpos($enUrl,'en') == false) {
+            $enUrl = $enUrl."en";
+        }
+        if (strpos($cnUrl,'cn') == false) {
+            $cnUrl = $cnUrl."cn";
+        }
+        ?>
         <ul>
             <li>
-                <a  href="" title="Finnish"><span>FI</span></a>
+                <a  onclick="location.href='<?php echo $enUrl; ?>'"  title="Finnish"><span>FI</span></a>
             </li>
             <li>
-                <a  href="" title="Chinese"><span>CN</span></a>
+                <a  onclick="location.href='<?php echo $cnUrl; ?>'"  title="Chinese"><span>CN</span></a>
             </li>
         </ul>
     </div>

@@ -1,3 +1,10 @@
+/*********** language icon ***********/
+
+.splash .layout-languages{
+    display: none!important;
+    z-index: -999!important;
+}
+
 .languages.top {
     position: absolute;
     top: 70px;
@@ -53,3 +60,31 @@
 .languages ul li a:hover span{
     color:#fff;
 }
+
+.layout-languages {
+    top: 10px!important;
+    left: auto!important;
+    right: 10px !important;
+
+}
+
+.layout-languages  ul li {
+    display: inline-block;
+    padding: 0;
+    margin: 0 5px;
+}
+.layout-languages  ul li a {
+    height: 20px;
+    width: 20px;
+    background: #ccc;
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+    border-radius: 50%;
+    -webkit-transition: background-color .3s,-webkit-transform .3s;
+    -moz-transition: background-color .3s,-moz-transform .3s;
+    transition: background-color .3s,transform .3s;
+    -ms-transition: background-color .3s,-ns-transform .3s;
+}
+
