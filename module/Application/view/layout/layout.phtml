@@ -3,8 +3,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
-
         <?php echo $this->headMeta()
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
             ->appendName('viewport', 'width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
@@ -16,7 +14,8 @@
                         ->prependStylesheet($this->basePath() . '/less/jquery.maximage.css')
                         ->prependStylesheet('http://fonts.googleapis.com/css?family=Covered+By+Your+Grace')
                         ->prependStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=latin,latin-ext') // added
-                        ->prependStylesheet($this->basePath() . '/less/custom.css')?>
+                        ->prependStylesheet($this->basePath() . '/less/custom.css')
+                        ->prependStylesheet($this->basePath() . '/css/fusion.css')?>
 
 
 
@@ -78,17 +77,17 @@
                         <ul class="main-nav white-nav dotted-separator">
                             <li>
                                 <div>
-                                    <a href="restaurant" class="content-link restaurant-wrapper"><span>Restaurant</span> <img src="img/navi_icon5_fix.png" alt=""/></a>
+                                    <a href="restaurant" class="content-link restaurant-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="img/navi_icon5_fix.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="menu" class="content-link menu-wrapper"><span>Menu</span> <img src="img/icon2.png" alt=""/></a>
+                                    <a href="menu" class="content-link menu-wrapper"><span><?php echo $this->translate('Menu') ?></span> <img src="img/icon2.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="gallery" class="content-link gallery-wrapper"><span>Gallery</span> <img src="img/navi_icon1_fix.png" alt=""/></a>
+                                    <a href="gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="img/navi_icon1_fix.png" alt=""/></a>
                                 </div>
                             </li>
                             <li class="menu-image">
@@ -98,17 +97,17 @@
                             </li>
                             <li>
                                 <div>
-                                    <a href="buffet" class="content-link buffet-wrapper"><span>Buffet</span><img src="img/icon1.png" alt=""/></a>
+                                    <a href="buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span><img src="img/icon1.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="reservation" class="content-link reservation-wrapper"><span>Reservation</span> <img src="img/icon3.png" alt=""/></a>
+                                    <a href="reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="img/icon3.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="contact" class="content-link contact-wrapper"><span>Contact</span><img src="img/icon4.png" alt=""/></a>
+                                    <a href="contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span><img src="img/icon4.png" alt=""/></a>
                                 </div>
                             </li>
                         </ul>
@@ -121,8 +120,7 @@
                 <?php echo $this->content; ?>
         </div><!-- /container -->
 
-
-
+    </body>
     <!-- Scripts -->
     <?php echo $this->inlineScript()
         ->appendFile($this->basePath() . '/js/jquery.djax.min.js')
@@ -135,8 +133,6 @@
         ->appendFile($this->basePath() . '/js/owl.carousel.min.js')
         ->appendFile($this->basePath() . '/js/main.js');
     ?>
-    </body>
-
 </html>
 
 

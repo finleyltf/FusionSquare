@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController,
     Doctrine\ORM\EntityManager,
     Zend\Validator\File\Size;
 
-class DishController extends AbstractActionController {
+class MenuController extends AbstractActionController {
 
 
     /**
@@ -28,9 +28,8 @@ class DishController extends AbstractActionController {
         return $this->em;
     }
          
-    public function indexAction() { 
+    public function indexAction() {
         $categories = $this->getEntityManager()->getRepository('Menu\Entity\Category')->findAll();
-      
         return new ViewModel(array(
             'dishes' => $this->getEntityManager()->getRepository('Menu\Entity\Dish')->findAll(),
             'categories' => $this->getEntityManager()->getRepository('Menu\Entity\Category')->findAll()

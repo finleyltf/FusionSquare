@@ -1,0 +1,39 @@
+<div class="dynamic-content" id="main-content">
+    <div id="third-menu" class="menu padding-wrapper">
+        <div class="container animate-in animate-in-fade">
+            <?php foreach($categories as $category) : ?>
+                <header class="row">
+                    <div class="col-md-12">
+                        <div class="menu-header">
+                            <h2><span><?php echo $category->getName() ; ?> <i class="fa fa-lemon-o"></i></span></h2>
+                        </div>
+                    </div>
+                </header>
+                <?php foreach ($dishes as $dish) : ?>
+                    <form action="cart/add" method="get">
+                        <?php if( $dish->category->getName() == $category->getName() ): ?>
+                        <div class="dish">
+                        <?php echo $this->escapeHtml($dish->fName); ?>
+                        <?php echo $this->escapeHtml($dish->cName); ?>
+                        <?php echo $this->escapeHtml($dish->eName); ?>
+                        <?php echo $this->escapeHtml($dish->description); ?>
+                        <?php echo $this->escapeHtml($dish->spiceDgree); ?>
+                        <img src="/uploads/<?php echo $this->escapeHtml($dish->image); ?>" alt="Smiley face" height="42" width="42">
+                        <?php echo $this->escapeHtml($dish->restaurant->getName()); ?>
+                        <select name="qty">
+                            <option value="1" selected="selected">Please select amount</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <input type="hidden" name="id" value="<?php echo $this->escapeHtml($dish->dishId); ?>" />
+                        </div>
+                        <input type="submit" value="add to cart" class="btn btn-primary">
+                    <?php endif; ?>
+                    </form>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

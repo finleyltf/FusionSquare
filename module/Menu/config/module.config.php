@@ -10,10 +10,10 @@ return array(
 
 'controllers' => array(
         'invokables' => array(
-            'Menu\Controller\Index' => 'Menu\Controller\IndexController',
             'Menu\Controller\BuffetAdmin' => 'Menu\Controller\BuffetAdminController',
             'Menu\Controller\Buffet' => 'Menu\Controller\BuffetController',
-            'Menu\Controller\Dish' => 'Menu\Controller\DishController'
+            'Menu\Controller\MenuAdmin' => 'Menu\Controller\MenuAdminController',
+            'Menu\Controller\Menu' => 'Menu\Controller\MenuController'
         ),
     ),
 
@@ -30,7 +30,7 @@ return array(
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Menu\Controller\Index',
+                        'controller' => 'Menu\Controller\Menu',
                         'action' => 'index',
                     ),
                 ),
@@ -66,16 +66,16 @@ return array(
                 ),
             ),
 
-            'dish' => array(
+            'menuAdmin' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/dish[/:action][/:id]',
+                    'route' => '/menuAdmin[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Menu\Controller\Dish',
+                        'controller' => 'Menu\Controller\MenuAdmin',
                         'action' => 'index',
                     ),
                 ),
