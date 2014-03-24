@@ -99,13 +99,19 @@ class ReservationController extends AbstractActionController
         $reservationSearchForm->get('time_m')
             ->setAttribute('id', 'select-minutes');
 
-        // setAttribute id for time_m
+        // setAttribute id for peopleAmount
+        $reservationSearchForm->get('peopleAmount')
+            ->setAttribute('id', 'select-peopleAmount');
+
+        // setAttribute id for submit
         $reservationSearchForm->get('submit')
             ->setAttributes(array(
-                    'id'    => 'reservation-submit',
+                    'id'    => 'reservation-search-submit',
                     'class' => 'buttonform'
                 )
             );
+
+
 
         // getRequest
         $request = $this->getRequest();

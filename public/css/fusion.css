@@ -87,4 +87,22 @@
     transition: background-color .3s,transform .3s;
     -ms-transition: background-color .3s,-ns-transform .3s;
 }
+#reservation_search > div > div.submit {
+    display: inline;
+}
+#reservation-search-submit {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px 10px;
+    font-weight: 100;
+}
+#reservation-search-submit:hover {
+    background:#242424;
+    color:#fff;
+    border: 1px solid #ddd;
+    padding: 10px 10px;
+    font-weight: 100;
+}
+
+
 

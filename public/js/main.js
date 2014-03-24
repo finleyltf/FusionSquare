@@ -85,6 +85,11 @@ function initDatePicker() {
 		$('.select-time.month span').html($(this).val());
 		$('#month').val($(this).val());
 	});
+
+    $('.info-reservation').on('change', '#select-peopleAmount', function() {
+        $('.select-time.peopleAmount span').html($(this).val() + ' people');
+        $('#peopleAmount').val($(this).val());
+    });
 }
 
 function shuffleArray(array) {
