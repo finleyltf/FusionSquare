@@ -32,7 +32,31 @@
         <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <div class="top languages layout-languages">
+            <?php
+            $this->serverUrl() ;
+            $route = str_replace($this->serverUrl() ,'',$this->serverUrl(true));
+            $route = str_replace('/en' ,'',$route);
+            $route = str_replace('/cn' ,'',$route);
 
+            if ($route=="/"||$route=="/index"){
+                $homeUrl = str_replace('index' ,'',$this->serverUrl());
+                $enUrl = $homeUrl.'en';
+                $cnUrl = $homeUrl.'cn';
+            }else{
+                $enUrl = $this->serverUrl().'/en'.$route;
+                $cnUrl = $this->serverUrl().'/cn'.$route;
+            }
+            ?>
+            <ul>
+                <li>
+                    <a  href="<?php echo $enUrl; ?>"  title="Finnish"><span>FI</span></a>
+                </li>
+                <li>
+                    <a  href="<?php echo $cnUrl; ?>"  title="Chinese"><span>CN</span></a>
+                </li>
+            </ul>
+        </div>
         <!-- Add your site or application content here -->
         <div class="container full-bg visible-xs sm-navbar">
             <nav>
@@ -41,7 +65,7 @@
                         <ul class="main-menu nav">
                             <li>
                                 <header class="small-logo">
-                                    <a href="index" title=""><img src="img/logo.png" alt="Barnelli"/></a>
+                                    <a href="<?php echo $this->serverUrl(); ?>" title=""><img src="<?php echo $this->serverUrl();?>img/logo.png" alt="Barnelli"/></a>
                                 </header>
                             </li>
                             <li class="reorder">
@@ -77,37 +101,37 @@
                         <ul class="main-nav white-nav dotted-separator">
                             <li>
                                 <div>
-                                    <a href="restaurant" class="content-link restaurant-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="img/navi_icon5_fix.png" alt=""/></a>
+                                    <a href="restaurant" class="content-link restaurant-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="<?php echo $this->serverUrl();?>"/img/navi_icon5_fix.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="menu" class="content-link menu-wrapper"><span><?php echo $this->translate('Menu') ?></span> <img src="img/icon2.png" alt=""/></a>
+                                    <a href="menu" class="content-link menu-wrapper"><span><?php echo $this->translate('Menu') ?></span> <img src="<?php echo $this->serverUrl();?>"/img/icon2.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="img/navi_icon1_fix.png" alt=""/></a>
+                                    <a href="gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/navi_icon1_fix.png" alt=""/></a>
                                 </div>
                             </li>
                             <li class="menu-image">
                                 <div>
-                                    <a class="content-link" title="logo" href="index"><img src="img/logo.png" alt=""></a>
+                                    <a class="content-link" title="logo" href="<?php echo $this->serverUrl(); ?>"><img src="<?php echo $this->serverUrl();?>/img/logo.png" alt=""></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span><img src="img/icon1.png" alt=""/></a>
+                                    <a href="buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span><img src="<?php echo $this->serverUrl();?>/img/icon1.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="img/icon3.png" alt=""/></a>
+                                    <a href="reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon3.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span><img src="img/icon4.png" alt=""/></a>
+                                    <a href="contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span><img src="<?php echo $this->serverUrl();?>/img/icon4.png" alt=""/></a>
                                 </div>
                             </li>
                         </ul>
