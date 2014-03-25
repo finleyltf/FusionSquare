@@ -41,6 +41,8 @@ class ReservationDetailsForm extends Form
             'attributes' => array(
                 'type'        => 'text',
                 'placeholder' => 'First Name',
+                'class' => 'contact-form',
+                'id' => 'form-firstName',
             ),
             'options'    => array(
                 'label' => 'First Name',
@@ -53,6 +55,8 @@ class ReservationDetailsForm extends Form
             'attributes' => array(
                 'type'        => 'text',
                 'placeholder' => 'Last Name',
+                'class' => 'contact-form',
+                'id' => 'form-lastName',
             ),
             'options'    => array(
                 'label' => 'Last Name',
@@ -63,6 +67,11 @@ class ReservationDetailsForm extends Form
         $this->add(array(
             'type'    => 'Zend\Form\Element\Email',
             'name'    => 'email',
+            'attributes' => array(
+                'placeholder' => 'Email',
+                'class' => 'contact-form',
+                'id' => 'form-email',
+            ),
             'options' => array(
                 'label' => 'Email Address'
             ),
@@ -74,6 +83,8 @@ class ReservationDetailsForm extends Form
             'attributes' => array(
                 'type'        => 'text',
                 'placeholder' => 'Phone Number',
+                'class' => 'contact-form',
+                'id' => 'form-phoneNumber',
             ),
             'options'    => array(
                 'label' => 'Phone Number',
@@ -96,6 +107,7 @@ class ReservationDetailsForm extends Form
             'name'       => 'time',
             'attributes' => array(
                 'type' => 'hidden',
+                'id' => 'form-time',
             ),
         ));
 
@@ -116,6 +128,7 @@ class ReservationDetailsForm extends Form
             'name'       => 'peopleAmount',
             'attributes' => array(
                 'type' => 'hidden',
+                'id' => 'form-peopleAmount',
             ),
         ));
 
@@ -125,6 +138,9 @@ class ReservationDetailsForm extends Form
             'attributes' => array(
                 'type'        => 'textarea',
                 'placeholder' => 'message',
+                'class' => 'contact-form',
+                'id' => 'form-message',
+
             ),
             'options'    => array(
                 'label' => 'message',
@@ -137,7 +153,8 @@ class ReservationDetailsForm extends Form
             'attributes' => array(
                 'type'  => 'submit',
                 'value' => 'CONFIRM',
-                'id'    => 'submitbutton',
+                'id'    => 'reservation-submit',
+                'class' => 'buttonform'
             ),
         ));
 

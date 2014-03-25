@@ -30,6 +30,21 @@ return array(
                     ),
                 ),
             ),
+
+            'reservationConfirm' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'       => '/reservationConfirm',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults'    => array(
+                        'controller' => 'User\Controller\Reservation',
+                        'action'     => 'reservationConfirm',
+                    ),
+                ),
+            ),
         ),
     ),
 

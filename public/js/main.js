@@ -85,6 +85,11 @@ function initDatePicker() {
 		$('.select-time.month span').html($(this).val());
 		$('#month').val($(this).val());
 	});
+
+    $('.info-reservation').on('change', '#select-peopleAmount', function() {
+        $('.select-time.peopleAmount span').html($(this).val() + ' people');
+        $('#peopleAmount').val($(this).val());
+    });
 }
 
 function shuffleArray(array) {
@@ -369,39 +374,43 @@ $('document').ready(function($) {
 		$(this).parent().removeClass('error');
 	});
 
-	$(document).on("submit", "#reservation-form", function(e) {
+	$(document).on("submit", "#ReservationDetailsForm", function(e) {
 		e.preventDefault();
 
-		var name = $('#form-name'),
+		var firstName = $('#form-firstName'),
+            lastName = $('#form-lastName'),
 			email = $('#form-email'),
-			phone = $('#form-phone'),
-			amount = $('#form-amount'),
+            phoneNumber = $('#form-phoneNumber'),
+            peopleAmount = $('#form-peopleAmount'),
 			message = $('#form-message'),
-			day = $('#day'),
-			month = $('#month'),
-			year = $('#year'),
-			hour = $('#hour'),
-			minute = $('#minute'),
-			captcha = $("#form-captcha"),
-			ampm = $('#ampm').val($('.select-time.part').text());
+			time = $('#form-time'),
+//			day = $('#day'),
+//			month = $('#month'),
+//			year = $('#year'),
+//			hour = $('#hour'),
+//			minute = $('#minute'),
+			captcha = $("#form-captcha");
+//			ampm = $('#ampm').val($('.select-time.part').text());
 
 		$.ajax({
-			url: 'reservation-send.php',
+			url: 'reservationConfirm',
 			type: 'POST',
 			dataType: 'json',
 			data: {
 				captcha: captcha.val(),
-				name: name.val(),
+                firstName: firstName.val(),
+                lastName: lastName.val(),
 				email: email.val(),
-				phone: phone.val(),
-				amount: amount.val(),
+                phoneNumber: phoneNumber.val(),
+                peopleAmount: peopleAmount.val(),
 				message: message.val(),
-				day: day.val(),
-				month: month.val(),
-				year: year.val(),
-				hour: hour.val(),
-				minute: minute.val(),
-				ampm: ampm.val()
+                time: time.val()
+//				day: day.val(),
+//				month: month.val(),
+//				year: year.val(),
+//				hour: hour.val(),
+//				minute: minute.val(),
+//				ampm: ampm.val()
 			},
 			beforeSend: function() {
 				var errors = false,
@@ -415,12 +424,19 @@ $('document').ready(function($) {
 						captcha.parent().removeClass('error');
 					}
 
-					if (name.val().length === 0) {
-						name.parent().addClass('error');
+					if (firstName.val().length === 0) {
+                        firstName.parent().addClass('error');
 						errors = true;
 					} else {
-						name.parent().removeClass('error');
+                        firstName.parent().removeClass('error');
 					}
+
+                    if (lastName.val().length === 0) {
+                        lastName.parent().addClass('error');
+                        errors = true;
+                    } else {
+                        lastName.parent().removeClass('error');
+                    }
 
 					if (email.val().length === 0) {
 						email.parent().addClass('error');
@@ -432,19 +448,19 @@ $('document').ready(function($) {
 						email.parent().removeClass('error');
 					}
 
-					if (phone.val().length === 0) {
-						phone.parent().addClass('error');
+					if (phoneNumber.val().length === 0) {
+                        phoneNumber.parent().addClass('error');
 						errors = true;
 					} else {
-						phone.parent().removeClass('error');
+                        phoneNumber.parent().removeClass('error');
 					}
 
-					if (amount.val().length === 0) {
-						amount.parent().addClass('error');
-						errors = true;
-					} else {
-						amount.parent().removeClass('error');
-					}
+//					if (peopleAmount.val().length === 0) {
+//                        peopleAmount.parent().addClass('error');
+//						errors = true;
+//					} else {
+//                        peopleAmount.parent().removeClass('error');
+//					}
 
 					if (message.val().length === 0) {
 						message.parent().addClass('error');
@@ -453,22 +469,22 @@ $('document').ready(function($) {
 						message.parent().removeClass('error');
 					}
 
-					console.log(hour.val());
-					console.log(minute.val());
+//					console.log(hour.val());
+//					console.log(minute.val());
 
-					if (hour.val() == '--') {
-						$('.select-time.hour').css('border', '1px solid rgb(255, 144, 144)');
-						errors = true;
-					} else {
-						$('.select-time.hour').css('border', '1px solid #ddd');
-					}
-
-					if (minute.val() == '--') {
-						$('.select-time.minutes').css('border', '1px solid rgb(255, 144, 144)');
-						errors = true;
-					} else {
-						$('.select-time.minutes').css('border', '1px solid #ddd');
-					}
+//					if (hour.val() == '--') {
+//						$('.select-time.hour').css('border', '1px solid rgb(255, 144, 144)');
+//						errors = true;
+//					} else {
+//						$('.select-time.hour').css('border', '1px solid #ddd');
+//					}
+//
+//					if (minute.val() == '--') {
+//						$('.select-time.minutes').css('border', '1px solid rgb(255, 144, 144)');
+//						errors = true;
+//					} else {
+//						$('.select-time.minutes').css('border', '1px solid #ddd');
+//					}
 				};
 
 				validate();
@@ -483,10 +499,11 @@ $('document').ready(function($) {
 				setTimeout(function () {
 					$('.alert-success').addClass('hidden');
 				}, 3000);
-				name.val('');
+				firstName.val('');
+				lastName.val('');
 				email.val('');
-				phone.val('');
-				amount.val('');
+				phoneNumber.val('');
+//                peopleAmount.val('');
 				message.val('');
 				captcha.val('');
 			} else {

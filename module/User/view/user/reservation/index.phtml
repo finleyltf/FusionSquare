@@ -2,61 +2,144 @@
     <div class="container">
         <div class="row reservation  padding-wrapper">
 
-            <?php
-            $title = 'Reservation';
-            $this->headTitle($title);
-            ?>
-            <h2><?php echo 'Table Available Check'; ?></h2>
-            <hr/>
-            <?php
-            $form = $this->reservationSearchForm;
-            $form->prepare();
-            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
-            $form->setAttribute('method', 'post');
-            echo $this->form()->openTag($form);
-            echo $this->formElement($form->get('date')) . "<br>";
-            echo $this->formElement($form->get('time_h'));
-            echo $this->formElement($form->get('time_m')) . "<br>";
-            echo $this->formElement($form->get('peopleAmount')) . "<br>";
-            echo $this->formElement($form->get('submit')) . "<br>";
-            echo $this->form()->closeTag();
-            ?>
+            <div class="hidden-xs col-md-7">
+                <div id="slider-res" class="owl-carousel owl-theme">
+                    <figure class="item">
+                        <img src="http://placehold.it/680x596" alt=""/>
+                    </figure>
+                    <figure class="item">
+                        <img src="http://placehold.it/680x596" alt=""/>
+                    </figure>
+                    <figure class="item">
+                        <img src="http://placehold.it/680x596" alt=""/>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-5">
+                <div class="info-reservation">
+                    <h1>Reservation</h1>
 
-            <hr/>
+                    <p>
+                        Lorem ipsum nunc gravida ut ornare, id at varius quam. Mattis quis tortor hendrerit, mollis
+                        ligula platea rhoncus, himenaeos facilisis. Condimentum et urna sit blandit ultricies, nullam
+                        arcu eget proin.
+                    </p>
 
-            <?php if (isset($this->tableAvailableFlag) && $this->tableAvailableFlag): ?>
-                <h2><?php echo 'Reservation Details'; ?></h2>
-                <hr/>
-                <?php
-                $form = $this->reservationDetailsForm;
-                $form->prepare();
-                $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
-                $form->setAttribute('method', 'post');
-                echo $this->form()->openTag($form);
-                echo $this->formElement($form->get('reservationId')) . "<br>";
-                echo $this->formElement($form->get('firstName')) . "<br>";
-                echo $this->formElement($form->get('lastName')) . "<br>";
-                echo $this->formElement($form->get('email')) . "<br>";
-                echo $this->formElement($form->get('phoneNumber')) . "<br>";
-                echo $this->formElement($form->get('time'));
-                echo $this->formElement($form->get('peopleAmount'));
-                echo $this->formElement($form->get('message')) . "<br>";
-                echo $this->formElement($form->get('submit')) . "<br>";
-                echo $this->form()->closeTag();
-                ?>
-            <?php endif; ?>
+                    <h1>Date</h1>
 
-            <?php if (isset($this->tableAvailableFlag) && !$this->tableAvailableFlag): ?>
-                <h2><?php echo 'Reservation Details'; ?></h2>
-                <hr/>
-                <p><?= $this->message ?></p>
-            <?php endif; ?>
+                    <?php
+                    $form = $this->reservationSearchForm;
+                    $form->prepare();
+                    $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+                    $form->setAttribute('method', 'post');
+                    echo $this->form()->openTag($form);
+                    ?>
 
-            <?php if (isset($this->reservedFlag) && $this->reservedFlag): ?>
-                <h2><?php echo 'Reservation Result:'; ?></h2>
-                <hr/>
-                <p><?= $this->message ?></p>
-            <?php endif; ?>
+                    <div class="select-date">
+
+                        <div class="select-time day"><span><?php echo $form->get('date_d')->getValue(); ?></span>
+                            <?php echo $this->formElement($form->get('date_d')) ?>
+                        </div>
+                        <div class="select-time month"><span><?php echo $form->get('date_m')->getValue(); ?></span>
+                            <?php echo $this->formElement($form->get('date_m')) ?>
+                        </div>
+                        <div class="select-time year"><span><?php echo $form->get('date_y')->getValue(); ?></span>
+                            <?php echo $this->formElement($form->get('date_y')) ?>
+                        </div>
+                        <div class="clearfix visible-xs"></div>
+                        <div class="select-time hour"><span><?php echo $form->get('time_h')->getValue(); ?></span>
+                            <?php echo $this->formElement($form->get('time_h')) ?>
+                        </div>
+                        <div class="select-time minutes"><span><?php echo $form->get('time_m')->getValue(); ?></span>
+                            <?php echo $this->formElement($form->get('time_m')) ?>
+                        </div>
+                        <div class="select-time peopleAmount">
+                            <span><?php echo $form->get('peopleAmount')->getValue() . ' people'; ?></span>
+                            <?php echo $this->formElement($form->get('peopleAmount')) ?>
+                        </div>
+                        <div class="submit">
+                            <?php echo $this->formElement($form->get('submit')) ?>
+                        </div>
+
+                    </div>
+
+                    <?php
+                    echo $this->form()->closeTag();
+                    ?>
+
+                    <?php if (isset($this->tableAvailableFlag) && $this->tableAvailableFlag): ?>
+
+                        <h1>Reservation details</h1>
+                        <section class="form">
+
+                            <?php
+                            $form = $this->reservationDetailsForm;
+                            $form->prepare();
+//                            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+                            $form->setAttribute('action', 'reservationConfirm');
+                            $form->setAttribute('method', 'post');
+                            echo $this->form()->openTag($form);
+                            ?>
+
+                            <?php echo $this->formElement($form->get('reservationId')) ?>
+
+
+                            <div class="input-wrapper name">
+                                <?php echo $this->formElement($form->get('firstName')) ?>
+                            </div>
+
+                            <div class="input-wrapper name">
+                                <?php echo $this->formElement($form->get('lastName')) ?>
+                            </div>
+
+                            <div class="input-wrapper email">
+                                <?php echo $this->formElement($form->get('email')) ?>
+                            </div>
+                            <div class="input-wrapper phone">
+                                <?php echo $this->formElement($form->get('phoneNumber')) ?>
+                            </div>
+
+                            <?php echo $this->formElement($form->get('time')); ?>
+                            <?php echo $this->formElement($form->get('peopleAmount')) ?>
+
+                            <div class="input-wrapper message">
+                                <?php echo $this->formElement($form->get('message')) ?>
+                            </div>
+
+
+                            <div class="input-wrapper">
+                                <div class="captcha-container">
+                                    <div>
+                                        <input class="contact-form" type="text" placeholder="captcha"
+                                               name="form-captcha" id="form-captcha">
+                                        <img id="captcha" src="inc/securimage/securimage_show.php" alt="captcha">
+                                        <button class="refresh-captcha"><i class="fa fa-refresh"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-success hidden">Reservation message was sent. Thank you!</div>
+                            <div class="input-wrapper submit">
+                                <?php echo $this->formElement($form->get('submit')) ?>
+                            </div>
+                        </section>
+
+                        <?php echo $this->form()->closeTag(); ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($this->tableAvailableFlag) && !$this->tableAvailableFlag): ?>
+                        <h1><?php echo 'Reservation Details'; ?></h1>
+                        <hr/>
+                        <p><?= $this->message ?></p>
+                    <?php endif; ?>
+
+                    <?php if (isset($this->reservedFlag) && $this->reservedFlag): ?>
+                        <h1><?php echo 'Reservation Result:'; ?></h1>
+                        <hr/>
+                        <p><?= $this->message ?></p>
+                    <?php endif; ?>
+
+                </div>
+            </div>
 
         </div>
     </div>

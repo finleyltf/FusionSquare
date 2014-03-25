@@ -14,7 +14,9 @@ class ReservationSearchForm extends Form
         /**
          * Reservation Search Form
          *
-         * date
+         * date_d
+         * date_m
+         * date_y
          * time_h
          * time_m
          * people amount
@@ -24,19 +26,49 @@ class ReservationSearchForm extends Form
          */
 
         // date
+//        $this->add(array(
+//            'type'       => 'Zend\Form\Element\Date',
+//            'name'       => 'date',
+//            'options'    => array(
+//                'label'  => 'Date',
+//                'format' => 'Y-m-d'
+//            ),
+//            'attributes' => array(
+//                'value' => date('Y-m-d'),
+//            )
+//        ));
+
+        // date_d
         $this->add(array(
-            'type'       => 'Zend\Form\Element\Date',
-            'name'       => 'date',
+            'type'       => 'Zend\Form\Element\Select',
+            'name'       => 'date_d',
             'options'    => array(
-                'label'  => 'Date',
-                'format' => 'Y-m-d'
+                'label'         => 'date day',
+                'value_options' => array(),
             ),
-            'attributes' => array(
-//                'min' => '2012-01-01',
-//                'max' => '2020-01-01',
-//                'step' => '1', // days; default step interval is 1 day
-                'value' => date('Y-m-d'),
-            )
+            'attributes' => array()
+        ));
+
+        // date_m
+        $this->add(array(
+            'type'       => 'Zend\Form\Element\Select',
+            'name'       => 'date_m',
+            'options'    => array(
+                'label'         => 'date month',
+                'value_options' => array(),
+            ),
+            'attributes' => array()
+        ));
+
+        // date_y
+        $this->add(array(
+            'type'       => 'Zend\Form\Element\Select',
+            'name'       => 'date_y',
+            'options'    => array(
+                'label'         => 'date year',
+                'value_options' => array(),
+            ),
+            'attributes' => array()
         ));
 
         // time_h
@@ -65,13 +97,13 @@ class ReservationSearchForm extends Form
                 ),
             ),
             'attributes' => array(
-                'value' => 0 //set selected to '0'
+                'value' => '00' //set selected to '0'
             )
         ));
 
         // peopleAmount
         $peopleAmountList = array();
-        for ($count = 1; $count <= 20; $count++):
+        for ($count = 1; $count <= 12; $count++):
             $peopleAmountList[$count] = (string)$count . ' people';
         endfor;
         $this->add(array(
@@ -93,7 +125,7 @@ class ReservationSearchForm extends Form
             'attributes' => array(
                 'type'  => 'submit',
                 'value' => 'Find a Table',
-                'id'    => 'submitbutton',
+//                'id'    => 'submitbutton',
             ),
         ));
 
