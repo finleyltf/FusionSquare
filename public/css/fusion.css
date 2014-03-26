@@ -88,3 +88,14 @@
     -ms-transition: background-color .3s,-ns-transform .3s;
 }
 
+#second-menu .menu-header h2 span:before, #third-menu .menu-header h2 span:before {  }
+.fusion-menu .dish .qty , .fusion-menu .dish .cname , .fusion-menu .dish .ename{ display: none; }
+.fusion-menu .dish .first { width: 100%; display: block; height: 42px; }
+.fusion-menu .dish .first .dish-image { float: left; }
+.fusion-menu .dish .first .fname { float: left; margin-left: 25px; font-size: 16px; padding-top: 10px; }
+.fusion-menu .dish .description { padding: 0px; margin: 10px 0px!important; font-size: 12px!important; }
+.fusion-menu .dish .third { margin-left: 30%; margin-right: 30%; }
+.fusion-menu .menu-item .submit { display: none; }
+.fusion-menu .menu-item .restaurant { display: none; }
+.container { font-family: Verdana; }
+.fusion-menu .dish .spice-degree { float: left; background: url("../img/pepper.png") no-repeat; text-indent: -9999px; width: 35px; height: 30px;}

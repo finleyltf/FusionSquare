@@ -1,4 +1,4 @@
-<div class="dynamic-content" id="main-content">
+<div class="dynamic-content fusion-menu" id="main-content">
     <div id="third-menu" class="menu padding-wrapper">
         <div class="container animate-in animate-in-fade">
             <?php foreach($categories as $category) : ?>
@@ -9,30 +9,43 @@
                         </div>
                     </div>
                 </header>
-                <?php foreach ($dishes as $dish) : ?>
-                    <form action="cart/add" method="get">
-                        <?php if( $dish->category->getName() == $category->getName() ): ?>
-                        <div class="dish">
-                        <?php echo $this->escapeHtml($dish->fName); ?>
-                        <?php echo $this->escapeHtml($dish->cName); ?>
-                        <?php echo $this->escapeHtml($dish->eName); ?>
-                        <?php echo $this->escapeHtml($dish->description); ?>
-                        <?php echo $this->escapeHtml($dish->spiceDgree); ?>
-                        <img src="/uploads/<?php echo $this->escapeHtml($dish->image); ?>" alt="Smiley face" height="42" width="42">
-                        <?php echo $this->escapeHtml($dish->restaurant->getName()); ?>
-                        <select name="qty">
-                            <option value="1" selected="selected">Please select amount</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                        <input type="hidden" name="id" value="<?php echo $this->escapeHtml($dish->dishId); ?>" />
-                        </div>
-                        <input type="submit" value="add to cart" class="btn btn-primary">
-                    <?php endif; ?>
-                    </form>
-                <?php endforeach; ?>
+                <section class="row">
+                    <?php foreach ($dishes as $dish) : ?>
+                    <div class="menu-list col-sm-6 col-md-4">
+                        <article class="menu-item">
+                        <form action="cart/add" method="get">
+                            <?php if( $dish->category->getName() == $category->getName() ): ?>
+                            <div class="dish">
+                                <div class="first">
+                                    <div class="dish-image"><img src="/uploads/<?php echo $this->escapeHtml($dish->image); ?>" alt="Smiley face" height="42" width="42"></div>
+                                    <div class="fname"><?php echo $this->escapeHtml($dish->fName); ?></div>
+                                    <div class="cname"><?php echo $this->escapeHtml($dish->cName); ?></div>
+                                    <div class="ename"><?php echo $this->escapeHtml($dish->eName); ?></div>
+                                </div>
+                                <div class="description second"><?php echo $this->escapeHtml($dish->description); ?></div>
+                                <?php if ($this->escapeHtml($dish->spiceDgree) != 0 ): ?>
+                                <div class="third">
+                                    <div class="spice-degree"><?php echo $this->escapeHtml($dish->spiceDgree); ?></div>
+                                    <?php endif; ?>
+                                    <div class="price"><?php echo $this->escapeHtml($dish->getPrice()); ?>€</div>
+                                </div>
+                                <div class="restaurant"><?php echo $this->escapeHtml($dish->restaurant->getName()); ?></div>
+                                <select name="qty" class="qty">
+                                    <option value="1" selected="selected">Please select amount</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <input type="hidden" name="id" value="<?php echo $this->escapeHtml($dish->dishId); ?>" />
+                            </div>
+                            <input type="submit" value="add to cart" class="btn btn-primary submit">
+                        <?php endif; ?>
+                        </form>
+                        </article>
+                    </div>
+                    <?php endforeach; ?>
+                </section>
             <?php endforeach; ?>
         </div>
     </div>
