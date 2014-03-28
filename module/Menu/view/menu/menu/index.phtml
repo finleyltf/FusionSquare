@@ -5,7 +5,7 @@
                 <header class="row">
                     <div class="col-md-12">
                         <div class="menu-header">
-                            <h2><span><?php echo $category->getName() ; ?> <i class="fa fa-lemon-o"></i></span></h2>
+                            <h2><span><?php echo $category->getName() ; ?> <i class="fa <?php echo $category->getName(); ?>"></i></span></h2>
                         </div>
                     </div>
                 </header>
@@ -23,9 +23,12 @@
                                     <div class="ename"><?php echo $this->escapeHtml($dish->eName); ?></div>
                                 </div>
                                 <div class="description second"><?php echo $this->escapeHtml($dish->description); ?></div>
-                                <?php if ($this->escapeHtml($dish->spiceDgree) != 0 ): ?>
                                 <div class="third">
-                                    <div class="spice-degree"><?php echo $this->escapeHtml($dish->spiceDgree); ?></div>
+                                    <?php if ($this->escapeHtml($dish->spiceDgree) != 0 ): ?>
+                                    <?php $spice = $dish->spiceDgree ?>
+                                        <?php for( $i = 0; $i < $spice; $i++ ) : ?>
+                                        <div class="spice-degree"><?php echo $this->escapeHtml($dish->spiceDgree); ?></div>
+                                        <?php endfor; ?>
                                     <?php endif; ?>
                                     <div class="price"><?php echo $this->escapeHtml($dish->getPrice()); ?>€</div>
                                 </div>

@@ -13,8 +13,8 @@ b*(7.5625*(a-=2.25/2.75)*a+0.9375)+c:b*(7.5625*(a-=2.625/2.75)*a+0.984375)+c},ea
 var scrollbarColor = '#111';
 var scrollbarColorMenu = '#fff';
 var scrollbarWidth = 4;
-var locationLatitude = -33.890367;
-var locationLongitude = 151.19168;
+var locationLatitude = 60.17726;
+var locationLongitude = 24.80475;
 var enableMenuColorbox = true;
 
 $ = jQuery.noConflict();
@@ -624,10 +624,10 @@ function initialize() {
 	var markerPosition = new google.maps.LatLng(locationLatitude, locationLongitude);
 
 	var mapOptions = {
-		zoom: 12,
+		zoom: 15,
 		center: markerPosition,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		scrollwheel: false,
+		scrollwheel: true,
 		styles: [{stylers: [{saturation: -100}]}]
 	};
 
@@ -637,8 +637,7 @@ function initialize() {
 		position: markerPosition,
 		title: 'Location',
 		map: map,
-		icon: { url: 'img/icon1.png', origin: new google.maps.Point(0, 0) },
-		draggable: false
+		icon: { url: '../img/icon1.png', origin: new google.maps.Point(0, 0) },
 	});
 }
 

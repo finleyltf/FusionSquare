@@ -1,3 +1,8 @@
+.logo img{
+width: 50%!important;
+}
+
+
 /*********** language icon ***********/
 
 .splash .layout-languages{
@@ -88,7 +93,8 @@
     -ms-transition: background-color .3s,-ns-transform .3s;
 }
 
-#second-menu .menu-header h2 span:before, #third-menu .menu-header h2 span:before {  }
+/****************** menu page ************************/
+.menu { background-image:none!important; }
 .fusion-menu .dish .qty , .fusion-menu .dish .cname , .fusion-menu .dish .ename{ display: none; }
 .fusion-menu .dish .first { width: 100%; display: block; height: 42px; }
 .fusion-menu .dish .first .dish-image { float: left; }
@@ -99,3 +105,7 @@
 .fusion-menu .menu-item .restaurant { display: none; }
 .container { font-family: Verdana; }
 .fusion-menu .dish .spice-degree { float: left; background: url("../img/pepper.png") no-repeat; text-indent: -9999px; width: 35px; height: 30px;}
+#second-menu .menu-header h2 span:after, #third-menu .menu-header h2 span:after { background: #000!important; }
+#second-menu .menu-header h2 span:before, #third-menu .menu-header h2 span:before { background: #000!important; }
+#second-menu .menu-header h2 span, #third-menu .menu-header h2 span { color: #000!important; }
+.menu .menu-list .menu-item { color: #000!important; }
