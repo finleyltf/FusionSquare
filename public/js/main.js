@@ -644,7 +644,7 @@ function initialize() {
 		zoom: 15,
 		center: markerPosition,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		scrollwheel: true,
+		scrollwheel: false,
 		styles: [{stylers: [{saturation: -100}]}]
 	};
 
