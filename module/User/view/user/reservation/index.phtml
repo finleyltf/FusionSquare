@@ -69,11 +69,19 @@
 
                     <?php if (isset($this->tableAvailableFlag) && $this->tableAvailableFlag): ?>
 
-                        <h1>Reservation details</h1>
+                        <?php $form = $this->reservationDetailsForm; ?>
+                        <h4>Complete Your Reservation at FusionSquare</h4>
+                        <h5>
+                            <?= date('l, dS F Y', strtotime($form->get('time')->getValue())) ?>,
+                            at
+                            <?= date('g:i A', strtotime($form->get('time')->getValue())) ?>
+                            for
+                            <?= $form->get('peopleAmount')->getValue() ?> people
+                        </h5>
+
                         <section class="form">
 
                             <?php
-                            $form = $this->reservationDetailsForm;
                             $form->prepare();
 //                            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
                             $form->setAttribute('action', 'reservationConfirm');
@@ -128,12 +136,6 @@
 
                     <?php if (isset($this->tableAvailableFlag) && !$this->tableAvailableFlag): ?>
                         <h1><?php echo 'Reservation Details'; ?></h1>
-                        <hr/>
-                        <p><?= $this->message ?></p>
-                    <?php endif; ?>
-
-                    <?php if (isset($this->reservedFlag) && $this->reservedFlag): ?>
-                        <h1><?php echo 'Reservation Result:'; ?></h1>
                         <hr/>
                         <p><?= $this->message ?></p>
                     <?php endif; ?>

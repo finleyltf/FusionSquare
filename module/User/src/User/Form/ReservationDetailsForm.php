@@ -40,7 +40,7 @@ class ReservationDetailsForm extends Form
             'name'       => 'firstName',
             'attributes' => array(
                 'type'        => 'text',
-                'placeholder' => 'First Name',
+                'placeholder' => 'First name',
                 'class' => 'contact-form',
                 'id' => 'form-firstName',
             ),
@@ -54,7 +54,7 @@ class ReservationDetailsForm extends Form
             'name'       => 'lastName',
             'attributes' => array(
                 'type'        => 'text',
-                'placeholder' => 'Last Name',
+                'placeholder' => 'Last name',
                 'class' => 'contact-form',
                 'id' => 'form-lastName',
             ),
@@ -82,7 +82,7 @@ class ReservationDetailsForm extends Form
             'name'       => 'phoneNumber',
             'attributes' => array(
                 'type'        => 'text',
-                'placeholder' => 'Phone Number',
+                'placeholder' => 'Phone number',
                 'class' => 'contact-form',
                 'id' => 'form-phoneNumber',
             ),
@@ -137,7 +137,7 @@ class ReservationDetailsForm extends Form
             'name'       => 'message',
             'attributes' => array(
                 'type'        => 'textarea',
-                'placeholder' => 'message',
+                'placeholder' => 'Special requests or allergies',
                 'class' => 'contact-form',
                 'id' => 'form-message',
 
