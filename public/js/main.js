@@ -654,7 +654,7 @@ function initialize() {
 		position: markerPosition,
 		title: 'Location',
 		map: map,
-		icon: { url: '../img/icon1.png', origin: new google.maps.Point(0, 0) },
+		icon: { url: '../img/icon-buffet.png', origin: new google.maps.Point(0, 0) },
 	});
 }
 
