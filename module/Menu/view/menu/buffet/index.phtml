@@ -6,14 +6,14 @@
             $this->headTitle($title);
             ?>
 
-<!--            <h2>--><?php //echo $this->escapeHtml($title . ' for the week'); ?><!--</h2>-->
+            <!--            <h2>--><?php //echo $this->escapeHtml($title . ' for the week'); ?><!--</h2>-->
 
             <ul id="tabs">
-                <li><a href="#" name="tab1">周一</a></li>
-                <li><a href="#" name="tab2">周二</a></li>
-                <li><a href="#" name="tab3">周三</a></li>
-                <li><a href="#" name="tab4">周四</a></li>
-                <li><a href="#" name="tab5">周五</a></li>
+                <li><a href="#" name="tab1" class="Monday">周一</a></li>
+                <li><a href="#" name="tab2" class="Tuesday">周二</a></li>
+                <li><a href="#" name="tab3" class="Wednesday">周三</a></li>
+                <li><a href="#" name="tab4" class="Thursday">周四</a></li>
+                <li><a href="#" name="tab5" class="Friday">周五</a></li>
             </ul>
             <div id="tab-content">
                 <?php for ($count = 1; $count <= 5; $count++): ?>
@@ -50,6 +50,32 @@
         </div>
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+    // buffet tabs
+    $(document).ready(function () {
+        $("#tab-content").find("[id^='tab']").hide(); // Hide all content
+//        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("li:nth-child(<?=$this->dayMark?>)").attr("id", "current"); // Activate the first tab
+
+        $("#tab-content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#tab-content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
 
 
 
