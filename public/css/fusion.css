@@ -116,14 +116,14 @@ padding-top: 10px!important;
 
 /****************** menu page ************************/
 .menu { background-image:none!important; }
-.fusion-menu .dish .qty , .fusion-menu .dish .cname , .fusion-menu .dish .ename{ display: none; }
+.fusion-menu .dish .qty , .fusion-menu .dish .cname , .fusion-menu .dish .ename{ }
 .fusion-menu .dish .first { width: 100%; display: block; height: 42px; }
 .fusion-menu .dish .first .dish-image { float: left; }
 .fusion-menu .dish .first .fname { float: left; margin-left: 25px; font-size: 16px; padding-top: 10px; }
 .fusion-menu .dish .description { padding: 0px; margin: 10px 0px!important; font-size: 12px!important; }
 .fusion-menu .dish .third { margin-left: 30%; margin-right: 30%; }
-.fusion-menu .menu-item .submit { display: none; }
-.fusion-menu .menu-item .restaurant { display: none; }
+.fusion-menu .menu-item .submit {  }
+.fusion-menu .menu-item .restaurant {  }
 .container { font-family: Verdana; }
 .fusion-menu .dish .spice-degree { float: left; background: url("../img/pepper.png") no-repeat; text-indent: -9999px; background-size:50%; margin-top:8px; width: 35px; height: 30px;}
 #second-menu .menu-header h2 span:after, #third-menu .menu-header h2 span:after { background: #000!important; }

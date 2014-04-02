@@ -7,21 +7,20 @@
 namespace Order; //重要！影响下面的Doctrine的__NAMESPACE__
 
 return array(
-    
-'controllers' => array(
+    'controllers' => array(
         'invokables' => array(
             'Order\Controller\Cart' => 'Order\Controller\CartController',
         ),
     ),
-    
+
     //Routes for this module
     'router' => array(
-        
+
         'routes' => array(
             'cart' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/cart[/:action][/:id]',
+                    'route' => '/[:lang]/cart[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -31,17 +30,17 @@ return array(
                         'action' => 'index',
                     ),
                 ),
-            ),           
+            ),
         ),
     ),
-    
+
     // View setup for this module
     'view_manager' => array(
         'template_path_stack' => array(
             'order' => __DIR__ . '/../view',
         ),
     ),
-    
+
     // Doctrine config
     'doctrine' => array(
         'driver' => array(
@@ -56,11 +55,10 @@ return array(
                 )
             )
         ),
-        
+
     ),
-    
-    
-    
+
+
     //when run ./vendor/bin/doctrine-module orm:validate-schema got 'Given route does not implement Console route interface' error
     'console' => array(
         'router' => array(),
