@@ -130,3 +130,6 @@ padding-top: 10px!important;
 #second-menu .menu-header h2 span:before, #third-menu .menu-header h2 span:before { background: #000!important; }
 #second-menu .menu-header h2 span, #third-menu .menu-header h2 span { color: #000!important; }
 .menu .menu-list .menu-item { color: #000!important; }
+
+/****************** menu page ************************/
+.cart { margin-top: 100px; }

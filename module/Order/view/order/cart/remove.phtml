@@ -1,0 +1,32 @@
+<?php session_start();?>
+<div class="cart">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>QTY</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>sub total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($carts as $cart): ?>
+            <tr class="active">
+                <td>
+                    <?php if($cart[qty]==null){ echo 0; } else{
+                        echo  $cart[qty];
+                    }
+                    ?>
+                </td>
+                <td><?php echo  $cart[fname]?></td>
+                <td><?php echo  $cart[price]?></td>
+                <td><?php $oneDishTotal = $cart[price]*$cart[qty]; echo $oneDishTotal; ?></td>
+                <td><a href="remove?id=<?php echo $cart[id] ?>&sid=<?php echo $sid ?>">remove item</a></td>
+            </tr>
+            <?php $total +=$oneDishTotal; ?>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="total">total: <?php echo $total."€" ?></div>
+    <div class="clearcart"><a href="removeall?sid=<?php echo $sid ?>">clear shopping cart</a></div>
+</div>

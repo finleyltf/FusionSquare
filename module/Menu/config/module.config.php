@@ -16,7 +16,6 @@ return array(
 
     //Routes for this module
     'router' => array(
-
         'routes' => array(
             'menu' => array(
                 'type' => 'segment',
