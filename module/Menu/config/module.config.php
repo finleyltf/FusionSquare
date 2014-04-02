@@ -10,9 +10,6 @@ return array(
 
 'controllers' => array(
         'invokables' => array(
-            'Menu\Controller\BuffetAdmin' => 'Menu\Controller\BuffetAdminController',
-            'Menu\Controller\Buffet' => 'Menu\Controller\BuffetController',
-            'Menu\Controller\MenuAdmin' => 'Menu\Controller\MenuAdminController',
             'Menu\Controller\Menu' => 'Menu\Controller\MenuController'
         ),
     ),
@@ -24,7 +21,7 @@ return array(
             'menu' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/menu[/:action][/:id]',
+                    'route' => '/[:lang]/menu[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -32,6 +29,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Menu\Controller\Menu',
                         'action' => 'index',
+                        'lang' => 'en'
                     ),
                 ),
             ),
