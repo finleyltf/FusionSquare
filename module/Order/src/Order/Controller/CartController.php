@@ -105,6 +105,11 @@ class CartController extends AbstractActionController
         //return $this->forward()->dispatch('Menu\Controller\menu', array('action' => 'index'));
     }
 
+    public function checkoutAction()
+    {
+
+    }
+
 }
 
 
