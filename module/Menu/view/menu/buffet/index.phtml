@@ -1,48 +1,108 @@
 <div class="dynamic-content buffet-wrapper" id="main-content">
-    <div class="container">
-        <div id="buffet" class="padding-wrapper">
+    <div id="second-menu" class="menu padding-wrapper">
+        <div id="buffet" class="container animate-in animate-in-fade">
             <?php
             $title = 'Buffet Menu';
             $this->headTitle($title);
             ?>
 
-            <!--            <h2>--><?php //echo $this->escapeHtml($title . ' for the week'); ?><!--</h2>-->
+            <header class="row">
+                <div class="col-md-12 col-md-offset-1">
+                    <ul id="tabs">
+                        <li><a href="#" name="tab1" class="Monday">周一</a></li>
+                        <li><a href="#" name="tab2" class="Tuesday">周二</a></li>
+                        <li><a href="#" name="tab3" class="Wednesday">周三</a></li>
+                        <li><a href="#" name="tab4" class="Thursday">周四</a></li>
+                        <li><a href="#" name="tab5" class="Friday">周五</a></li>
+                    </ul>
+                </div>
+            </header>
 
-            <ul id="tabs">
-                <li><a href="#" name="tab1" class="Monday">周一</a></li>
-                <li><a href="#" name="tab2" class="Tuesday">周二</a></li>
-                <li><a href="#" name="tab3" class="Wednesday">周三</a></li>
-                <li><a href="#" name="tab4" class="Thursday">周四</a></li>
-                <li><a href="#" name="tab5" class="Friday">周五</a></li>
-            </ul>
             <div id="tab-content">
                 <?php for ($count = 1; $count <= 5; $count++): ?>
                     <div id="tab<?= $count ?>">
-                        <table class="table">
-                            <tr>
-                                <th>dayMark</th>
-                                <th>display_order</th>
-                                <th>cName</th>
-                                <th>eName</th>
-                                <th>fName</th>
-                                <th>spice</th>
-                                <th>cold_dish</th>
-                            </tr>
-                            <?php foreach ($this->buffet as $buffet_dish) : ?>
-                                <?php if ($buffet_dish->dayMark == $count): ?>
-                                    <tr>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->dayMark); ?></td>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->displayOrder); ?></td>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->cName); ?></td>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->eName); ?></td>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->fName); ?></td>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->spiceDegree); ?></td>
-                                        <td><?php echo $this->escapeHtml($buffet_dish->coldDish); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </table>
+                        <header class="row">
+                            <div class="col-md-12">
+                                <div class="menu-header">
+                                    <h2><span>Main Course <i class="fa fa-bookmark"></i></span></h2>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="row">
+                            <div class="col-md-12">
+
+                                <dl>
+                                    <article>
+                                        <?php foreach ($this->buffet as $buffet_dish) : ?>
+                                            <?php if ($buffet_dish->dayMark == $count && $buffet_dish->coldDish != 1): ?>
+                                                <dd class="menu-list">
+                                                    <section class="menu-item">
+                                                        <p class="title"><?php echo $this->escapeHtml($buffet_dish->fName); ?>
+                                                            <span><?php echo $this->escapeHtml($buffet_dish->cName); ?></span>
+                                                        </p>
+                                                    </section>
+                                                </dd>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </article>
+                                </dl>
+                            </div>
+                        </section>
+                        <header class="row">
+                            <div class="col-md-12">
+                                <div class="menu-header">
+                                    <h2><span>Kiinalaisia kylmä tarjoiitavat 特色凉菜 <i class="fa fa-bookmark"></i></span>
+                                    </h2>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="row">
+                            <div class="col-md-12">
+                                <dl>
+                                    <article>
+                                        <?php foreach ($this->buffet as $buffet_dish) : ?>
+                                            <?php if ($buffet_dish->dayMark == $count && $buffet_dish->coldDish == 1): ?>
+                                                <dd class="menu-list">
+                                                    <section class="menu-item">
+                                                        <p class="title"><?php echo $this->escapeHtml($buffet_dish->fName); ?>
+                                                            <span><?php echo $this->escapeHtml($buffet_dish->cName); ?></span>
+                                                        </p>
+                                                    </section>
+                                                </dd>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </article>
+                                </dl>
+                            </div>
+                        </section>
+                        <header class="row">
+                            <div class="col-md-12">
+                                <div class="menu-header">
+                                    <h2><span>Jälkiruoka 甜点 <i class="fa fa-bookmark"></i></span></h2>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="row">
+                            <div class="col-md-12">
+                                <dl>
+                                    <article>
+                                        <?php foreach ($this->buffet as $buffet_dish) : ?>
+                                            <?php if ($buffet_dish->dayMark == $count && $buffet_dish->coldDish == 2): ?>
+                                                <dd class="menu-list">
+                                                    <section class="menu-item">
+                                                        <p class="title"><?php echo $this->escapeHtml($buffet_dish->fName); ?>
+                                                            <span><?php echo $this->escapeHtml($buffet_dish->cName); ?></span>
+                                                        </p>
+                                                    </section>
+                                                </dd>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </article>
+                                </dl>
+                            </div>
+                        </section>
                     </div>
+
                 <?php endfor; ?>
             </div>
 
@@ -50,7 +110,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script type="text/javascript">
