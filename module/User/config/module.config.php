@@ -19,7 +19,7 @@ return array(
             'reservation' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'       => '/reservation[/:action][/:id]',
+                    'route'       => '[/:lang]/reservation[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
@@ -27,6 +27,7 @@ return array(
                     'defaults'    => array(
                         'controller' => 'User\Controller\Reservation',
                         'action'     => 'index',
+//                        'lang' => 'fi'
                     ),
                 ),
             ),

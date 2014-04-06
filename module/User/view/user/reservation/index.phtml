@@ -30,7 +30,16 @@
                     <?php
                     $form = $this->reservationSearchForm;
                     $form->prepare();
-                    $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+
+                    if (strpos($this->serverUrl(true), 'en') !== false) {
+                        $form->setAttribute('action', $this->url('reservation', array('lang' => 'en')));
+                    }
+                    if (strpos($this->serverUrl(true), 'cn') !== false) {
+                        $form->setAttribute('action', $this->url('reservation', array('lang' => 'cn')));
+                    }
+                    if (strpos($this->serverUrl(true), 'cn') === false && strpos($this->serverUrl(true), 'en') === false) {
+                        $form->setAttribute('action', $this->url('reservation'));
+                    }
                     $form->setAttribute('method', 'post');
                     echo $this->form()->openTag($form);
                     ?>
@@ -83,7 +92,7 @@
 
                             <?php
                             $form->prepare();
-//                            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
+                            //                            $form->setAttribute('action', $this->url('reservation', array('action' => 'index')));
                             $form->setAttribute('action', 'reservationConfirm');
                             $form->setAttribute('method', 'post');
                             echo $this->form()->openTag($form);
@@ -120,7 +129,7 @@
                                     <div>
                                         <input class="contact-form" type="text" placeholder="captcha"
                                                name="form-captcha" id="form-captcha">
-                                        <img id="captcha" src="inc/securimage/securimage_show.php" alt="captcha">
+                                        <img id="captcha" src="<?= $this->serverUrl() ?>/inc/securimage/securimage_show.php" alt="captcha">
                                         <button class="refresh-captcha"><i class="fa fa-refresh"></i></button>
                                     </div>
                                 </div>

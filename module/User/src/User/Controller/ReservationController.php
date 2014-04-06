@@ -71,7 +71,6 @@ class ReservationController extends AbstractActionController
             ->setValueOptions($monthList)
             ->setAttribute('id', "select-month");
 
-
         // setValueOptions for day_y
         $currentYear = date('Y');
         $yearList    = array(
@@ -83,7 +82,6 @@ class ReservationController extends AbstractActionController
             ->setValue($currentYear)
             ->setValueOptions($yearList)
             ->setAttribute('id', "select-year");
-
 
         // setValueOptions for time_h
         $hourList = array();
@@ -111,8 +109,6 @@ class ReservationController extends AbstractActionController
                 )
             );
 
-
-
         // getRequest
         $request = $this->getRequest();
 
@@ -121,17 +117,16 @@ class ReservationController extends AbstractActionController
             $buttonFlag = $request->getPost('submit');
             if ($buttonFlag == 'Find a Table') {
                 // flag: date and time selected ok?
-                $date_d = $request->getPost('date_d');
-                $date_m = $request->getPost('date_m');
-                $date_y = $request->getPost('date_y');
-                $date   = $date_y . '-' . $date_m . '-' . $date_d;
-                $time_h = $request->getPost('time_h');
-                $time_m = $request->getPost('time_m');
-                $time_s = '00';
-                $time   = $time_h . ':' . $time_m . ':' . $time_s;
-                $dateTime = $date . ' ' . $time;
+                $date_d       = $request->getPost('date_d');
+                $date_m       = $request->getPost('date_m');
+                $date_y       = $request->getPost('date_y');
+                $date         = $date_y . '-' . $date_m . '-' . $date_d;
+                $time_h       = $request->getPost('time_h');
+                $time_m       = $request->getPost('time_m');
+                $time_s       = '00';
+                $time         = $time_h . ':' . $time_m . ':' . $time_s;
+                $dateTime     = $date . ' ' . $time;
                 $peopleAmount = $request->getPost('peopleAmount');
-
 
                 // update the reservationSearchForm
                 $reservationSearchForm->get('date_d')->setValue($date_d);
@@ -153,7 +148,6 @@ class ReservationController extends AbstractActionController
 //                        ->setOptions(array('format' => 'Y-m-d H:i'));
                     $reservationDetailsForm->get('peopleAmount')
                         ->setValue($request->getPost('peopleAmount'));
-
 //                        ->setAttribute('readonly', 'readonly');
 
                     return array(
@@ -169,9 +163,8 @@ class ReservationController extends AbstractActionController
                         'reservationSearchForm' => $reservationSearchForm,
                         'message'               => 'No table available for selected time, please choose another time'
                     );
-
-
                 }
+
             } elseif ($buttonFlag == 'CONFIRM') {
                 $data_entered = array_merge_recursive(
                     $request->getPost()->toArray()
@@ -235,11 +228,11 @@ class ReservationController extends AbstractActionController
             $validation = array();
 
             if (!isset($_POST['firstName']) || $_POST['firstName'] == '') {
-                $validation[] = array('message'=>'Please enter Your firstName', 'id'=>'email');
+                $validation[] = array('message' => 'Please enter Your firstName', 'id' => 'email');
             }
 
             if (!isset($_POST['email']) || $_POST['email'] == '') {
-                $validation[] = array('message'=>'Please enter email', 'id'=>'email');
+                $validation[] = array('message' => 'Please enter email', 'id' => 'email');
             }
 
             require_once getcwd() . '/public/inc/securimage/securimage.php';
@@ -276,13 +269,13 @@ class ReservationController extends AbstractActionController
 //            $message .= " Time: " . $hour . " " . $minute . " " . $ampm;
 
             $subject = 'Restaurant Revesrvation details';
-            $headers = 'From: '. $_POST['email']. "\r\n" .'Reply-To: '. $_POST['email']. "\r\n" .'X-Mailer: PHP/' . phpversion();
+            $headers = 'From: ' . $_POST['email'] . "\r\n" . 'Reply-To: ' . $_POST['email'] . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
             if (empty($validation)) {
                 if (mail($email, $subject, $message, $headers)) {
-                    echo json_encode(array('success'=>(bool)true, 'message'=>''));
+                    echo json_encode(array('success' => (bool)true, 'message' => ''));
                 } else {
-                    echo json_encode(array('success'=>(bool)false, 'type'=>'system', 'data'=>array('message'=>'Sending error, please try again later')));
+                    echo json_encode(array('success' => (bool)false, 'type' => 'system', 'data' => array('message' => 'Sending error, please try again later')));
                 }
 
 
@@ -331,7 +324,7 @@ class ReservationController extends AbstractActionController
 
 
             } else {
-                echo json_encode(array('success'=>(bool)false, 'type'=>'validation', 'data'=>$validation));
+                echo json_encode(array('success' => (bool)false, 'type' => 'validation', 'data' => $validation));
             }
 
             die();

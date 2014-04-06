@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-12">
                             <div class="info">
-                                <h1><?php echo $this->translate(Info) ?></h1>
+                                <h1><?php echo $this->translate("Info") ?></h1>
                                 <p>Lorem ipsum nunc gravida ut ornare, id at varius quam. Mattis quis tortor hendrerit, mollis ligula platea rhoncus, himenaeos facilisis. Condimentum et urna sit blandit ultricies, nullam arcu eget proin. </p>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 <div class="captcha-container">
                                     <div>
                                         <input class="contact-form" type="text" placeholder="captcha" name="form-captcha" id="form-captcha">
-                                        <img id="captcha" src="inc/securimage/securimage_show.php" alt="captcha">
+                                        <img id="captcha" src="<?= $this->serverUrl() ?>/inc/securimage/securimage_show.php" alt="captcha">
                                         <button class="refresh-captcha"><i class="fa fa-refresh"></i></button>
                                     </div>
                                 </div>

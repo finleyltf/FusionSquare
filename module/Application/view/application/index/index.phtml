@@ -20,22 +20,26 @@
     </div>
     <div class="languages top">
         <?php
-        $home = str_replace('index','',$this->serverUrl(true));
+        $home = str_replace('index','',$this->serverUrl());
+        $fiUrl = $home;
         $enUrl = str_replace('cn','en',$home);
         $cnUrl = str_replace('en','cn',$home);
-        if (strpos($enUrl,'en') == false) {
-            $enUrl = $enUrl."en";
+        if (strpos($enUrl,'en') === false) {
+            $enUrl = $enUrl."/en";
         }
-        if (strpos($cnUrl,'cn') == false) {
-            $cnUrl = $cnUrl."cn";
+        if (strpos($cnUrl,'cn') === false) {
+            $cnUrl = $cnUrl."/cn";
         }
         ?>
         <ul>
             <li>
-                <a  onclick="location.href='<?php echo $enUrl; ?>'"  title="Finnish"><span>FI</span></a>
+                <a  onclick="location.href='<?php echo $fiUrl; ?>'"  title="Suomi"><span>FI</span></a>
             </li>
             <li>
-                <a  onclick="location.href='<?php echo $cnUrl; ?>'"  title="Chinese"><span>CN</span></a>
+                <a  onclick="location.href='<?php echo $enUrl; ?>'"  title="English"><span>EN</span></a>
+            </li>
+            <li>
+                <a  onclick="location.href='<?php echo $cnUrl; ?>'"  title="中文"><span>CN</span></a>
             </li>
         </ul>
     </div>
