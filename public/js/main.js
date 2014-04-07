@@ -604,6 +604,7 @@ $('document').ready(function($) {
 				// handle server fail here
 			});
 		});
+
 });
 
 //googleMap

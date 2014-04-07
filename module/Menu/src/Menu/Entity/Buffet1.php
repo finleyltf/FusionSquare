@@ -65,9 +65,9 @@ class Buffet1
     private $spiceDegree;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="cold_dish", type="boolean", nullable=true)
+     * @ORM\Column(name="cold_dish", type="integer", nullable=true)
      */
     private $coldDish;
 
@@ -220,7 +220,7 @@ class Buffet1
     /**
      * Set coldDish
      *
-     * @param boolean $coldDish
+     * @param integer $coldDish
      *
      * @return Buffet1
      */
@@ -234,7 +234,7 @@ class Buffet1
     /**
      * Get coldDish
      *
-     * @return boolean
+     * @return integer
      */
     public function getColdDish()
     {
