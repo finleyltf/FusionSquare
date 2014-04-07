@@ -20,7 +20,7 @@ return array(
             'cart' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:lang]/cart[/:action][/:id]',
+                    'route' => '/cart[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',

@@ -35,11 +35,7 @@ $paypal_id='linyusos@gmail.com';  // sriniv_1293527277_biz@inbox.com
         </table>
         <div class="total">total: <input type='text' name='amount' value='<?php echo $total ?>'>€</div>
         <div class="clearcart"><a href="removeall?sid=<?php echo $sid ?>">clear shopping cart</a></div>
-        <?php if(strpos($this->serverUrl(true),'cn') == false) : ?>
-            <div class="continue"><a href="<?php echo $this->serverUrl() ?>/en/menu">continue shopping</a></div>
-        <?php else : ?>
-            <div class="continue"><a href="<?php echo $this->serverUrl() ?>/cn/menu">continue shopping</a></div>
-        <?php endif; ?>
+            <div class="continue"><a href="<?php echo $this->serverUrl() ?>/menu">continue shopping</a></div>
         <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
         <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </div>

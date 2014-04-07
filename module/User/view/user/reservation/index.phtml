@@ -30,16 +30,8 @@
                     <?php
                     $form = $this->reservationSearchForm;
                     $form->prepare();
+                    $form->setAttribute('action', $this->url('reservation'));
 
-                    if (strpos($this->serverUrl(true), 'en') !== false) {
-                        $form->setAttribute('action', $this->url('reservation', array('lang' => 'en')));
-                    }
-                    if (strpos($this->serverUrl(true), 'cn') !== false) {
-                        $form->setAttribute('action', $this->url('reservation', array('lang' => 'cn')));
-                    }
-                    if (strpos($this->serverUrl(true), 'cn') === false && strpos($this->serverUrl(true), 'en') === false) {
-                        $form->setAttribute('action', $this->url('reservation'));
-                    }
                     $form->setAttribute('method', 'post');
                     echo $this->form()->openTag($form);
                     ?>

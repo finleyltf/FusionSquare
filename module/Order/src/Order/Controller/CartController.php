@@ -96,11 +96,7 @@ class CartController extends AbstractActionController
         $server_url = $this->getRequest()->getUri()->getScheme() . '://' . $this->getRequest()->getUri()->getHost();
         $helper = new ServerUrl();
         $url = $helper->__invoke(true);
-        if(strpos($url,'/cn')!== false){
-            $menuurl = $server_url.'/cn/menu';
-        }else{
-            $menuurl = $server_url.'/en/menu';
-        }
+        $menuurl = $server_url.'/menu';
         $this->redirect()->toUrl($menuurl);
         //return $this->forward()->dispatch('Menu\Controller\menu', array('action' => 'index'));
     }
