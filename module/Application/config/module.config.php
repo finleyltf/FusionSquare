@@ -13,7 +13,7 @@ return array(
             'home' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route'    => '/[:lang][/:action]',
+                    'route'    => '/[/:action]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
