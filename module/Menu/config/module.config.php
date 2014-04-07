@@ -54,7 +54,7 @@ return array(
             'buffet' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/[:lang]/buffet[/:action][/:id]',
+                    'route' => '[/:lang]/buffet[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -62,7 +62,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Menu\Controller\Buffet',
                         'action' => 'index',
-                        'lang' => 'en'
+//                        'lang' => 'en'
                     ),
                 ),
             ),

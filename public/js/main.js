@@ -363,7 +363,10 @@ $('document').ready(function($) {
 
 	$(document).on('click', '.refresh-captcha', function(e) {
 		e.preventDefault();
-		$('#captcha').attr('src', 'inc/securimage/securimage_show.php?' + Math.random());
+        if (!window.location.origin)
+            window.location.origin = window.location.protocol+"//"+window.location.host;
+        baseurl = window.location.origin;
+		$('#captcha').attr('src', baseurl + '/inc/securimage/securimage_show.php?' + Math.random());
 	});
 
 	$(document).on("focus", "#reservation-form input, #reservation-form textarea", function(e) {

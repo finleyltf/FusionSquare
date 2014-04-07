@@ -41,19 +41,24 @@
 
             if ($route=="/"||$route=="/index"){
                 $homeUrl = str_replace('index' ,'',$this->serverUrl());
+                $fiUrl = $homeUrl;
                 $enUrl = $homeUrl.'en';
                 $cnUrl = $homeUrl.'cn';
             }else{
+                $fiUrl = $this->serverUrl().$route;
                 $enUrl = $this->serverUrl().'/en'.$route;
                 $cnUrl = $this->serverUrl().'/cn'.$route;
             }
             ?>
             <ul>
                 <li>
-                    <a  href="<?php echo $enUrl; ?>"  title="Finnish"><span>FI</span></a>
+                    <a  href="<?php echo $fiUrl; ?>"  title="Suomi"><span>FI</span></a>
                 </li>
                 <li>
-                    <a  href="<?php echo $cnUrl; ?>"  title="Chinese"><span>CN</span></a>
+                    <a  href="<?php echo $enUrl; ?>"  title="English"><span>EN</span></a>
+                </li>
+                <li>
+                    <a  href="<?php echo $cnUrl; ?>"  title="中文"><span>CN</span></a>
                 </li>
             </ul>
         </div>
@@ -126,12 +131,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <?php  $baseurlwithlanguage = str_replace($route ,'',$this->serverUrl(true)); ?>
-                                    <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false)) :?>
-                                        <a href="<?php echo $baseurlwithlanguage ?>/buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt="" /></a>
-                                    <?php else : ?>
-                                        <a href="<?php echo $this->serverUrl() ?>/en/buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt="" /></a>
-                                    <?php endif; ?>
+                                    <a href="buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
