@@ -127,12 +127,12 @@ padding-top: 10px!important;
 .fusion-menu .dish .third { margin-left: 30%; margin-right: 30%; }
 .fusion-menu .menu-item .submit {  }
 .fusion-menu .menu-item .restaurant {  }
-.container { font-family: Verdana; }
+/*.container { font-family: Verdana; }*/
 .fusion-menu .dish .spice-degree { float: left; background: url("../img/pepper.png") no-repeat; text-indent: -9999px; background-size:50%; margin-top:8px; width: 35px; height: 30px;}
 #second-menu .menu-header h2 span:after, #third-menu .menu-header h2 span:after { background: #000!important; }
 #second-menu .menu-header h2 span:before, #third-menu .menu-header h2 span:before { background: #000!important; }
 #second-menu .menu-header h2 span, #third-menu .menu-header h2 span { color: #000!important; }
-.menu .menu-list .menu-item { color: #000!important; }
+.menu .menu-list .menu-item { color: #000!important; font-family: Verdana; }
 
 
 /****************** buffet page ************************/
@@ -163,3 +163,18 @@ padding-top: 10px!important;
 /****************** end of buffet page ************************/
 /****************** menu page ************************/
 .cart { margin-top: 100px; }
+
+
+/****************** restaurant page ************************/
+#restaurant .gallery .square-bg { background-image: url("../img/fusion/GALLERY.jpg");  }
+#restaurant .reservation .square-bg { background-image: url("../img/fusion/CONTACT11.jpg");  }
+#restaurant .contact .square-bg { background-image: url("../img/fusion/CONTACT11.jpg");  }
+#restaurant .menu-slider .slider1 .square-bg { background-image: url("../img/fusion/MENU2.png");  }
+#restaurant .menu-slider .slider2 .square-bg { background-image: url("../img/fusion/MENU2.png");  }
+#restaurant .menu-slider .slider3 .square-bg { background-image: url("../img/fusion/MENU2.png");  }
+#restaurant .opening-hour .square-bg { background-image: url("../img/fusion/OPENING HOUR.jpg");  }
+#restaurant .special-offer .square-bg { background-image: url("../img/fusion/SPECIALOFFER1.jpg");  }
+#restaurant .lunch-buffet .square-bg { background-image: url("../img/fusion/BUFFET21.jpg");  }
+
+/****************** index page ************************/
+.reservation .item { width: 680px; height: 596px; }
