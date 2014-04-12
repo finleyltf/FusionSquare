@@ -17,7 +17,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
-                        'lang'          => 'en'
+                        'lang'          => 'fi'
                     ),
                 ),
             ),
