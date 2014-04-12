@@ -41,19 +41,24 @@
 
             if ($route=="/"||$route=="/index"){
                 $homeUrl = str_replace('index' ,'',$this->serverUrl());
+                $fiUrl = $homeUrl;
                 $enUrl = $homeUrl.'en';
                 $cnUrl = $homeUrl.'cn';
             }else{
+                $fiUrl = $this->serverUrl().$route;
                 $enUrl = $this->serverUrl().'/en'.$route;
                 $cnUrl = $this->serverUrl().'/cn'.$route;
             }
             ?>
             <ul>
                 <li>
-                    <a  href="<?php echo $enUrl; ?>"  title="Finnish"><span>FI</span></a>
+                    <a  href="<?php echo $fiUrl; ?>"  title="Suomi"><span>FI</span></a>
                 </li>
                 <li>
-                    <a  href="<?php echo $cnUrl; ?>"  title="Chinese"><span>CN</span></a>
+                    <a  href="<?php echo $enUrl; ?>"  title="English"><span>EN</span></a>
+                </li>
+                <li>
+                    <a  href="<?php echo $cnUrl; ?>"  title="中文"><span>CN</span></a>
                 </li>
             </ul>
         </div>
@@ -65,7 +70,7 @@
                         <ul class="main-menu nav">
                             <li>
                                 <header class="small-logo">
-                                    <a href="<?php echo $this->serverUrl(); ?>" title=""><img src="<?php echo $this->serverUrl();?>img/logo.png" alt="Barnelli"/></a>
+                                    <a href="<?php echo $this->serverUrl(); ?>" title=""><img src="<?php echo $this->serverUrl();?>/img/logo.png" alt="Barnelli"/></a>
                                 </header>
                             </li>
                             <li class="reorder">
@@ -101,37 +106,42 @@
                         <ul class="main-nav white-nav dotted-separator">
                             <li>
                                 <div>
-                                    <a href="restaurant" class="content-link restaurant-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="<?php echo $this->serverUrl();?>/img/restaurant.png" width="32" height="32" alt=""/></a>
+                                    <a href="restaurant" class="content-link restaurant-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-restaurant.png" width="32" height="32" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="menu" class="content-link menu-wrapper"><span><?php echo $this->translate('Menu') ?></span> <img src="<?php echo $this->serverUrl();?>/img/menu.png" alt="" /></a>
+                                    <?php  $baseurlwithlanguage = str_replace($route ,'',$this->serverUrl(true)); ?>
+                                    <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false)) :?>
+                                    <a href="<?php echo $baseurlwithlanguage ?>/menu" class="content-link menu-wrapper"><span><?php echo $this->translate('Menu') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-menu.png" alt="" /></a>
+                                    <?php else : ?>
+                                        <a href="<?php echo $this->serverUrl() ?>/en/menu" class="content-link menu-wrapper"><span><?php echo $this->translate('Menu') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-menu.png" alt="" /></a>
+                                    <?php endif; ?>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/gallery.png" width="32" height="32" alt=""/></a>
+                                    <a href="gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-gallery.png" width="32" height="32" alt=""/></a>
                                 </div>
                             </li>
                             <li class="menu-image">
                                 <div>
-                                    <a class="content-link logo" title="logo" href="<?php echo $this->serverUrl(); ?>"><img src="<?php echo $this->serverUrl();?>/img/fusionlogo.png"  ></a>
+                                    <a class="content-link logo" title="logo" href="<?php echo $this->serverUrl(); ?>"><img src="<?php echo $this->serverUrl();?>/img/WEBLOGO.png"  ></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span><img src="<?php echo $this->serverUrl();?>/img/icon1.png" alt=""/></a>
+                                    <a href="buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon3.png" alt=""/></a>
+                                    <a href="reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-reservation.png" alt=""/></a>
                                 </div>
                             </li>
                             <li>
                                 <div>
-                                    <a href="contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span><img src="<?php echo $this->serverUrl();?>/img/icon4.png" alt=""/></a>
+                                    <a href="contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span><img src="<?php echo $this->serverUrl();?>/img/icon-contact.png" alt=""/></a>
                                 </div>
                             </li>
                         </ul>

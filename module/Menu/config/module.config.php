@@ -19,12 +19,11 @@ return array(
 
     //Routes for this module
     'router' => array(
-
         'routes' => array(
             'menu' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/menu[/:action][/:id]',
+                    'route' => '/[:lang]/menu[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -32,13 +31,14 @@ return array(
                     'defaults' => array(
                         'controller' => 'Menu\Controller\Menu',
                         'action' => 'index',
+                        'lang' => 'en'
                     ),
                 ),
             ),
             'buffetAdmin' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffetAdmin[/][/:action][/:weekMark][/:id]',
+                    'route' => '/buffetAdmin[/][:action][/:weekMark][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'weekMark' => '[1-2]',
@@ -54,7 +54,7 @@ return array(
             'buffet' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/buffet[/][/:action][/:id]',
+                    'route' => '[/:lang]/buffet[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
@@ -62,6 +62,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Menu\Controller\Buffet',
                         'action' => 'index',
+//                        'lang' => 'en'
                     ),
                 ),
             ),

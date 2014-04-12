@@ -46,6 +46,11 @@ class BuffetController extends AbstractActionController
         $week_number_reminder    = fmod(floatval($week_number_of_the_year), 2.00); // 把$week_number_of_the_year转为float型，计算余数, 转为float计算就不会产生整型溢出问题
         $weekMark                = ($week_number_reminder == 0) ? ($week_number_reminder += 2) : $week_number_reminder;
 
+        // if today is Saturday or Sunday, switch to next week's buffet menu
+        if ($dayMark == '6' || $dayMark == '7') {
+            $dayMark  = '1';
+            $weekMark = ($weekMark == 1) ? $weekMark + 1 : $weekMark - 1;
+        }
 
         // fetch all buffet, based on weekMark
         $buffet = $this->getEntityManager()->getRepository('Menu\Entity\Buffet' . $weekMark)->findall();
