@@ -19,7 +19,7 @@ return array(
             'reservation' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'       => '[/:lang]/reservation[/:action][/:id]',
+                    'route'       => '/reservation[/:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
