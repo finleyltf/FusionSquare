@@ -37,7 +37,10 @@
                     if (strpos($this->serverUrl(true), 'cn') !== false) {
                         $form->setAttribute('action', $this->url('reservation', array('lang' => 'cn')));
                     }
-                    if (strpos($this->serverUrl(true), 'cn') === false && strpos($this->serverUrl(true), 'en') === false) {
+                    if (strpos($this->serverUrl(true), 'fi') !== false) {
+                        $form->setAttribute('action', $this->url('reservation', array('lang' => 'fi')));
+                    }
+                    if (strpos($this->serverUrl(true), 'cn') === false && strpos($this->serverUrl(true), 'en') === false && strpos($this->serverUrl(true), 'fi') === false) {
                         $form->setAttribute('action', $this->url('reservation'));
                     }
                     $form->setAttribute('method', 'post');
@@ -129,7 +132,9 @@
                                     <div>
                                         <input class="contact-form" type="text" placeholder="captcha"
                                                name="form-captcha" id="form-captcha">
-                                        <img id="captcha" src="<?= $this->serverUrl() ?>/inc/securimage/securimage_show.php" alt="captcha">
+                                        <img id="captcha"
+                                             src="<?= $this->serverUrl() ?>/inc/securimage/securimage_show.php"
+                                             alt="captcha">
                                         <button class="refresh-captcha"><i class="fa fa-refresh"></i></button>
                                     </div>
                                 </div>

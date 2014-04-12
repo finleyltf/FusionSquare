@@ -38,14 +38,15 @@
             $route = str_replace($this->serverUrl() ,'',$this->serverUrl(true));
             $route = str_replace('/en' ,'',$route);
             $route = str_replace('/cn' ,'',$route);
+            $route = str_replace('/fi' ,'',$route);
 
             if ($route=="/"||$route=="/index"){
                 $homeUrl = str_replace('index' ,'',$this->serverUrl());
-                $fiUrl = $homeUrl;
+                $fiUrl = $homeUrl.'fi';
                 $enUrl = $homeUrl.'en';
                 $cnUrl = $homeUrl.'cn';
             }else{
-                $fiUrl = $this->serverUrl().$route;
+                $fiUrl = $this->serverUrl().'/fi'.$route;
                 $enUrl = $this->serverUrl().'/en'.$route;
                 $cnUrl = $this->serverUrl().'/cn'.$route;
             }
