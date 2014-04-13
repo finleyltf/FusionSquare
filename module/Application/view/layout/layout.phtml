@@ -106,10 +106,10 @@
                     <nav class="col-md-12 clearfix">
                         <ul class="main-nav white-nav dotted-separator">
                             <li>
-                                <div>
+                                <div class="navi-restaurant">
                                     <?php  $baseurlwithlanguage = str_replace($route ,'',$this->serverUrl(true)); ?>
                                     <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false) || (strpos($baseurlwithlanguage,'fi')!== false)) :?>
-                                        <a href="<?php echo $baseurlwithlanguage ?>/restaurant" class="content-link menu-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-restaurant.png" alt="" /></a>
+                                        <a href="<?php echo $baseurlwithlanguage ?>/restaurant" class="content-link restaurant-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-restaurant.png" alt="" /></a>
                                     <?php else : ?>
                                         <a href="<?php echo $this->serverUrl() ?>/fi/restaurant" class="content-link menu-wrapper"><span><?php echo $this->translate('Restaurant') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-restaurant.png" alt="" /></a>
                                     <?php endif; ?>
@@ -126,11 +126,11 @@
                                 </div>
                             </li>
                             <li>
-                                <div>
+                                <div class="navi-gallery">
                                     <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false) || (strpos($baseurlwithlanguage,'fi')!== false)) :?>
-                                        <a href="<?php echo $baseurlwithlanguage ?>/gallery" class="content-link menu-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-gallery.png" alt="" /></a>
+                                        <a href="<?php echo $baseurlwithlanguage ?>/gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-gallery.png" alt="" /></a>
                                     <?php else : ?>
-                                        <a href="<?php echo $this->serverUrl() ?>/fi/gallery" class="content-link menu-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-gallery.png" alt="" /></a>
+                                        <a href="<?php echo $this->serverUrl() ?>/fi/gallery" class="content-link gallery-wrapper"><span><?php echo $this->translate('Gallery') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-gallery.png" alt="" /></a>
                                     <?php endif; ?>
                                 </div>
                             </li>
@@ -142,27 +142,27 @@
                             <li>
                                 <div>
                                     <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false) || (strpos($baseurlwithlanguage,'fi')!== false)) :?>
-                                        <a href="<?php echo $baseurlwithlanguage ?>/buffet" class="content-link menu-wrapper"><span><?php echo $this->translate('Buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt="" /></a>
+                                        <a href="<?php echo $baseurlwithlanguage ?>/buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt="" /></a>
                                     <?php else : ?>
-                                        <a href="<?php echo $this->serverUrl() ?>/fi/buffet" class="content-link menu-wrapper"><span><?php echo $this->translate('Buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt="" /></a>
+                                        <a href="<?php echo $this->serverUrl() ?>/fi/buffet" class="content-link buffet-wrapper"><span><?php echo $this->translate('Buffet') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-buffet.png" alt="" /></a>
                                     <?php endif; ?>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false) || (strpos($baseurlwithlanguage,'fi')!== false)) :?>
-                                        <a href="<?php echo $baseurlwithlanguage ?>/reservation" class="content-link menu-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-reservation.png" alt="" /></a>
+                                        <a href="<?php echo $baseurlwithlanguage ?>/reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-reservation.png" alt="" /></a>
                                     <?php else : ?>
-                                        <a href="<?php echo $this->serverUrl() ?>/fi/reservation" class="content-link menu-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-reservation.png" alt="" /></a>
+                                        <a href="<?php echo $this->serverUrl() ?>/fi/reservation" class="content-link reservation-wrapper"><span><?php echo $this->translate('Reservation') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-reservation.png" alt="" /></a>
                                     <?php endif; ?>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <?php if ((strpos($baseurlwithlanguage,'cn')!== false) || (strpos($baseurlwithlanguage,'en')!== false) || (strpos($baseurlwithlanguage,'fi')!== false)) :?>
-                                        <a href="<?php echo $baseurlwithlanguage ?>/contact" class="content-link menu-wrapper"><span><?php echo $this->translate('Contact') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-contact.png" alt="" /></a>
+                                        <a href="<?php echo $baseurlwithlanguage ?>/contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-contact.png" alt="" /></a>
                                     <?php else : ?>
-                                        <a href="<?php echo $this->serverUrl() ?>/fi/contact" class="content-link menu-wrapper"><span><?php echo $this->translate('Contact') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-contact.png" alt="" /></a>
+                                        <a href="<?php echo $this->serverUrl() ?>/fi/contact" class="content-link contact-wrapper"><span><?php echo $this->translate('Contact') ?></span> <img src="<?php echo $this->serverUrl();?>/img/icon-contact.png" alt="" /></a>
                                     <?php endif; ?>
                                 </div>
                             </li>
