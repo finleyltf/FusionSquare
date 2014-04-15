@@ -34,7 +34,7 @@
                                 <dl>
                                     <article>
                                         <?php foreach ($this->buffet as $buffet_dish) : ?>
-                                            <?php if ($buffet_dish->dayMark == $count && $buffet_dish->coldDish != 1): ?>
+                                            <?php if ($buffet_dish->dayMark == $count && $buffet_dish->coldDish == 0 && !isset($buffet_dish->coldDish)): ?>
                                                 <dd class="menu-list">
                                                     <section class="menu-item">
                                                         <p class="title"><?php echo $this->escapeHtml($buffet_dish->fName); ?>
