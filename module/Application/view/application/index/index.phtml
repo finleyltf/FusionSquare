@@ -21,9 +21,14 @@
     <div class="languages top">
         <?php
         $home = str_replace('index','',$this->serverUrl());
-        $fiUrl = $home;
-        $enUrl = str_replace('cn','en',$home);
-        $cnUrl = str_replace('en','cn',$home);
+        $fiUrl = $home . '/fi';
+        $enUrl = $home . '/en';
+        $cnUrl = $home . '/cn';
+//        $enUrl = str_replace('cn','en',$home);
+//        $cnUrl = str_replace('en','cn',$home);
+        if (strpos($fiUrl,'fi') === false) {
+            $fiUrl = $fiUrl."/fi";
+        }
         if (strpos($enUrl,'en') === false) {
             $enUrl = $enUrl."/en";
         }

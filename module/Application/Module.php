@@ -25,7 +25,7 @@ class Module
             ->setLocale(\Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']))
             ->setFallbackLocale('fi_FI');
         $routeCallback = function ($e) {
-            $availableLanguages = array ('cn', 'en');
+            $availableLanguages = array ('cn', 'fi', 'en');
             $defaultLanguage = 'fi';
             $language = "";
             $fromRoute = false;

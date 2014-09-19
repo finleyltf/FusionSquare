@@ -6,6 +6,9 @@ width: 80%!important;
 padding-top: 10px!important;
 }
 
+.navbar .main-nav .navi-restaurant a img { padding-top: 11px; }
+.navbar .main-nav .navi-gallery a img { padding-top: 7px; }
+
 /*********** language icon ***********/
 
 .splash .layout-languages{
