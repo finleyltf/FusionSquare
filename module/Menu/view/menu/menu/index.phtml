@@ -11,42 +11,56 @@
                 </header>
                 <section class="row">
                     <?php foreach ($dishes as $dish) : ?>
+                    <?php if( $dish->category->getName() == $category->getName() ): ?>
                     <div class="menu-list col-sm-6 col-md-4">
                         <article class="menu-item">
                         <form action="cart/add" method="get">
-                            <?php if( $dish->category->getName() == $category->getName() ): ?>
-                            <div class="dish">
-                                <div class="first">
-                                    <div class="dish-image"><img src="/uploads/<?php echo $this->escapeHtml($dish->image); ?>" alt="Smiley face" height="42" width="42"></div>
-                                    <div class="fname"><?php echo $this->escapeHtml($dish->fName); ?></div>
-                                    <div class="cname"><?php echo $this->escapeHtml($dish->cName); ?></div>
-                                    <div class="ename"><?php echo $this->escapeHtml($dish->eName); ?></div>
+
+                            <div class="dish span12">
+                                <div class="left">
+                                    <div class="dish-image"><img src="/uploads/<?php echo $this->escapeHtml($dish->image); ?>" alt="Smiley face" height="80" width="80"></div>
                                 </div>
-                                <div class="description second"><?php echo $this->escapeHtml($dish->description); ?></div>
-                                <div class="third">
-                                    <?php if ($this->escapeHtml($dish->spiceDgree) != 0 ): ?>
-                                    <?php $spice = $dish->spiceDgree ?>
-                                        <?php for( $i = 0; $i < $spice; $i++ ) : ?>
-                                        <div class="spice-degree"><?php echo $this->escapeHtml($dish->spiceDgree); ?></div>
-                                        <?php endfor; ?>
-                                    <?php endif; ?>
-                                    <div class="price"><?php echo $this->escapeHtml($dish->getPrice()); ?>€</div>
+                                <div class="right">
+                                    <div class="first">
+                                        <?php if(strpos($this->serverUrl(true),'/fi') !== false) : ?>
+                                        <div class="fname"><?php echo $this->escapeHtml($dish->fName); ?></div>
+                                        <?php elseif(strpos($this->serverUrl(true),'/cn') !== false): ?>
+                                        <div class="cname"><?php echo $this->escapeHtml($dish->cName); ?></div>
+                                        <?php elseif(strpos($this->serverUrl(true),'/en') !== false): ?>
+                                        <div class="ename"><?php echo $this->escapeHtml($dish->eName); ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="description second">
+                                        <?php echo $this->escapeHtml($dish->description); ?>
+                                    </div>
+                                    <div class="third">
+                                        <?php if ($this->escapeHtml($dish->spiceDgree) != 0 ): ?>
+                                            <?php $spice = $dish->spiceDgree ?>
+                                            <?php for( $i = 0; $i < $spice; $i++ ) : ?>
+                                                <div class="spice-degree"><?php echo $this->escapeHtml($dish->spiceDgree); ?></div>
+                                            <?php endfor; ?>
+                                        <?php endif; ?>
+                                        <div class="price"><?php echo $this->escapeHtml($dish->getPrice()); ?>€</div>
+                                    </div>
+                                    <div class="fourth">
+                                        <select name="qty" class="form-control input-sm">
+                                            <option value="1" selected="selected">Amount</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                        <input type="hidden" name="id" value="<?php echo $this->escapeHtml($dish->dishId); ?>" />
+                                        <input type="submit" value="add to cart" class="btn btn-primary btn-xs submit">
+                                    </div>
                                 </div>
-                                <div class="restaurant"><?php echo $this->escapeHtml($dish->restaurant->getName()); ?></div>
-                                <select name="qty" class="qty">
-                                    <option value="1" selected="selected">Please select amount</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                                <input type="hidden" name="id" value="<?php echo $this->escapeHtml($dish->dishId); ?>" />
+                                <!-- <div class="restaurant"><?php echo $this->escapeHtml($dish->restaurant->getName()); ?></div> -->
                             </div>
-                            <input type="submit" value="add to cart" class="btn btn-primary submit">
-                        <?php endif; ?>
+
                         </form>
                         </article>
                     </div>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </section>
             <?php endforeach; ?>
