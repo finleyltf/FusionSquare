@@ -5,35 +5,29 @@ Develop: [![Build Status](https://secure.travis-ci.org/zendframework/zf2.png?bra
 
 ## RELEASE INFORMATION
 
-*Zend Framework 2.2.5*
+*Zend Framework 2.2.8*
 
-This is the fifth maintenance release for the 2.2 series.
+This is the eighth maintenance release for the 2.2 series.
 
-31 Oct 2013
+17 Sep 2014
 
-### SECURITY UPDATES IN 2.2.5
+### UPDATES IN 2.2.8
 
-An issue with `Zend\Http\PhpEnvironment\RemoteAddress` was reported in
-[#5374](https://github.com/zendframework/zf2/pull/5374). Essentially, the class
-was not checking if `$_SERVER['REMOTE_ADDR']` was one of the trusted proxies
-configured, and as a result, `getIpAddressFromProxy()` could return an untrusted
-IP address. 
+**This release contains security updates:**
 
-The class was updated to check if `$_SERVER['REMOTE_ADDR']` is in the list of
-trusted proxies, and, if so, will return that value immediately before
-consulting the values in the `X-Forwarded-For` header.
-
-If you use the `RemoteAddr` `Zend\Session` validator, and are configuring
-trusted proxies, we recommend updating to 2.2.5 or later immediately.
-
-### UPDATES IN 2.2.5
-
-- [#5343](https://github.com/zendframework/zf2/pull/5343) removed the
-  DateTimeFormatter filter from DateTime form elements. This was done
-  due to the fact that it led to unexpected behavior when non-date inputs were
-  provided. However, since the DateTime element already incorporates a
-  DateValidator that accepts a date format, validation can still work as
-  expected.
+- **ZF2014-05:** Due to an issue that existed in PHP's LDAP extension, it is
+  possible to perform an unauthenticated simple bind against a LDAP server by
+  using a null byte for the password, regardless of whether or not the user
+  normally requires a password. We have provided a patch in order to protect
+  users of unpatched PHP versions (PHP 5.5 <= 5.5.11, PHP 5.4 <= 5.4.27, all
+  versions of PHP 5.3 and below). If you use `Zend\Ldap` and are on an affected
+  version of PHP, we recommend upgrading immediately.
+- **ZF2014-06:** A potential SQL injection vector existed when using a SQL
+  Server adapter to manually quote values due to the fact that it was not
+  escaping null bytes. Code was added to ensure null bytes are escaped, and
+  thus mitigate the SQLi vector. We do not recommend manually quoting values,
+  but if you do, and use the SQL Server adapter without PDO, we recommend
+  upgrading immediately.
 
 Please see [CHANGELOG.md](CHANGELOG.md).
 
@@ -68,6 +62,20 @@ https://github.com/zendframework/zf2/issues
 If you would like to be notified of new releases, you can subscribe to
 the fw-announce mailing list by sending a blank message to
 <fw-announce-subscribe@lists.zend.com>.
+
+## Reporting Potential Security Issues
+
+If you have encountered a potential security vulnerability in Zend Framework, please report it to us at [zf-security@zend.com](mailto:zf-security@zend.com). We will work with you to verify the vulnerability and patch it.
+
+When reporting issues, please provide the following information:
+
+- Component(s) affected
+- A description indicating how to reproduce the issue
+- A summary of the security vulnerability and impact
+
+We request that you contact us via the email address above and give the project contributors a chance to resolve the vulnerability and issue a new release prior to any public exposure; this helps protect Zend Framework users and provides them with a chance to upgrade and/or update in order to protect their applications.
+
+For sensitive email communications, please use [our PGP key](http://framework.zend.com/zf-security-pgp-key.asc).
 
 ### LICENSE
 

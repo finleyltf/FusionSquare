@@ -6,7 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ZfcUserDoctrineORM' => array($vendorDir . '/zf-commons/zfc-user-doctrine-orm/src'),
+    'ZfcUser' => array($vendorDir . '/zf-commons/zfc-user/src'),
+    'ZfcBase' => array($vendorDir . '/zf-commons/zfc-base/src'),
     'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
+    'ZendXml' => array($vendorDir . '/zendframework/zendxml/library'),
+    'ZendDiagnostics\\' => array($vendorDir . '/zendframework/zenddiagnostics/src'),
+    'ZendDiagnosticsTest\\' => array($vendorDir . '/zendframework/zenddiagnostics/tests'),
     'ZendDeveloperTools' => array($vendorDir . '/zendframework/zend-developer-tools/src'),
     'ZFTool\\' => array($vendorDir . '/zendframework/zftool/src'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
@@ -21,4 +27,5 @@ return array(
     'DoctrineORMModule\\' => array($vendorDir . '/doctrine/doctrine-orm-module/src'),
     'DoctrineModule\\' => array($vendorDir . '/doctrine/doctrine-module/src'),
     'DoctrineModuleTest\\' => array($vendorDir . '/doctrine/doctrine-module/tests'),
+    'BjyAuthorize\\' => array($vendorDir . '/bjyoungblood/bjy-authorize/src'),
 );
