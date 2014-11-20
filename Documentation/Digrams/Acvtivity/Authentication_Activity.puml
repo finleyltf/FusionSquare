@@ -1,0 +1,11 @@
+@startuml
+
+start
+:Start Session;
+while (Valid User?) is (No)
+  :Verify Authentication;
+endwhile(Yes)
+:Proceed to welcome page;
+stop
+
+@enduml

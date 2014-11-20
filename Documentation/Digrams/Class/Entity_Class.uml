@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\User\Entity\Reservation</OriginalElement>
+  <nodes>
+    <node x="315.0" y="632.0">\Menu\Entity\Restaurant</node>
+    <node x="0.0" y="0.0">\User\Entity\User</node>
+    <node x="0.0" y="338.0">\User\Entity\Reservation</node>
+    <node x="0.0" y="632.0">\Menu\Entity\Buffet1</node>
+    <node x="379.0" y="338.0">\Order\Entity\Order</node>
+    <node x="376.0" y="0.0">\Menu\Entity\Dish</node>
+    <node x="568.0" y="632.0">\Menu\Entity\Category</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.8786464410735122" x="363.29415670650735" y="318.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

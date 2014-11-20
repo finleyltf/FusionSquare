@@ -1,0 +1,9 @@
+@startuml
+
+Customer->(Authenticate)
+Customer-->(Reserve Table)
+Customer--->(View Menu/Buffet)
+Customer-->(Make Order)
+
+
+@enduml

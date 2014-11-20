@@ -1,0 +1,9 @@
+@startuml
+
+Administrator->(Authenticate)
+Administrator-->(Manage Buffet Menu)
+Administrator--->(Manage Order Menu)
+Administrator-->(Manage Orders)
+Administrator--->(Manage Reservations)
+
+@enduml

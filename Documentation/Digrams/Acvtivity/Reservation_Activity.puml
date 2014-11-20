@@ -1,0 +1,15 @@
+@startuml
+
+start
+
+
+
+repeat
+  :Input Search Condition;
+  :Searching Table;
+repeat while (Table Available?) is (  NO)
+:Fill in the rest information
+to complete the reservation;
+stop
+
+@enduml
